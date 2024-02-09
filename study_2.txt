@@ -1,0 +1,28 @@
+##javascript##
+file latihal di study_js.js
+
++javascript adalah bahasa pemrograman yang digunakan untuk membuat website lebih interaktif. pada awalnya javascript digunakan untuk website
+  yang berjalan dilingkungan browser. tapi sekarand dapat digunakan untuk berbagai macam platform. bahkan bisa digunakan untuk luar browser
+  dengan menggunakan Node.JS. javascript termasuk bahasa scripting language yang berarti tidak perlu melakukan kompilasi agar bisa berjalan 
+  kenapa mempelajari javascript?
+  -javascript merupakan bahasa versatile. yang dapat diguanakan di berbagai macam platform
+  -javascript merupakan bahasa yang mudah dipelajari
+
++fundamental javascript
+  -menulis kode javascripts 
+   next masuk di file study_js.js
+  -comment menggunakan "//" &/ "/* */"
+  -penulisan variabel
+   menggunakan "var", "let", "const"
+   penggunaan "var" tidak terlalu disarankan karena rawan bug.
+   next masuk di file study_js.js
+   beberapa aturan pernulisan sebuah variabel 
+    -harus diawali dengan huruf, underscore
+    -dapat terdiri dari huruf, angka, underscore dengan berbagai kombinasi
+    -tidak boleh menggunakan space *spasi/ whitespace. jika menggunakan penamaan dua kata atau lebih menggunakan penulisan camelcase
+     contoh: lastName, firstName, fullName
+    -tidak boleh menggunakan kata spesial (!, @, #, $, %, dll)
+  -tipe data
+    -undefined.
+     tipe data yang tidak memiliki nilai. biasanya digunakan untuk inisialisasi variabel. 
+selebihnya bisa dilihat di file study_js.js

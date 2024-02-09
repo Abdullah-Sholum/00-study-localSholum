@@ -1,0 +1,99 @@
+GIT & GitHub
+
+~glosarium~
+-VCS (Version Control System) adalah sistem yang mencatat perubahan pada file atau sekumpulan file dokumen dari waktu ke waktu sehingga kita bisa mengingat versi spesifiknya nanti.
+     VCS memungkinkan kita melihat perubahan-perubahan yang terjadi pada file dari waktu ke waktu. memungkinkan melihat siapa yang terakhir mengubah, apa yang dirubah dan mengapa dirubah.
+     kita bisa mengerjakan proyek bersama denganm orang lain tanpa takut kehilangan pekerjaan kita. 
+-Snapshot sistem yang merekam perubahan pada souce code
+-GIT merupakan VCS terdistribusi untuk mengelola perubahan file didalam folder/repository/repo. Git didesain agar kecepatan dan efisiensi dalam pengelolaan proyek yang besar.
+    Istilah-istilah dalam GIT :
+     -Repository : tempat penyimpanan file yang dikelola oleh GIT.
+     -Commit : riwayat perubahan file yang disimpan dalam repository. rekaman snapshot dari file yang kita tambahkan atau ubah.
+     -hash : Penanda untik pada commit
+     -checkout : berpindah ke commit atau branch lain.
+     -Branch : cabang dari commit yang memungkinkan kita bekerja secara terpisah dari branch utama.
+     -Merge  : menggabungkan branch yang berbeda menjadi satu.
+     -Remote : Sumber dari repo/sumber yang memiliki repo.
+     -Clone : membuat salinan repository dari remote
+     -Push : mengirim perubahan ke repository yang terhubung. Push Commit
+     -Pull : mengambil perubahan dari repository yang terhubung. Pull Commit
+     
+-GitHub adalah layanan berbasis web untuk proyek pengembangan perangkat lunak yang menggunakan sistem kontrol / VCS. "Instagramnya para programmer".
+
+~selanjutnya lanjut di Github akun kampus um.ac.id~
+nama akun : taulah
+nama repo : 00-study
+nama file : 00-study-1.txt
+
+===Branching===
+percabangan 
+digunakan
+-membuat GIT branch
+-membuat snapshot tanpa mengganggu jalur utama (master)
+-fitur experimental
+-2 orang atau lebih mengerjakan proyek yang sama
+~buka repo GitHub~
+-pull request : meminta pemilik repo untuk menerima "mengambil perubahan yang telah dilakukan.
+-merge conflict : konflik yang terjadi saat menggabungkan branch.
+
+
+===Forking===
+-yaitu membuat salinan repo orang lain ke akun kita. dalam forking history dan commit juga ikut di salin
+-jembatan repo original ke repo kita
+-modifikasi terhadap repo original. misal dalam repo orang lain terdapat fitur login, kita bisa menerapkan fitur login orang lain ke repo kita.
+ dengan menggunakan forking, kemudian kita bisa membuat penyesuaian.
+-berkontribusi ke proyek lain. misal kita bisa memperbaiki bug repo orang lain, kita bisa menmgirimkan pll request ke pemilik repo.
+-repo != Clone. clone hanya menduplikasi yang didalam github ke lokal. sedangkan forking menduplikasi repo orang lain ke akun kita.
+
+===Implementasi GIT===
+-Install GIT
+
+#open git bash
+-git : tampilkan daftar perintah git
+-clear : clear layar
+-git --version : versi git 
+
+#perintah git
+-git add namaFile : menambahkan file ke staging  area
+-git status : tampilkan status file (ada file baru, file dihapus, file diedit)
+-git commit : untuk melakukan Commit
+-git config : konfigurasi git
+-git branch : buat branch baru
+-git help : bantuan
+-git init : inisiasi repo yang telah di arahkan terminal menjadi git repo master
+
+==perintah untuk explore folder
+*note pindah direktori utama tutup dengan ':'
+-pwd : tampilkan lokasi direktori
+-ls : tampilkan isi direktori
+-cd : pindah direktori
+/* cara untuk pindah direktori dari c ke d dengan bash
+ D:
+cd 00#Matkul/00-study
+*buat pindah ke direktori study
+*/
+-
+.....
+
+#3 area pada repo git
+-warking tree : tempat kita bekerja, lokasi repo utama untuk nugas, bekerja, coding. untuk penggunaan taruh di D: \00#Matkul
+-staging area : tempat file yang akan di commit
+-history : history commit 
+staging area dan history dari sebuah folder project yang telah diatur sebagai repo akan tersimpan di folder tersembunyi bernama '.git'
+
+===cara kerja git untuk membuat sebuah folder lokal menjadi sebuah repo===
+-folder project bernama 00-study dijadikan repo-git
+-ketika folder project diedit atau ditambah file, maka akan masuk ke staging area dengan git-add
+-ketika sudah selesai maka bisa di commit dengan git-commit dan kemudian masuk ke history
+-git add namaFile : untuk memindahkan file ke staging area, agar bisa di commit
+
+===disini kita membuat folder 00-study menjadi repo seperti di github===
+-masuk ke folde yang ingin dijadikan repo dengan perintah 'cd'
+-kemudian inisiasi folder tersebut dengan perintah 'git init'. disini folder akan menjadi master repo. disini akan muncul folder hidden .git
+-liat daftar file dengan 'ls'
+-ketik 'git status' untuk mengetahui file mana yang masih untracked, karena belum di add ke staging area. disini file tersebut belum bisa di commit.
+-ketik 'git add namaFile' untuk membuat file tersebut masuk ke staging area.
+-ketik 'git add *.formatFile' untuk memasukkan semua file dengan format tertentu ke staging area.
+-cek status 'git status' disini file yang telah di add sudah masuk di staging area.
+-file yang telah masuk di staging area tidak selesai meski sudah di save, harus di commit dulu.
+-

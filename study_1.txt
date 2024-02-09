@@ -1,0 +1,1301 @@
+##HTML##
+
+elemen
+    block element = element yang akan membuat garis baru ketika sudah mentok batas kanan. contoh paragraph, heading, list, table, dan form
+    inline element = element yang tidak akan membuat garis baru ketika sudah mentok batas kanan. contoh span, link, image, dan input
+global atribut
+    atribut ID = untuk memberi identitas pada elemen
+                 penggunaan umum menangkap elemen dengan javascript
+                 "<a href="#disini">disini</a>" href harus menggunakan pagar "#" agar dapat mengarahkan ke id yang dituju
+                 "<p id="disini">disini</p>"    untuk mengaktifkan id harus membuat id yang sama dengan href
+                
+#List
+    dalam list
+    ul = unordered list
+    li = list item
+    ol = ordered  list
+    dalam ol bisa menambahkan 
+    -'type = "I","a"' untuk mengatur urutan denan romawi atau huruf
+    -'start = "7"' untuk memulai list dari urutan 7
+    -'reversed' untuk  membalik urutan
+
+    <ul> 
+        <li>
+        <li>
+    </ul>
+
+    <ol> 
+        <li>
+        <li>
+    </ol>
+
+#Image
+    <img src="blab/bla/blas" alt="ini gambar" width="-n px" height="-n px">
+        -src = lokasi / sumber gambar
+        -alt = pengganti teks saat gambar gagal masuk
+    +dalam mengatur ukuran gambar gunakan salah satu saja antar tinggi dan lebar agar rasio gambar sesuai
+        -width = lebar
+        -height = tinggi
+
+#Inline formating text 
+    +Long Quotations untuk kutipan panjang atau terstimoni, kemudian di dalamnya bisa di beri atribut heading, paragraph, dan list
+        <blockquote> 
+            <h1></h1>
+            <p> 
+            </p>
+            <ol>
+                <li></li>
+            </ol>
+        </blockquote>
+
+    +Preformated text untuk menampilkan teks yang ditulis tanpa menghiraukan spasi, enter, dan tab
+        <pre>
+            kalimat
+        </pre>
+
+    +Figure and Figure Caption untuk menampilkan gambar dengan caption
+        <figure>
+            <img src="Image.png" alt="Logo" width="200px"/>
+            <figcaption>Dicoding</figcaption>
+        </figure>
+
+    +Anchor untuk membuat hyperlink yang bisa ditekan dan akan mengarahkan ke halaman lain
+        href = lokasi / sumber halaman tujuan
+        <a href="https://www.dicoding.com">Tekan ya</a>
+
+    +Emphasized text untuk menekankan kata atau kalimat. biasanya kalimatnya akan miring
+        <p><em>ini</em> text</p>
+
+    +important text text penting. dengan <strong> hasilnya akan tebal
+        <p><strong>ini</strong> text</p>
+
+    +Short Quotations untuk kutipan pendek
+        <p>dia berkata<q>ini kutipan</q></p>
+        outputnya akan 'dia berkata "ini kutipan" '
+
+    +Citation untuk sebuah rujukan pada dokumen dsb
+        <p>ini adalah <cite>rujukan</cite></p>
+
+    +Definition untuk mendefinisikan sebuah kata
+        <p><dfn>ini</dfn> adalah definisi</p>
+
+    +Subscript dan superscript, <sub>elemen kecil lokasi bawah &  <sup>elemen kecil lokasi atas untuk menulis rumus kimia
+        <p>ini adalah <sub>subscript</sub> dan <sup>superscript</sup></p>
+
+    +Highlighted text untuk menyorot kata atau kalimat dengan standart background kuning teks hitam
+        <p>ini adalah <mark>highlight</mark></p>
+
+    +line break untuk membuat baris baru atau enter
+        <p>ini adalah <br>line break</p>
+
+#Semantic HTML
+    mengorganisir halaman konten
+    +header = untuk menampilkan judul dan navigasi
+    +footer = catatan kaki pada sebuah dokumen
+    +main = menampung konten utama
+    +navigation = untuk menampilkan navigasi
+    +article = untuk menampilkan konten independen tanpa terpengaruh konten luar
+    +aside = jika berada dalam article maka sebagai bagian dari article tapi bukan konten artikel,
+            jika berada diluar article maka dapat berisi informasi yang berhubungan dengan seluruh halaman
+    +section = membagi sebuah beberapa konten didalam article, disarankan setelah section terdapat heading untuk  memperjelas pergantian section
+
+#Generic element
+    +Div "<div></div>" berfungsi sebagai wadah / container yang bersifat umum untuk menampung konten.
+    ini tidak memberi efek pada konten dan layout sebalum diatur dengan css.
+    biasanya diberi atribut "class" dan "id".
+    <div class="container">
+        <h1>judul</h1>
+        <p>paragraf</p>
+    </div>
+    div memberi id dan class pada seluruh konten didalamnya
+
+    +span "<span></span>" bergfungsi sebagai wadah umum tanpa line break <br> untuk menampung konten beris teks yang diwadahi paragraph, list,
+    heading dsb. biasanya diberi atribut "class" dan "id".
+    <ul>
+        <li><span id="1" class="satu"></span></li>
+        <li><span id="2" class="dua"></span></li>
+        <li><span id="3" class="tiga"></span></li>
+    </ul>
+    span memberi id dan class pada 1 baris konten  
+
+#Tabel
+    struktur tabel yaitu "<table>", "<tr>" & "<td>"/"<tr>"
+    -"<table></table>" = untuk membuat tabel
+    -"<tr></tr>" = table row. untuk membuat baris dalam tabel
+    -"<td></td>" = table data. untuk membuat kolom dalam tabel serta tempat menampung data
+    -"<th></th>" = table heading. untuk membuat heading dalam tabel
+    <table>
+        <tr>
+            <th>Tahun</th>
+            <th>Juara 1</th>
+            <th>Juara 2</th>
+            <th>Juara 3</th>
+        </tr>
+        <tr>
+            <td>2018</td>
+            <td>Prancis</td>
+            <td>Kroasia</td>
+            <td>Belgium</td>
+        </tr>
+        <tr>
+            <td>2014</td>
+            <td>Jerman</td>
+            <td>Argentina</td>
+            <td>Belanda</td>
+        </tr>
+        <tr>
+            <td>2010</td>
+            <td>Spanyol</td>
+            <td>Belanda</td>
+            <td>Jerman</td>
+        </tr>
+    </table>
+    spanning cell atau merging cell atau menggabungkan beberapa kolom jadi satu
+    -column spans = merentangkan kolom dengan atribut "colspan" pada elemen "<td>" atau "<th>"
+                    'colspan = "-n"' -n adalah jumlah kolom yang ingin digabungkan sejumlah angka dari kiri ke kanan
+    -row spans = merentangkan baris dengan atribut "rowspan" pada elemen "<td>" atau "<th>"
+                'rowspan = "-n"' -n adalah jumlah baris yang ingin digabungkan sejumlah angka dari atas ke bawah
+
+#Input user
+    Elemen input "<input>" untuk mendapatkan data dari pengguna dengan bermacam-macam tipe, teks, password, email, search, file dsb.
+    Berikut type input yang sering digunakan
+        -"text" untuk mendapatkan inputan berupa teks
+        -"password" untuk mendapatkan inputan berupa password
+        -"email" untuk mendapatkan inputan berupa email
+        -"search" untuk mendapatkan inputan berupa search
+        -"file" untuk mendapatkan inputan berupa file
+        -"number" untuk mendapatkan inputan berupa angka
+        -"range" untuk mendapatkan inputan berupa angka dengan slider
+        -"date" untuk mendapatkan inputan berupa tanggal
+        -"time" untuk mendapatkan inputan berupa waktu
+        -"datetime-local" untuk mendapatkan inputan berupa tanggal dan waktu
+        -"color" untuk mendapatkan inputan berupa warna
+        -"checkbox" untuk mendapatkan inputan berupa checkbox
+        -"radio" untuk mendapatkan inputan berupa radio button
+        -"submit" untuk mendapatkan inputan berupa tombol submit
+        -"reset" untuk mendapatkan inputan berupa tombol reset
+        -"button" untuk mendapatkan inputan berupa tombol
+        -"image" untuk mendapatkan inputan berupa gambar
+        -"hidden" untuk mendapatkan inputan berupa data yang tidak terlihat
+        -"tel" untuk mendapatkan inputan berupa nomor telepon
+        -"url" untuk mendapatkan inputan berupa url
+        -"week" untuk mendapatkan inputan berupa minggu
+        -"month" untuk mendapatkan inputan berupa bulan
+        -"datetime" untuk mendapatkan inputan berupa tanggal dan waktu
+        -"datetime-local" untuk mendapatkan inputan
+
+    'value = "teks default"' = untuk mengatur nilai default pada inputan
+
+    +Non-Single Line Input Element
+    "textarea" digunakan untuk membuat masukan dapat diisi dengan banyak teks dengan baris.
+        <textarea id="ini_textarea" cols="30" rows="10">
+            nilai default
+        </textarea>
+        -"cols" untuk mengatur lebar textarea
+        -"rows" untuk mengatur tinggi textarea
+        bisa juga langsung membuat textarea dengan style
+        <textarea id="ini_textarea" style="width: -n px; height: -n px">
+            nilai default
+        </textarea>
+        -"width" untuk mengatur lebar textarea sesuai kebutuhan
+        -"height" untuk mengatur tinggi textarea sesuai kebutuhan
+
+    +Label element
+        Elemen label pada input dan label input yang memiliki variabel sama akan mempermudah menjelaskan fungsi elemen tersebut
+        dan memberi kemampuan browser berpindah pada elemen input saat elemen label yang berasosiasi dengannya ditekan.
+        dua cara menghubungkan elemen label dan input.
+        pertama. dengan atribut "id" pada elemen input beserta "value".
+        kedua. dengan menambahkan atribut "for" pada elemen label dan "value"nya pada label, kemudian "id" pada elemen input.
+            <div>
+                <label for="email">Email</label> //for = "email" berasosiasi dengan id = "email" pada input 
+                <br>
+                <input type="email" id="email" /> //id = "email" berasosiasi dengan for = "email" pada label
+            </div>
+
+            <div>
+                <label for="password">Password</label> //for = "password" berasosiasi dengan id = "password" pada input
+                <br>
+                <input type="password" id="password" /> //id = "password" berasosiasi dengan for = "password" pada label
+            </div>
+
+    +atribut pada elemen input
+    -placeholde = "teks" untuk menampilkan teks pada input sebelum diisi sebagai pentunjuk
+    -required = "required" untuk menampilkan pesan error jika input kosong 
+    -readonly = "readonly" membuat masukan tidak bisa di edit
+    -disabled = "disabled" masukan jadi tidak aktif
+    -selebihnya cek google dengan keyword "atribut pada elemen input
+
+    +mengirim data masukan
+    ketika membuat masukan wajub membungkusnya dengan "<form></form>" dan setiap inputan wajub memakai atribut "name = 'key/nama_masukan'".
+    ketika di proses setiap data masukan berisi 2 nilai yaitu "value" berupa data yang di masukkan user dan key berupa identitas dari masukan.
+    -atribut "action = 'lokasi / url pemroses'" untuk  mengirim data masukan ke proses yang dituju.
+    <form action = "lokasi proses">
+    -atribut "method = 'get/post'"
+    --Metode GET digunakan untuk medapatkan data dari server.
+    --Metode POST digunakan untuk mengirimkan data ke server.
+
+#Special Character
+    beberapa character tidak termasuk ke standard kelompok ASCII seperti "<,>,&,', copyright symbol" dll" ketika ditulis akan menghasilkan error.
+    karena itulah diperlukan namanya "escaped character" yaitu menulis character dengan nilai numeric /  character reference lainnya.
+    -simbol copyright = "&copy"
+    -dll
+
+##CSS##
+
+#Aturan menulis
+    di CSS terdapat dua bagian dalam sebuah rule. 
+    -pertama identitas elemen atau elemen yang menerapkan rule (selector)
+    -kedua deklarasi/instruksi yang akan diterapkan pada sebuah selektor.
+        h1{color:green;}y/y
+        -color = property
+        -green = value
+        +-{font-size: small;
+            fonr-family:sans-serif
+            } = Declaration Block (menulis beberapa declaration dalam selector)
+
+    -selector, teknik dasar selector biasanya dipanggil melalui tipe elemennya, kemudian properti dan nilainya pada declaration diterapkan ke 
+    seluruh elemen.
+    -Declaration, merupakan aturan yang diterapkan pada selector
+    -CSS comments ditetapkan pada element <style> dengan diapit "/* komen */"
+
+    +menerapkan styling dengan external styling dengan file berekstensi '.css'. pada dokumen html perlu menggunakan elemen <link> pada <head>.
+    <head>
+        <link rel="stylesheet" href="style.css"> //href disini mengacu pada nama dokumen css yang se folder dengan dokumen html
+    </head
+    
+    di link menerapkan berkas css yang menggunakan 'href = "nama file.css"' umumnya menggunakan 'stylesheet' pada atribut 'rel' sebagai relationship (hubungan)
+    antara berkas style.css dengan dokumen html.
+
+    +Embedded stylesheet merupakan style yang ditaruh didalam berkas html dengan diapit <style> </style> pada elemen <head>
+    
+    +inline style merupakan styling yang diterapkan dalam elemen html dengan atribut 'style = "property: value;"'
+    <h1 style ="color: red;">ini h1</h1> //semicolon ; digunakan jika menggunakan lebih dari 1 property
+
+    -style.css
+    body{ 
+        font-family: sans-serif; //menbuat semua font di element body menjadi sans-serif
+    }
+        h1{
+            color: green; //membuat semua font di element h1 menjadi warna hijau
+        }
+    footer {
+        color: red; //membuat semua font di element footer menjadi warna merah
+    }
+ CSS Conception
+    +Inheritance yaitu mewarisi. Sebuah properti dengan style tertentu dapat diwariskan ke elemen didalamnya (child element)
+    Contoh : 
+    <style>
+        body {
+            font-family: sans-serif; //semua font di dalam body akan menjadi sans-serif
+        }
+        h1 {
+            color: green; //semua font di dalam h1 akan menjadi warna hijau dengan menggunakan font sans-serif
+        }
+        footer {
+            color: red; //semua font di dalam footer akan menjadi warna merah dengan menggunakan font sans-serif
+        }
+
+    +Group Selector menggabungkan beberapa selector yang memiliki properti yang sama dengan group selector.
+    Contoh :
+    <style>
+        h1, h2 {
+            color: green; //semua font di dalam h1 dan h2 akan menjadi warna hijau
+        }
+    </style>
+
+    +Rule Order, urutan penulisan dari bawah ke atas, jika misak suatu properti ditulis 2 kali maka yang dieksekusi yang terakhir
+    Contoh :
+    p {
+        color: red;
+    }
+
+    p {
+        color: blue;
+    }
+        maka yang akan dieksekusi adalah warna biru kerena ditulis terakhir.
+
+        p {
+        color: red !important; //menggunakan !important akan mengabaikan urutan penulisan dan langsung dieksekusi
+    }
+
+    p {
+        color: blue;
+    }
+    maka yang akan dieksekusi adalah warna merah.
+
+#Pendalaman
+ +selector
+  Selector Dasar : tipe selector dan class selector
+    -Type selector menggunakan nama elemen sebagai target untuk ditetapkan rule.
+        Contoh :
+        div {
+            color: red;
+        }
+        semua aleme div akan berwarna merah
+    -Class selector menetapkan target elemen berdasarkan nilai dari atribut class yang ditetapkan pada elemen.
+     penulisan selector diawali dengan '.' kemudian diawali class saat pemanggilan di elemen.
+        contoh : 
+
+        style.css
+        .warna_merah {
+            color: red;
+        }
+        .font_besar {
+            font-size: 24px;
+        }
+
+        .html
+        //class selector bersifat shareable, dapat digunakan pada banyak elemen dan tipe elemen yang berbeda.
+        <h1 class="warna_merah">ini h1</h1>
+        <p class="warna_merah">ini p</p>
+        
+        //sebuah elemen juga bisa memiliki beberapa rule dengan class selector yang berbeda dengan dipisah space.
+        <p class="warna_merah font_besar">ini p</p>
+
+        //class selector bisa menargetkan secara spesifik elemen yang memiliki sebuah class. dengan menulis nama elemen diikuti '.' beserta nama kelasnya pada selector
+        style.css
+        .font_besar {
+            font-size: 24px;
+        }
+        p.font_besar {
+            color: red;
+        }
+
+        .html
+        <p class="font_besar">ini p</p>
+    -ID selector menetapkan target elemen berdasarkan nilai dari atribut id yang ditetapkan pada elemen.
+     atribut id tidak shareable karena id menentukan identitas sebuah elemen.
+     untuk menetapkan selector dengan sebuah id gunakan octothorpe(#)
+     contoh : 
+        style.css
+        #id_pertama {
+            color: red;
+            font-size: 24px;
+        }
+
+        .html
+        <p id="id_pertama">id_pertama</p>
+        -Attribut Selector menetapkan target elemen berdasarkan atribut yang digunakan, bisa juga lebih spesifik,
+        contoh.
+        style.css
+        1. //menetapkan elemen <a> yang yang punya atribut href
+        a[href] {
+            color: red;
+        }
+
+        2. //menetapkan elemen <a> dengan atribut href dengan nilai awalan '#'
+        a[href^='#']{
+            background-color: yellow;
+        }
+        
+        3. //menetapkan elemen <a> dengan atribut href dengan nilai 'kesana'
+        a[href*='kesana']{
+            background-color: red;
+        }
+        
+        4. //menetapkan elemen <a> dengan atribut href dengan nilai 'kesitu' tanpa memperdulikan besar kecil text
+        a[href*='kesitu' i]{
+            color: cyan;
+        }
+
+        5. //menetapkan elemen <a> dengan atribut href dengan akhiran '.pdf'
+        a[href$='.show']{
+            color: blue;
+        }
+
+        .html
+            <a href="#">no 1</a>
+            <a href="#kesana">no 2</a>
+            <a href="#kesitu">no 3</a>
+            <a href="#kesitu">no 4</a>
+            <a href="anoboy.show">no 5</a>
+    -Universal Selector digunakan untuk diterapkan kesemua elemen, tapi bisa spesifik menargerkan elemen dengan menggabungkan selecor lain.
+     Contoh :
+        style.css
+            //1. menargetkan seluruh elemen
+            * {
+                color: red;
+            }
+
+            //2. menargetkan seluruh tipe elemen yang mengandung nilai 'en' pada atribut lang
+            *[lang^='en']{
+                font-style: italic;
+            }
+
+            //3. menargetkan seluruh tipe elemen yang memiliki nilai 'warning' di atribut class
+            *. warning {
+                color: red;
+            }
+
+            //4. menargetkan seluruh tipe elemen dengan nilai 'warning' di atribut id
+            *#content {
+                color: red;
+                font-size: 24px;
+            }
+
+            .html
+            <p>ini output untuk no 1</p>
+            <p lang="en-us">ini output untuk no 2 paragraf</p>
+            <h1 lang="en-us" class="warning">ini output untuk no 2 dengan memakai heading</h1>
+            <p class="warning">ini output untuk no 3 warning yang memakai paragraf</p>
+            <div id="content">ini output untuk no 4 dengan memakai heading</div>
+    -combinator: adjacent sibling selector dan general sibling selecor
+     terdapat beberapa kombinator yang bisa digunakan.
+        +adjacent sibling selector menggabungkan  2 buah selector dengan tanda '+'.
+            hanya elemen ke 2 yang akan diterapkan rule dan elemen ke 2 berada setelah elemen 1,
+            kedua elemen harus berada di induk elemen yang sama.
+            contoh :
+            img + p {
+                color : red;
+            }
+            elemen p akan berubah asal warna asal dia berada sebelum elemen img di induk elemen yang sama
+        +general sibling selector (~) menerapkan rule pada elemen 2 setelah selector(~), meski elemen
+            2 berada sebelum elemen 1 di induk elemen html
+            img + p{
+                color : green;
+            }
+
+            Child  Selector & descendant selector
+            +child selector (>)
+            div > p{
+                background-color : blue;
+            }
+            style akan diarahkan ke child elemen secara langsung. 
+            <div>
+                <p>style diterapkan disini karena child elemen
+                <section>
+                    <p>style tidak diterapkan
+        +descendant selector (space)
+            menerapkan rule pada seluruh elemen turunan walaupun tidak langsung
+            contoh : 
+            div p{
+                background-color : blue;
+            }
+            seluruh elemen p dalam div akan kena properties meski tidak langsung
+    -pseudo selector menerapkan rule pada elemen berdasarkan kondisi tertentu
+     dengan menggunakan ":" tanda titik dua diikuti nama pseudo selector
+        +pseudo class selector
+        -link pseudo class selector
+            rule diterapan pada link yang belum dikujungi
+            a:link{
+                color : red;
+            }
+        -visited pseudo class selector
+            rule diterapkan pada link yang dikujungi
+            a:visited{
+                color : red;
+            }
+        -hover pseudo class selector'
+            link diterapkan ketika cursor diarahkan ke link
+            a:hover{
+                color : red;
+            }
+        -active pseudo class selector
+            rule akan diterapkan ketika link aktif / ditekan
+            a:active{
+                color : red;
+            }
+        -focus pseudo class selector 
+            rule diterapkan saat elemen dalam keadaan aktif / fokus
+            seperti pada elemen input ketika diklik
+            input:focus{
+                position : relative;
+                top : +20px;
+            }
+        -lainnya bisa dicari di google dengan keyword "pseudo class selector"
+    -Pseudo elemen selector
+     selector ini biasa digunakan untuk menetapkan style pada bagaian awal dan akhir dari paragraf
+     menggunakan "::" dua titik dua diikuti pseudo character
+     contoh:
+        "before" dan "after"
+        para::before,
+        para::after{
+            content : '"';
+            font-size : 24px;
+        }
+
+ +formattimg text
+  styling font dan text dibedakan untuk memberi keserasian pada tampilan
+  -styling pada tampilan text universal gunakan properti font, untuk mengatur tipe font, ukuran, ketebalan.
+  -stling pada tampilan text biasa / konten gunakan properti text seperti text alignment, dekorasi, spacing.
+  Font styling
+    -font-family untuk mengatur tipe font
+        h1, h2, h3, h4 ,h5, h6,p{
+            font-family: 'Times New Roman', Times, sans-serif;
+        }
+        value properti diatas menggunakan 3 value karena beberapa browser tidak mendukung beberapa font non umum
+        jadi browser akan menjalankan program dari kiri ke kanan menurut prioritas tertinggi atau font yang didukung
+        aturan penulisan font-family
+        1. nama font yang berisi spasi diapit tanda petik
+        2. gunakan tanda koma untuk memisahkan nama font
+        3. gunakan nama font yang umum terlebih dahulu
+        @font-face untuk mengatur font yang tidak umum
+        disini kita bisa menggunakan font dari sumber external
+        @font-face{
+            font-family: 'nama font';
+            src: url('sumber font');
+        }
+    -font-size untuk mengatur ukuran font
+        h1 {
+            font-size: 44px;
+        }
+        terdapat 2 satuan untuk mengatur ukuran font
+        -relative unit = ukuran font relatif terhadap ukuran font induknya
+        -absolute unit = ukuran font yang tetap
+        relative unit
+        -em = ukuran font relatif terhadap ukuran font induknya
+        -rem = ukuran font relatif terhadap ukuran font root
+        -ex = satuan relatif terhadap tinggi font
+        -ch = satuan relatif terhadap lebar karakter '0'
+        -vw = satuan relatif terhadap lebar viewport
+        -vh = satuan relatif terhadap tinggi viewport
+        absolute unit
+        -px = menetapkan ukuran font berdasarkan pixel
+        -pt = menetapkan ukuran font berdasarkan point 1pt = 1/72 inch
+        -pc = menetapkan ukuran font berdasarkan picas 1pc = 12pt
+        -mm = menetapkan ukuran font berdasarkan mm
+        -cm = menetapkan ukuran font berdasarkan cm
+        -in = menetapkan ukuran font berdasarkan inch
+        selain 2 satuan diatas bisa menggunakan % dari font size induknya
+        misal
+        bopy { //disini body sebagai parent
+            font-size: 50px;
+        }
+        h1 { //disini h1 sebagai child
+            font-size: 200%;
+        }
+    -font-weight untuk mengatur ketebalan font
+     font dapat diisi dengan angka numeric dan keyword
+     -numeric
+        100 = thin
+        200 = extra light
+        300 = light
+        400 = normal
+        500 = medium
+        600 = semi bold
+        700 = bold
+        800 = extra bold
+        900 = black
+     -keyword
+        normal = 400
+        bold = 700
+        bolder = lebih tebal dari font induknya
+        lighter = lebih tipis dari font induknya
+     contoh
+        h1 {
+            font-weight: 900;
+        }
+    -font-style untuk mengatur gaya font
+        normal = font normal
+        italic = font miring
+        oblique = font miring
+        contoh
+        h1 {
+            font-style: italic;
+        }
+    -font-variant untuk mengatur huruf kapital
+        normal = huruf normal
+        small-caps = huruf kapital dengan ukuran lebih kecil
+        contoh
+        h1 {
+            font-variant: small-caps;
+        }
+    -font-stretch untuk mengatur lebar font
+    +shorthand
+    teknik menargetkan beberapa properti sekaligus dengan satu deklarasi
+    format penulisan
+        target { font: style weight variant size font-familiy}
+    -nilai properti dipisah dengan spasi
+    -wajib urut dari style, weight, variant, size, font-family
+    -nilai yang wajib diisi adalah font-size dan font-family
+    contoh
+        h1 {
+            font: italic 700 'Times New Roman', Times, sans-serif;
+        }
+  Text styling
+    -line height 
+        mengatur jarak minimal antar dasar atas dan bawah text
+        contoh
+        p {         //macam penulisan
+            line-height: 2;
+            line-height: 200%;
+            line-height: 2em;
+        }
+    -text indent
+        mengatur jarak awal text dari margin kiri
+        contoh
+        p {
+            text-indent: 20px;      //text akan masuk 20px dari margin kiri
+            text-indent: -20px;     //text akan keluar 20px dari margin kiri
+        }
+    -text align
+        untuk mengatur align text
+        dengan properti
+        p {
+            text-align: left;       //text akan rata kiri
+            text-align: right;      //text akan rata kanan
+            text-align: center;     //text akan rata tengah
+            text-align: justify;    //text akan rata kiri dan kanan
+        }
+    -text decoration
+        memberi dekorasi pada text
+        dengan properti
+        p {
+            text-decoration: underline;     //memberi garis bawah pada text
+            text-decoration: overline;      //memberi garis atas pada text
+            text-decoration: line-through;  //memberi garis tengah pada text / text dicoret
+            text-decoration: none;          //menghilangkan dekorasi pada text
+        }
+    -text transform
+        membuat jenis kapitalisasi
+        dengan properti
+        p {
+            text-transform: capitalize;     //membuat huruf pertama pada text menjadi kapital
+            text-transform: uppercase;      //membuat semua huruf pada text menjadi kapital
+            text-transform: lowercase;      //membuat semua huruf pada text menjadi kecil
+            text-transform: none;           //menghilangkan kapitalisasi pada text
+        }
+    -word dan letter spacing
+        letter spacing digunakan untuk mengatur jarak antar huruf
+        word spacing digunakan untuk mengatur jarak antar kata
+        dengan properti\
+        p p1 {
+            letter-spacing: 2px;        //mengatur jarak antar huruf 24px
+        }
+        p p2 {
+            word-spacing: 2px;          //mengatur jarak antar kata 24px
+        }
+    -text shadow
+        memberi bayangan pada text 
+        dengan format
+        text-shadow: nilai-vertikal nilai-horizontal nilai-blur(opsional) warna;
+        p {
+            text-shadow: 2px 4px 6px red;
+        }
+ 
+ +pewarnaan
+  warna website menggunakan format RGB (red, green, blue) dengan nilai 0 - 255
+    -color-text
+        untuk mengatur warna text
+            -contoh dengan numeric value
+            p {
+                color: rgb(255, 0, 0);      //format RGB
+                color: #ff0000;             //format HEX
+                color: hsl(104, 82%, 50%);  //format HSL *css3 only
+            }
+            -contoh dengan predifined color name
+            p {
+                color: red;
+            }
+            cek google untuk mengetahui nama warna apa saja yang tersedia
+    -background-color
+        untuk mengatur warna background
+        dengan properti
+        p {
+            background-color: rgb(255, 0, 0);
+        }
+    -opacity
+     untuk mengatur seberapa terlihat suatu benda
+        dengan properti
+        p {
+            opacity: 50%;   opacity 0 - 100%       
+        }
+        opacity pada warna
+        p {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+        rgba = red, green, blue, alpha.
+        alpha = opacity
+
+ +box model
+    setiap elemen di html ditampilkan sebagai kotak untuk menampung kontennya
+    box model punya 4 nilai
+      -lebar dan tinggi konten
+      -garis tepi (border)
+      -ruang kosong antara konten dengnan border (padding)
+      -jarak antara elemen satu dengan elemen lainnya (margin)
+    -box model : box dimension
+      untuk mengatur lebar dan tinggi konten menggunakan width dan height
+      properti contoh
+        .p1 {
+            width: 100px;
+            height: 100px;
+        }
+        diatas menggunakan pixel karena pixel merupakan satuan umum dan akurat
+        .p2 {
+            width: 50%;
+            height: 50%; //or
+            width: 50em;
+            height: 50em;
+        }
+        saat ini banyak dev menggunakan satuan % & em karena fleksibel. bisa menyesuaiakan berdasarkan ukuran teks yang ditampilkan
+        dan ukuran viewport / layar
+    -limiting dimension
+      mengatur max dan min height dan width dari suatu elemen. berguna agar konten ttp terbaca meski berada di layar ponsel
+      properti
+        .p1 {
+            max-width: 800px;
+            min-width: 300px;
+            max-height: 600px;
+            min-height: 200px;
+        }
+    -overflowing content
+      terkadang konten yang ditampilkan melebihi ukuran elemen. ini disebut overflowing content.
+      untuk mengatasinya kita bisa memggunakan beberapa properti
+      properti
+      .content-box1 {
+        overflow: visible;  //overflowing content akan tetap ditampilkan
+      }
+      .content-box2 {
+        overflow: hidden;   //overflowing content akan disembunyikan
+      }
+      .content-box3 {
+        overflow: scroll;   //overflowing content akan ditampilkan dengan scroll yang bisa digulir
+      }
+      .content-box4 {
+        overflow: auto;     //overflowing content akan ditampilkan dengan scroll yang bisa digulir. jika tidak overflow maka nilai visible diterapkan
+      }
+    -box-sizing
+      di css3 terdapat properti box-sizing yang berguna untuk mengatur bagaimana browser menghitung ukuran elemen
+      properti
+      .css
+      div {
+        height: 100px;
+        width: 100px;
+        border: 10px;
+        padding: 20px;
+      }
+      .box1 {
+        box-sizing: content-box;    //default. menghitung ukuran elemen dari border ke dalam
+      }
+      .box2 {
+        box-sizing: border-box;     //menghitung ukuran elemen dari border ke luar
+      }
+      .html
+        <div class="box1">output 1 menerapkan content-box</div>
+        <div class="box2">output 2 menerapkan border box</div>
+      penjelasan
+      box-sizing: content-box;
+        ukuran panjang dan tinggi elemen akan menjadi 160px (100px + 20px + 20px + 10px + 10px) = 100px ukuran box div - padding - border
+      box-sizing: border-box;
+        ukuran akan tetap 100px meski elemen div menerapkan padding dan border
+    -box model:border
+      border merupakan garis tepi dari elemen.
+      -properti border
+        .box1 {
+            border: 1px solid #ff0000; // bordere akan mengelilingi elemen dengan ketebalan 1px warna merah dan solid
+        }
+        .box2 {
+            border-top-width: 1px;      //mengatur ketebalan border atas
+            border-right-width: 1px;    //mengatur ketebalan border kanan
+            border-bottom-width: 1px;   //mengatur ketebalan border bawah
+            border-left-width: 1px;     //mengatur ketebalan border kiri
+        }
+        .box3 {
+            border-width: 1px 2px 3px 4px;  //mengatur ketebalan border 1px atas, 2px kanan, 3px bawah 4px kiri
+        }
+        penjelasan pengisian value border-width
+            1. 1 value = semua sisi border
+            2. 2 value = atas bawah, kiri kanan
+            3. 3 value = atas, kiri kanan, bawah
+            4. 4 value = atas, kanan, bawah, kiri
+            5. remember urutan berdasarkan arah jarum jam 
+      -properti border style
+        .box-style-all {
+            border-style: solid;    //mengatur style border padat tidak terputus
+            border-style: dashed;   //mengatur style border putus putus *jika ukuran 2px maka ukuran titik an jarak titik 2px
+            border-style: dotted;   //mengatur style border titik titik
+            border-style: double;   //mengatur style border ganda
+            border-style: groove;   //mengatur style border seperti frame
+            border-style: hidden;   //mengatur style border tidak terlihat
+        }
+        .box-style-side {
+            border-top-style: solid;    //border solid atas
+            border-right-style: dotted;  //border dotted kanan
+            border-bottom-style: grove; //border grove bawah
+            border-left-style: double;   //border double kiri
+        }
+      -properti border color
+        mengatur warna border
+        .box-color-all {
+            border-color: #ff0000;  //mengatur warna border merah
+        }
+        .border-color-side {
+            border-color: #ff0000 #00ff00 #0000ff #ffff00; //mengatur warna border merah atas, hijau kanan, biru bawah, kuning kiri
+        }
+      -shorthand border
+        menggabungkan properti border menjadi satu\
+        dengan 3 properti yang harus diisi nilai width, style, color
+        .box-shorthand {
+            border: 1px dashed #ff0000;  //mengatur border 1px solid merah
+        }
+    -box model:padding
+      padding merupakan jarak antar elemen dengan border
+      div {
+        border: 1px solid #ff0000;
+        padding: 10px;
+        width: 100px;
+      }
+      p.p1 {
+        padding: 10px; //konten pada elemen ini akan ke tengah karena padding
+      }
+      padding memiliki 4 properti
+        -padding-top
+        -padding-right
+        -padding-bottom
+        -padding-left
+      penulisan shorthand padding
+      .box-content {
+        padding: 10px 20px 30px 40px; //mengatur padding 10px atas, 20px kanan, 30px bawah, 40px kiri
+       }
+    -box-model:margin
+      merupakan jarak antara elemen. margin bersifat colapsed dan bisa menumpuk.
+      -properties margin dapat diatur untuk masing-masing sisi.
+        .text-box {
+            margin-top: 10px; //margin atas 10px
+            margin-right: 20px; //margin kanan 20px
+            margin-bottom: 30px; //margin bawah 30px
+            matgin-left: 40px; //margin kiri 40px
+        }
+      -shorthand margin
+        .text-box-shorthand{
+            margin: 10px 20px 30px 40px;
+        }
+      -mengatur margin pada dua nilai margin vertikal dan horizontal
+        margin: 10px 20px; //mengatur margin atas dan bawah 10px, kiri dan kanan 20px
+    -box-model:centering content
+      untuk mengatur posisi box berada ditengan vieweport atau elemen induk bisa menggunakan margin auto. dan harus memiliki properti width.
+        .box {
+            width 80%;
+            margin:0 auto; //mengatur margin atas dan bawah 0px, kiri dan kanan auto
+        }
+
+ +display roles
+   penjelasan lebih tentang inline elemen
+     -elemen default & tidak menambah baris baru ketika dibuat
+     -nilai lebar & tinggi sebesar konten didalamnya dan tidak bisa dirubah
+     -margin dan padding hanya mempengaruhi sisi horizontal
+   penjelasan lebih tentang block elemen
+     -elemen default & menambah baris baru ketika dibuat
+     -nilai lebar & tinggi sebesar elemen induknya
+     -margin dan padding mempengaruhi sisi horizontal dan vertikal
+     -dalam elemen block kita dapat menyimpan tag elemen HTML lainnya
+   dengan menggunakan properti display kita dapat mengubah elemen menjadi inline atau block
+   value:
+         -display: inline; //mengubah elemen menjadi inline
+         -display: block; //mengubah elemen menjadi block
+         -display: inline-block; //mengubah elemen block tidak membuat baris baru saat dibuat, tetapi tetap mempertahankan sifat lain dari elemen block
+         -display: none; //menghilangkan elemen dari tampilan
+   properti ini banyak digunakan untuk membuat navigasii. dengan menggunakan elemen list yang menggunakan siofat block sehingga item list selalu ditampilkan dalam baris baru.
+   contoh dalam menggunakan navbar.
+    .html
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    .css
+    .list {
+        display: inline-block;
+    }
+
+ +box shadow
+   pada css3 box shadow digunkan untuk memberi bayangan pada box. 
+   dengan format
+    box-shadow: horizontal vertical blur*opsional spread*opsional color;
+    .box {
+        box-shadow: 2px 2px 2px 2px #ff0000;
+    }
+
+ +rounded corner
+   membuat sudut bundar dengan properties border-radius: dengan value px
+    .box {
+         border-radius: 10px;
+    }
+    membuat sudut bundar dengan properties border-radius-top-left, border-radius-top-right, border-radius-bottom-left, border-radius-bottom-right
+    .box {
+        border-radius-top-left: 10px;
+        border-radius-top-right: 10px;
+        border-radius-bottom-left: 10px;
+        border-radius-bottom-right: 10px;
+    }
+    membuat rounded corner dengan shorthand
+    .box {
+        border-radius: 10px 20px 30px 40px;
+    }
+ 
+ +properti object
+   digunakan untuk mengatur tata letak dan tampinal elemen html dengan gambar / media sebagai konten
+   properti 
+    -object-fit untuk mengatur bagaimana cara konten gambar atau video memenuhi elemennya
+        object-fit: fill; //mengatur konten untuk mengisi elemen namun terkadang akan tedistorsi
+        object-fit: contain ; //mengatur konten untuk mengisi elemen namun mungkin kotak elemen akan kosong
+        object-fit: cover; //mengatur konten untuk mengisi elemen dan memotong konten yang tidak muat
+        object-fit: none; //mengatur konten untuk tidak dirubah ukurannya mines terdistorsi
+    -object-position untuk mengatur bagaimana posisi relatif konten terhadap kotak elemen
+        object-positiion: top right; //mengatur konten berada di pojok kanan atas
+        object-positiion: center; //mengatur konten berada di tengah\
+        object-positiion: bottom left; //mengatur konten berada di pojok kiri bawah
+        dan seterusnya  
+        
+ +Positioning
+   digunakan untuk mengatur tata letak elemen relatif terhadap posisi elemen di viewport
+   ketika properti margin suatu elemen pasti akan membuat posisi elemen berubah, disini kegunaan posisitioning
+   properti Positioning
+     -Normal flow atau Static flow
+        disini tampilan akan sejajar. tidak bertingkat
+        normal position merupakan properti default dari html. bahkan jika kita tidak menggunakan properti ini maka html akan menggunakan
+        properti ini
+          properti contoh
+          .box-1 {
+            width: 400px;
+            hight: 400px;
+            background-color: red;
+          }
+          .box0-2 {
+            width: 400px;
+            hight: 400px;
+            background-color: green;
+            margin-top: 50px; //jika kita mengaktifkan margin  top maka box-2 & 3 akan bergeser. karena position default adalan static
+          }
+          .box-3 {
+            width: 400px;
+            hight: 400px;
+            background-color: blue;
+          }
+
+     -Relative position
+        disini tampilan akan sejajar namun bertingkat
+          properti contoh
+          .box-1 {
+            width: 400px;
+            hight: 400px;
+            background-color: red;
+          }
+          .box0-2 {
+            width: 400px;
+            hight: 400px;
+            background-color: green;
+            position: relative; //ketika diaktifkan maka posisi akan bertumbuk
+            top:  40px;         //dan ketika diaktifkan maka posisi akan ke atas
+            left: 60px;         //posisi ke kiri
+            bottom: 70px;       //posisi ke bawah
+            right: 40px;        //posisi ke kanan
+          }
+          .box-3 {
+            width: 400px;
+            hight: 400px;
+            background-color: blue;
+          }
+        ketika properti position: relative; top; bottom; left; right; diaktifkan maka posisi akan berubah tanpa merubah elemen box-3 dan elemen lainnya
+        *properti top, bottom, left, right akan bekerja jika ada properti position: relative;
+        
+     -Absolute position
+        tampilan sejajar dan bertingkat, namun elemen ini tidak dianggap oleh elemen dengan kondisi normal flow,
+        jadi posisi elemen yang menggunakan properties position: absolute; akan ditempati oleh elemen dibawahnya yang memiliki
+        kondisi normal flow, yang mengakibatkan elemen dengan position: absolute; terlihat bertumpuk dengan elemen dibawahnya.
+        jika parent elemen memiliki kondisi normal maka elemen dengan position: absolute; maka akan elemen dengan position: absolute;
+        akan mengabaikan induknya.
+          properti contoh 1
+          .box-1 {
+            width: 400px;
+            hight: 400px;
+            background-color: red;
+          }
+          .box-2 {
+            width: 400px;
+            hight: 400px;
+            background-color: green;
+            position: absolute; //posisi akan berada diatas. dan lokasi elemen ini akan disi oleh elemen dibawahnya
+          }
+          .box-3 {
+            width: 400px;
+            hight: 400px;
+            background-color: blue;
+          }
+
+          properti contoh 2
+          jika induk elemen memiliki properti position: relative; maka posisi box-1 akan relatif terhadap parentnya
+          .parent-box{
+            width: 800px;
+            height: 800px;
+            position: relative;
+          }
+          .box-1 {
+            width: 400px;
+            hight: 400px;
+            background-color: green;
+            position: absolute; //posisi akan berada diatas. dan lokasi elemen ini akan disi oleh elemen dibawahnya
+          }
+
+     -Fixed position
+        tampilan seperti absolute position. namun posisi selalu relative terhadap jendela browser. bahkan jika pengguna
+        melakukan scrolling maka posisi akan tetap dilayar
+          properti contoh 
+          .box-1 {
+            width: 400px;
+            hight: 100px;
+            background-color: red;
+            position: fixed;
+            top: 0;
+          }
+        maka elemen akan tetap diposisinya, bahkan ketika parentnya di scroll
+     -Sticky position
+       merupakan properti position yang  unik, karena perilakunya. 
+       -ketika sebuah elemen menggunakan properti sticky
+        maka elemen tersebutakan berperilaku seperti menggunakan properti position: relaive; sampai batas titik scroll 
+        mencapai batas tertentu (biasanya posisi awal yang ditentukan).
+       -selanjutnya ketika discroll dan melewati titik batas yang telah ditentukan maka elemen tersebut akan berperilaku
+        seperti menggunakan properti position: fixed; yaitu elemen tersebut akan berada di posisi yang tetap pada layar.
+        meski pengguna terus melakukan scroll layar.
+       -biasanya properti position: sticky; digunakan unutuk membuat sebuah navbar atau header.
+
+ +Floating
+   properti float dapat membuat elemen berada pada sebelah kanan atau kiri, dan jika diterapkan pada
+   elemen inline maka memungkinkan elemen disekitar akan mengelilingi elemen tersebut. jangan lupa menaruh propertis lebar & panjang.
+   properti ini bisa digunakan untuk membuat beberapa elemen sekaligus. nanti akan dieksekusi dari paling awal
+     properti contoh.
+     float: right;   //memindah ke kanan
+     float: left;   //memindah ke kiri
+   kelemahan properti ini adalah tidak dianggap oleh elemen induk yang menerapkan normal flow
+   -untuk mengatasinya perlu elemen kosong dengan properti clear: left; or clear: right; or clear: both;
+    value properti clear harus sesuai dengan elemen yang menerapkan Floating
+   -teknik overflow, dengan menerapkan properti overflow: auto; 
+    pada elemen yang yang menampung elemen dengan properti float.
+
+ +Media Querry
+  digunakan untuk  menerapkan css pada kondisi tertentu seperti karakteristik perangkat yang digunakan untuk menampilkan website
+  (lebar layar / resolusi layar, orientasi layar, dpi dll). media querry digunakan untuk membuat websie responsive.
+  aturan penulisan media querry
+  @media media-type and (media-feature-rule) {
+    //css rule media block
+  }
+  penjelasan
+   -media-type = tipe media yang digunakan, tipe yang digunakan adalah print, screen, dan all
+   -media-feature-rule =  aturan atau kondisi yang digunakan untuk menampilkan css, seperti ukuran viewport, orientasi layar,
+    dan jenis penggunaan navigasi.
+   -media block = sekumpulan css rule yang dieksi oleh media querry jika kondisi sebelumnya terpenuhi
+    contoh penggunaan.
+    @media screen and (max-width: 1000px) {
+        h1 {
+            font-size: 54px;
+            font-weight: 800;
+            color: green; //jika layar lebih dari 600px maka h1 akan berwarna merah
+        }
+        h2 {
+            font0-size: 34px;
+            font-weight: 500;
+        }
+        #content, aside {
+            width: 100%;
+            order: 1;
+        }
+    }
+    @media screen and (min-width: 600px) {
+        h1 {
+            font-size: 44px;
+            font-weight: 700;
+            color: red; //jika layar lebih dari 600px maka h1 akan berwarna merah
+        }
+        h2 {
+            font0-size: 24px;
+            font-weight: 300;
+        }
+        main aside {
+            flex-basic: 30%;
+            order: 1;
+        }
+    }
+
+    @media screen and (min-width: 400px) {
+        h1 {
+            font-size : 24px;
+            font-width: 400;
+            color: blue;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 200;
+        }
+        main aside {
+            flex-basic: 20%;
+            order: 2;
+        }
+    }
+
+##Layout Flexbox##
+  +pengantar Flexbox
+   sebelumnya model layout jenis block didesain untuk membuat layout dokumen dari atas ke bawah / vertikal dan akan membuat baris baru
+   sedang model layout inline didesain untuk membuat layout dari kanan ke kiri atau horizontal.
+
+   Flexibel box layout atau flexbox adalah model layout satu dimensi yang digunakan untuk merancang elemen-elemen dalam posisi row atau columns.
+   hal ini membuat flexbox dapat mengatur tata letak ke banyak arah, dan dapat mengatur dimensi setiap child elemen sehingga layout sangat Flexibel
+  
+  +dasar dan terminologi flexbox
+    1. Istilah flex container dimana ini merupakan parent elemen dari flex item
+    2. Istilah flex item merupakan elemen yang secara langsung merupakan child dari parent elemen. flex item akan disejajarkan secara horizontal (row) dari main start (kiri)
+       main end (kanan)
+    3. Main axis  dari flex container adalah sumbu utama item dijajarkan / ditata. arahnya tidak selalu horizontal, tergantung value properti flex-direction:
+    4. Main start |  main end:flex item akan ditempatkan dalam flex container yang berawal dari main start & main end
+    5. Cross axis sumbu dengan arah tekag lurus dengan axis, biasanya terjadi karena flexbox menerapkan value wrap para properti flex-warp: sehingga susunan layout menjadi dua dimensi
+    6. cross start | cross end: flex item yang memenuhi ruang kosong flex container secara vertikal, mulai dari cross start hingga cross end. hal ini dapat diatur dnegan properti
+       align-items, align-self, align-content.
+    7. cross size, lebar atau tinggi dari suatu flex item yang ditempatkan pada diomensi cross.
+  +properti pada flex container
+    -display
+     disini menggunakan properti 
+     .container {
+        display: flex;
+     }
+    -flex direction
+     digunakan untuk menyusun flex items sesuai main axis
+     .container {
+        display: flex;
+        flex-direction: row | row-reverse | column | column-reverse;
+     }
+     penjelasan.
+       -row = flex items disusun secara horizontal dari kiri ke kanan
+       -row-reverse = flex items disusu secara horizontal dari kanan ke kiri
+       -column = flex items disusun secara vertikal, dari atas ke bawah
+       -column-reverse + flex items disusun secara vertikal, dai bawah ke atas.
+    -flex warp
+      secara default layout flex items dari parent elemen akan disusun dalam satu baris. dan jika ingin diubah menjadi dua dimensi atau 2 baris maka menggunakan
+      prtoperti flex-wrap
+      .container {
+        display: flex;
+        flex-wrap: nowrap | wrap | wrap-reverse;
+     }
+     penjelasan
+       -nowrap = seluruh flex item akan ditempatkan dalam 1 baris meski sangat banyak
+       -wrap = membuat flex item akan diterapkan ke baris baru (berikutnya) sehingga menjadi multiple lines
+       -wrap-reverse = membuat flex item akan diterapkan ke baris baru (berikutnya) sehingga menjadi multiple lines tapi dibalik urutannya
+    -justify content
+      mengatur posisi child elemen pada main axis. (mengatur arah kiri kanan)
+        .container {
+            display: flex;
+            justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly;
+        }
+      penjelasan
+        -flex-start = flex item akan dimulai main start
+        -flex-end = flex item akan dimulai main end
+        -center = flex item akan dimulai dari tengah parent child
+        -space-between = flex item akan dimulai dari main start dan main end dengan jarak yang sama
+        -space-around = flex item akan dimulai dari main start dan main end dengan jarak yang sama dan jarak yang sama diantara flex item
+        -space-evenly = flex item akan dimulai dari main start dan main end dengan jarak yang sama dan jarak yang sama diantara flex item 
+         dan jarak yang sama diantara flex item dengan parent
+    -align items
+      mengatur posisi flex items sepanjang cros axis. (mengatur arah atas bawah)
+        .container {
+            display: flex;
+            align-items: stretch | flex-start | flex-end | center | baseline;
+        }
+     penjelasan
+       -stretch = flex item akan memenuhi ruang kosong pada cross axis, meski konten berbeda
+       -flex-start = flex item akan berada diatas (cross start), dan tinggi akan menyesuaikan konten
+       -flex-end = flex item akan berada di bawah (cross end), dan tinggi akan menyesuaikan konten
+       -center = flex item akan berada di tengah (cross center), dan tinggi akan menyesuaikan konten
+       -baseline = flex item akan berada di garis baseline (cross baseline), dan tinggi akan menyesuaikan konten
+    -align content
+      properti ini melakukan pemerataan terhadap flex-items pasa cross axis. properti ini berlaku jika ada 2 baris items
+        .container {
+            display: flex;
+            align-content: flex-star | flex-end | center | space-between | space-around | space-evenly;
+        }        
+      penjelasan
+        -normal (default) = maka posisi flex items akan default
+        -flex-start = flex item ditata pada permulaan flex container (atas kiri)
+        -flex-end = flex item ditata pada akir flex container (bawah)
+        -center = flex item diposisikan ke tengah (tengah posisi vertikal)
+        -space-between = item disebar merata pada cross start dan cross end
+        -space-around = item disebar merata dengan celah yang sama
+        -space-evenly = item disebar merata dengan jarak yang merata
+    -Gap
+      gap (celah) untuk memberi jarak secara horizontal dan vertikal
+        .container {
+            display: flex;
+            gap: 1rem;      //gap diterapkan secara horizontal dan vertical dengan nilai sama
+            gap: 1rem 2rem; //gap diterapkan secara vertikal dan horizontal
+            row-gap: 1rem;  //gap diterapkan secara horizontal
+            column-gap: 1rem;   //gap diterapkan secara vertikal
+        }
+  +properti p-ada flex items
+    -order
+      mengatur urutan flex item, secara default urutan dimulai dari angka terkecil (kiri atas) ke angka terbesar
+      untuk mengatur urutan menggunakan properti order
+        .html
+        <div class = "main-container">
+            <div class="box-1"> 1 </div>
+            <div class="box-2"> 2 </div>
+            <div class="box-3"> 3 </div>
+            <div class="box-4"> 4 </div>
+            <div class="box-5"> 5 </div>
+        </div>
+        .css
+        .main-container {
+            display: flex;
+            gap: 10px;
+        }
+        .box-1 {
+            order: 1;
+            background-color: green;
+        }
+        .box-2 {
+            order: 2;
+            background-color: blue;
+        }
+        .box-3 {
+            order: 3;
+            background-color: yellow;
+        }
+        .box-4 {
+            order: 4;
+            background-color: pink;
+        }
+        .box-5 {
+            order: 5;
+            background-color: purple;
+        }
+        penjelasan urutan akan dimulai dari angka terkecil. dan coba ubah2 order
+    -flex grow
+      untuk mengatur ukuran sebuah box dengan angka tanpa satuan. ketika sebuah ada beberapa flex items ingin diberi ukuran misal
+      item-1 ukuran 2, item-2 ukuran 0, dan item-3 ukuran 3 maka pendistibusian akan menjadi merata dengan porsi masing-masing
+      dengan properti flex-grow: ;
+        .main-container {
+            display: flex;
+            gap: 10px;
+        }
+        .box-1 {
+            flex-grow: 2;
+            background-color: green;
+        }
+        .box-2 {
+            flex-grow: 0;
+            background-color: blue;
+        }
+        .box-3 {
+            flex-grow: 1;
+            background-color: yellow;
+        }
+      *note nilai default 0
+    -flex shrink
+      untuk menyusutkan ukuran child elemen jika ukurannya tidak mencukupi ruang container. nilai yang diberikan tanpa satuan, dengan nilai 1 sebagai default.
+      properti yang digunakan flex-srink: ;
+
+      .container {
+        display: flex;
+        flex-shrink: 1; konten yang tidak muat akan menyusut
+        flex-shrink: 0; konten yang tidak muat tidak akan menyusut
+     }
+    -flex basic
+      mengatur ukuran default flex item sebelum ruang container terbagi. nilai yang diberikan tanpa satuan, dengan nilai auto sebagai default.
+      .item {
+        flex-basic: 1rem | 25% | auto;  //nilai default adalah auto
+      }
+    -align self
+      berfungsi mengatur align flex item secara individual. properti ini akan mengoverride properti align-items pada flex container
+      .items {
+        align-self: auto | flex-start | flex-end | center | baseline | stretch; //nilai auto adalah default
+      }
+    -
