@@ -64,7 +64,7 @@ digunakan
 
 ==perintah untuk explore folder
 *note pindah direktori utama tutup dengan ':'
--pwd : tampilkan lokasi direktori
+-pwd : (print working directory) tampilkan lokasi direktori
 -ls : tampilkan isi direktori
 -cd : pindah direktori
 /* cara untuk pindah direktori dari c ke d dengan bash
@@ -94,6 +94,29 @@ staging area dan history dari sebuah folder project yang telah diatur sebagai re
 -ketik 'git status' untuk mengetahui file mana yang masih untracked, karena belum di add ke staging area. disini file tersebut belum bisa di commit.
 -ketik 'git add namaFile' untuk membuat file tersebut masuk ke staging area.
 -ketik 'git add *.formatFile' untuk memasukkan semua file dengan format tertentu ke staging area.
+-ketik 'git add .' untuk memasukkan semua file ke staging area.
 -cek status 'git status' disini file yang telah di add sudah masuk di staging area.
 -file yang telah masuk di staging area tidak selesai meski sudah di save, harus di commit dulu.
+-commit dengan perintah 'git commit --global user.name "username" untuk mengetahui username siapa yang mencommit'. |    disini saya menggunakan username "Local_Sholum".
+-kemudian ketik 'git commit --global user.email "email" untuk mengetahui email yang melakukan commit'.             |    disini saya menggunakan email "localSholum@gmail.com" / email utama saya.
+-ketik 'git commit -m "pesan commit untuk menambahkan commit" untuk menambahkan pesan commit.
+ *note terkadang kita masuk ke 'vim' atau editor, untuk keluar tanpa save tekan 'escape' kemudian ketik ':q!' untuk keluar tanpa save.
+ vim adalah text editor yang digunakan oleh git, terkadang digunakan untuk commit yang panjang.
+-ketika menambahkan file baru, maka file tersebut harus di add ke staging area, kemudian di commit
+-*ketika file dihapus, maka file tersebut harus di add ke staging area, kemudian di commit.
+-ketik 'git log' untuk melihat history commit.
+ -ketik 'git log -n' untuk melihat commit sebanyak -n terakhir.
+ -ketik 'git -- namaFile.format' untuk melihat history commit dari file tsb.
+-untuk merestore file yang dihapus dengan perintah 'git checkout' 
+ -ketik 'git log -- namaFileDiHapus.format' untuk melihat history commit 
+ -ketik 'git checkout 5digitHashCommit -- namaFileDiHapus.format' untuk merestore file yang dihapus. disini hash commit diambil dari history file sebelum dihapus.
+-ketik 'git commit -am "pesan commit" ' untuk untuk commit file yang dihapus dan di edit sekaligus.
+-ketikka masuk git log di terminal vscode, untuk keluar ketik 'q'
+===GIT branch & merge===
+*remember 
+-branch adalah percabangan dari master
+-merge adalah penggabungan branch ke master
+-di setiap commit terdapat, hash commit, author, date, pesan commit
+#implementasi
+-buat folder/repo baru, next buat fiule index.html. kemudian add dan commit
 -
