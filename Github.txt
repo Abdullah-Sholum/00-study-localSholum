@@ -100,23 +100,135 @@ staging area dan history dari sebuah folder project yang telah diatur sebagai re
 -commit dengan perintah 'git commit --global user.name "username" untuk mengetahui username siapa yang mencommit'. |    disini saya menggunakan username "Local_Sholum".
 -kemudian ketik 'git commit --global user.email "email" untuk mengetahui email yang melakukan commit'.             |    disini saya menggunakan email "localSholum@gmail.com" / email utama saya.
 -ketik 'git commit -m "pesan commit untuk menambahkan commit" untuk menambahkan pesan commit.
- *note terkadang kita masuk ke 'vim' atau editor, untuk keluar tanpa save tekan 'escape' kemudian ketik ':q!' untuk keluar tanpa save.
- vim adalah text editor yang digunakan oleh git, terkadang digunakan untuk commit yang panjang.
+     *note terkadang kita masuk ke 'vim' atau editor, untuk keluar tanpa save tekan 'escape' kemudian ketik ':q!' untuk keluar tanpa save.
+     *vim adalah text editor yang digunakan oleh git, terkadang digunakan untuk commit yang panjang.
 -ketika menambahkan file baru, maka file tersebut harus di add ke staging area, kemudian di commit
 -*ketika file dihapus, maka file tersebut harus di add ke staging area, kemudian di commit.
 -ketik 'git log' untuk melihat history commit.
- -ketik 'git log -n' untuk melihat commit sebanyak -n terakhir.
- -ketik 'git -- namaFile.format' untuk melihat history commit dari file tsb.
+     -ketik 'git log -n' untuk melihat commit sebanyak -n terakhir.
+     -ketik 'git -- namaFile.format' untuk melihat history commit dari file tsb.
 -untuk merestore file yang dihapus dengan perintah 'git checkout' 
- -ketik 'git log -- namaFileDiHapus.format' untuk melihat history commit 
- -ketik 'git checkout 5digitHashCommit -- namaFileDiHapus.format' untuk merestore file yang dihapus. disini hash commit diambil dari history file sebelum dihapus.
+     -ketik 'git log -- namaFileDiHapus.format' untuk melihat history commit 
+     -ketik 'git checkout 5digitHashCommit -- namaFileDiHapus.format' untuk merestore file yang dihapus. disini hash commit diambil dari history file sebelum dihapus.
 -ketik 'git commit -am "pesan commit" ' untuk untuk commit file yang dihapus dan di edit sekaligus.
--ketikka masuk git log di terminal vscode, untuk keluar ketik 'q'
+-ketika masuk git log di terminal vscode, untuk keluar ketik 'q'
+
 ===GIT branch & merge===
 *remember 
 -branch adalah percabangan dari master
 -merge adalah penggabungan branch ke master
 -di setiap commit terdapat, hash commit, author, date, pesan commit
-#implementasi
--buat folder/repo baru, next buat fiule index.html. kemudian add dan commit
--
+#glosarium
+-master : setiap commit pertama dibuat, branch master akan dibuat secara otomatis
+-head : merupakan pointer yang menunjuk ke branch yang sedang aktif/digunakan
+-master dan head akan bergerak ketika kita membuat commit baru
+
+
+#implementasi branch
+- buat folder/repo baru, next buat file index.html. kemudian add dan commit | disinin letak awal branch master dan head
+- buat branch 
+     - pertama ketik 'git branch' untuk melihat branch yang ada, dan branch yang aktif (ditandai dengan bintang)
+     - ketik 'git branch namaBranch1' untuk membuat branch baru, disini branch baru mengcopy dari master branch. ketik 'git branch' untuk melihat branch yang ada
+     - ketika mengetik 'git log' maka branch master dan branch baru akan sama karena branch baru mengcopy dari master
+     - ketik 'git log --all --decorate --oneline --graph' untuk melihat commit beserta graph dari branch yang ada.
+     - ketik 'alias namaGraph="git log --all --decorate --oneline --graph"' untuk membuat alias dari perintah git log. penggunaan tinggal ketik 'namaGraph'
+- pindah branch ketik 'git checkout namaBranch', disini head dan branch akan berpindah ke brach yang dipilih. setelah di commit maka head dan branch akan berpindah ke branch yang dipilih.
+     - buat file baru di branch baru, kemudian add & commit
+     - ketika pindah branch file di explorer akan berubah sesuai branch yang dipilih 
+-cek graph, untuk melihat commit & branch yang ada
+-pindah ke branch 2, disini branch & head akan berpindah ke branch 2
+
+//jenis merge dalam git
+-fast forward merge : terjadi ketika branch berada di jalur langsung dari master, sehingga tidak ada konflik
+-three way merge : merged yang terjadi ketika branch tidak berhubungan secara langsung, yang mengakibatkan commit sendiri & maju satu langkah
+#implementasi merge
+*disini ada 3 branch, master, branch1, branch2
+-kondisi head dan branch ada di branch2 
+-kita kembali ke branch master dengan 'git checkout master'
+-cek graph, apakah branch secara langsung / tidak, jika secara langsung -
+-merge branch1 ke master dengan 'git merge branch1', maka head & branch master akan berpindah ke branch yang di merge   | disini terjadi fast forward merge
+-di explorer akan terlihat file dari branch yang di merge
+-cek branch yang telah di merge dengan 'git branch --merged'
+-setelah selesai hapus branch yang telah di merge dengan 'git branch -d namaBranch'\
+     -perintah hapus sebelumnyua tidak akan bisa menghapus branch yang belum di merge
+     -hapus brnach yang belum di merged dengan 'git branch -D namaBranch'
+-disini kita masuk ke master, kemudian merge branch2 ke master                                                          | disini terjadi three way merge bersamaam dengan commit, sehingga perlu memasukkan pesan commit
+-ketik 'git merge branch2', kemudian biasanya akan masuk ke 'vim' untuk menambahkan pesan commit, disini tinggal keluar 'vim' dengan pencet 'esc' ketik ':wq!' untuk keluar dengan save.
+-di file explorer terlihat file dari branch yang di merge
+
+
+===git merge conflict===
+- mengatasi konflik merge ketika dua branch memiliki perubahan pada file yang yang sama
+- buat branch baru 'branch1' 
+- edit & tambah beberapa baris baru di file index
+- commit dengan 'git commit -am "pesanCommit"' | disini commit untuk namaBranch1
+- balik branch master, beri perubahan pada file index.
+- 'git commit -am "pesanCommit"' | disini commit untuk master
+- merge branch1 ke master, disini akan terjadi konflik | note disini nanti akan terbuka 'vim' / filenya di code editor, untuk mengatasi konflik secara manual.
+- setelah result konflik 
+- cek git status, disini kita masih dalam kondisi merged status.
+- jangan lupa untuk tambah file ke staging area & commit dengan 'git commit -am "pesanCommit"' 
+- setelah commit selesai maka konflik sudah selesai, dan file sudah di merged. 
+- cek git log / graph, disini akan terlihat commit yang telah di merge
+- kita bisa hapus branch yang telah di merge 
+
+==git checkout commit===
+digunakan semisal kita ingin mengembalikan file commit/branch tertentu
+- ketik 'git log' untuk melihat history commit yang ingin dikembalikan, kemudian copy hash commit sebanyak 7digit
+- ketik 'git checkout 7digitHashCommit' untuk kembali ke commit tsb, disini head berpindah ke commmit, dan di code editor akan terlihat bahwa file berada di hash commit, bukan di branch.
+  cek dengan graph kondisi head. dan file sebelumnya telah ada di staging area/ explorer
+- dari commit tersebut kita bisa membuat branch baru, ketik 'git branch namaBranch'. 
+     - ketika di cek 'git branch' maka head akan berada di commit,
+     - ketik 'graph' maka head belum mengarah ke branch baru, ketik 'git checkout namaBranch' untuk pindah ke branch baru
+     - ketika di commit akan membuat branch baru seperti biasa.
+
+
+===GIT remote===
+git remote ketika repo lokal kita hubungkan ke repo di server(github, gitlab, etc). disini ketika melakukan perubahan/commit di local / server kita bisa melakukan push/pull
+agar repo di server dan lokal bisa sinkron. jadi kita bisa menjadi remote. disini repo lokal bisa terhubung ke beberapa repo diserver (github, gitlab, etc).
+disini kita menggunakan github sebagai remote server.
+==implementasi dari github ke local==
+- buat repo baru di github, public
+- clone repo github ke local dengan menu code>clone>pilih https>copy link.
+- buka git bash, kemudian pindah ke direktori yang diinginkan *disinin saya ke D: /00#Matkul/00-study/githubStudy
+- ketik 'git clone linkRepoGithub' untuk mengclone repo, disini kita melakukan clone dan terhubung secara remote, tidak seperti unduh.
+- masuk ke direktori repo yang telah diclone dengan 'cd'. disini kita masuk ke branch master
+- ketik 'git remote' untuk melihat remote yang terhubung, disini nama defult 'origin'
+- ketik 'git remote -v' v = verbose, untuk melihat rincian remote yang terhubung
+- ketik 'git status' untuk melihat status, disini pesan agak beda.
+- buat graph lagi ketik 'alias Graph="git log --all --decorate --oneline --graph"' untuk membuat alias dari perintah git log. penggunaan tinggal ketik 'Graph'
+- ketik 'graph' untuk melihat history commit, disini pointer head akan berada di branch main/ master & origin yang berarti file uptodate.
+- buat file inde.html dilokal, isi dengan html5 beserata beberapa informasi / string sederahana.
+- tambah file ke staging area 'git add .'
+- commit file 'git commit -m "pesanCommit"'.
+- ketik 'git status' disini status commit lokal lebih maju 1x dari commit di server.
+- cek 'graph' disini head lebih maju dari origin.
+- ketik 'git push' disini kita biasanya harus login akun github dulu.
+- setelah git push, cek status & graph maka akan up to date.
+- buka github maka file akan muncul
+- ketik 'git config --list' untuk melihat confi list, disini akan muncul konfigurasi yang telah di set. termasuk email & username yang telah di set.
+     - ketik 'git config --global user.name "username" global bisa diganti dengan local jika ingin tiap repo punya username yang berbeda. | disini saya mengeset global
+     - ketik 'git config --global user.email "email" global bisa diganti dengan local jika ingin tiap repo punya email yang berbeda.    | disini saya mengeset global
+- edit file local, kemudian add & commit.
+
+==implementasi dari local ke github===
+- buat folder & jadikan repo 'git init', tambahkkan file index.html buat testing.
+- buka github, tambah repo, public, tanpa readme, tanpa gitignore, tanpa lisensi.
+- nanti ada pilihan untuk menghubungkan repo local, pilih '…or push an existing repository from the command line'.
+- copy perintah 'git remote add origin linkRepoAkunGithub' disini 'origin' adalah nama default remote, kita bisa mengatur nama remote.
+- cek dengan 'git remote -v' disini akan muncul remote yang telah di set.
+     -cek 'git remote -v' disini akan muncul remote yang telah di set.
+- ketik 'git branch -M main' sesuai ama github
+- ketik 'git push -u origin main' untuk mengupload file ke github, untuk push pertama terkadang kita harus login github, setelahnya kita tinggal ketik 'git push'
+==study case konflik==
+-di local buat file style.css, tambah beberapa baris style,
+-di github buat file style.css, tambah beberapa baris style.
+-kemudian di local add & commit, kemudian push maka akan error
+-ketik 'git status' status local maju 1 langkah.
+- ketik 'git fetch' untuk mengambil perubahan dari server, bedakan dengan 'git status' local maka di server & local akan membuat cabang berbeda.
+- cek 'graph' disini akan muncul branch baru yang diambil dari server.
+- ketik 'git pull' untuk memilih style file css dari local atau server, disini konflik akan di perbaiki di code editor.
+- setelah konflik selesai, add & commit, kemudian push.
+- cek 'graph' pointer head akan berada di main branch & origin/remote.
+
+==
