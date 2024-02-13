@@ -232,4 +232,4 @@ disini kita menggunakan github sebagai remote server.
 - cek 'graph' pointer head akan berada di main branch & origin/remote.
 
 ==GITHUB pages===
--
+
