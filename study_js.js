@@ -1559,31 +1559,39 @@ dan EmailService memiliki kemampuan masing-masing yang lebih spesifik
 */
 
 //superclass MalilService
-class MailServiceC {                   //buat superclass MailService
-  constructor(sender) {               //consturctor dengan parameter utama sender
-    this.sender = sender;             //data properties yang dimiliki oleh semua subclass 
+class MailServiceC {
+  //buat superclass MailService
+  constructor(sender) {
+    //consturctor dengan parameter utama sender
+    this.sender = sender; //data properties yang dimiliki oleh semua subclass
   }
 
-  sendMessage(message, receiver) {                                  //method superclass yang dimiliki semua subclass
-    console.log(`${this.sender} sent ${message} to ${receiver}`);   
+  sendMessage(message, receiver) {
+    //method superclass yang dimiliki semua subclass
+    console.log(`${this.sender} sent ${message} to ${receiver}`);
   }
 }
 
 //subclass WhatsAppService
-class WhatsAppServiceC extends MailServiceC {         //buat subclass yang mengextend superclass
-  sendBroadcastMessage(message, receivers) {          //buat method sendBroadcastMessage
-    for (const receiver of receivers) { 
-      this.sendMessage(message, receiver);            //panggil Method sendMessage dari superclass
+class WhatsAppServiceC extends MailServiceC {
+  //buat subclass yang mengextend superclass
+  sendBroadcastMessage(message, receivers) {
+    //buat method sendBroadcastMessage
+    for (const receiver of receivers) {
+      this.sendMessage(message, receiver); //panggil Method sendMessage dari superclass
     }
   }
 }
 
 //subclass EmailService
-class EmailServiceC extends MailServiceC {          //buat subclass yang mengextend superclass
-  sendDelayedMessage(message, receiver, delay) {    //buat method sendDelayedMessage
-    setTimeout(()=> {                               //buat fungsi setTimeout
-      this.sendMessage(message, receiver);          //panggil method sendMessage dari sueprclass
-    }, delay);                                      //beri delay            
+class EmailServiceC extends MailServiceC {
+  //buat subclass yang mengextend superclass
+  sendDelayedMessage(message, receiver, delay) {
+    //buat method sendDelayedMessage
+    setTimeout(() => {
+      //buat fungsi setTimeout
+      this.sendMessage(message, receiver); //panggil method sendMessage dari sueprclass
+    }, delay); //beri delay
   }
 }
 
@@ -1595,22 +1603,23 @@ const whatsappC = new WhatsAppServiceC(`+621237481312`);
 const emailC = new EmailServiceC(`feryman@hyperion.er`);
 
 //pagggi merthod dari class whatsAppServiceC
-whatsappC.sendMessage("punten, kumaha abang-abang teh", "+122346234");                    //panggil method sendMessage milik superclass / parent
-whatsappC.sendBroadcastMessage("SoS, tulong woee", ["+122346234", "+122346235", "+122346236"]);   //panggil method whatsapp sendBroadcastMessage
+whatsappC.sendMessage("punten, kumaha abang-abang teh", "+122346234"); //panggil method sendMessage milik superclass / parent
+whatsappC.sendBroadcastMessage("SoS, tulong woee", ["+122346234", "+122346235", "+122346236"]); //panggil method whatsapp sendBroadcastMessage
 // whatsappC.senDelayedMessage();      //coba panggil method milik email  | aktif non aktifkan
 console.log("");
 
 //panggil method dari class emailServiceC
-emailC.sendMessage("Halo, selamat pagi dengan captain", "captain@hyperion.id");                                                                 //panggil method sendMessage milik superclass / parent
-emailC.sendDelayedMessage("\n halo, bisa ingatkan aku untuk mengamgbil beberapa dokumen saat mau pulang nanti", "KianaNeko12@hyperion.id", 1000);  //panggil method sendDelayedMessage milik emailServiceC
+emailC.sendMessage("Halo, selamat pagi dengan captain", "captain@hyperion.id"); //panggil method sendMessage milik superclass / parent
+emailC.sendDelayedMessage("\n halo, bisa ingatkan aku untuk mengamgbil beberapa dokumen saat mau pulang nanti", "KianaNeko12@hyperion.id", 1000); //panggil method sendDelayedMessage milik emailServiceC
 // emailC.sendBroadcastMessage();    //coba panggil method milik whatsapp    | aktif non aktifkan
 
 console.log("");
 console.log("===Pewarisan tanpa ES6 clas===");
 /*sebelum ada sintaks class ES6 pewarisan menggunakan prototype inheritance seperti ini */
 
-function MailServiceD(sender) {                                 //buat contructor function MailSercviceD dengan parameter sender
-  this.sender = sender;                                         //buat data properties dari sender
+function MailServiceD(sender) {
+  //buat contructor function MailSercviceD dengan parameter sender
+  this.sender = sender; //buat data properties dari sender
 }
 
 //menambahkan method sendMessage ke protype MailServiceD.
@@ -1619,20 +1628,22 @@ NamaConstructorFunction.'prototype'.NamaMethod = function(*parameter jika diiper
   code
 } 
 */
-MailServiceD.prototype.sendMessage = function (message, receiver) {   //tambah method sendMesage ke prototype MailServiceD dengan fungsi yang menerima parameter message & receiver
-  console.log(`${this.sender} sent ${message} to ${receiver}`);       //tampilkan pesan | pengirim ini mengirim pesan ini kepada penerima ini  
-}
+MailServiceD.prototype.sendMessage = function (message, receiver) {
+  //tambah method sendMesage ke prototype MailServiceD dengan fungsi yang menerima parameter message & receiver
+  console.log(`${this.sender} sent ${message} to ${receiver}`); //tampilkan pesan | pengirim ini mengirim pesan ini kepada penerima ini
+};
 
 //fungsi .call digunakan untuk memanggil method / properties dari parent class
-function WhatsAppServiceD(sender) {                                   //buat constuctor function WhatsAppServiceD dengan parameter sender
-  MailServiceD.call(this, sender);                                    //panggil constructor function MailServiceD dengan method .call(disini kita panggil properties this.sender, sender yang merujuk pada parameter sender dari contructor function WhatsAppServiceD)
+function WhatsAppServiceD(sender) {
+  //buat constuctor function WhatsAppServiceD dengan parameter sender
+  MailServiceD.call(this, sender); //panggil constructor function MailServiceD dengan method .call(disini kita panggil properties this.sender, sender yang merujuk pada parameter sender dari contructor function WhatsAppServiceD)
 }
 
 // prortotype inheritance | membuat pewarisan dari MailServiceD ke WhatsAppServiceD
 
 /*disini kita menggunakan keyword "object.create()" untuk membuat object baru yang memiliki prototype dari "MailServiceD.prototype". hal ini menciptakan hubungan pewarisan antara prototype "WhatasAppServiceD" dan "MailServiceD".
 dengan kata lain "WhatsAppServiceD" mewarisi method dan properties dari "MailServiceD"*/
-WhatsAppServiceD.prototype = Object.create(MailServiceD.prototype);               //pewarisan prototype dari MailServiceD ke WhatsAppServiceD
+WhatsAppServiceD.prototype = Object.create(MailServiceD.prototype); //pewarisan prototype dari MailServiceD ke WhatsAppServiceD
 /* menetapkan properti*/
 WhatsAppServiceD.prototype.constructor = WhatsAppServiceD;
 
@@ -1640,7 +1651,7 @@ WhatsAppServiceD.prototype.sendBroadcastMessage = function (message, receivers) 
   for (const receiver of receivers) {
     this.sendMessage(message, receiver);
   }
-}
+};
 
 function EmailServiceD(sender) {
   MailServiceD.call(this, sender);
@@ -1648,13 +1659,13 @@ function EmailServiceD(sender) {
 
 //prototype inheritance
 EmailServiceD.prototype = Object.create(MailServiceD.prototype);
-EmailServiceD.prototype.constructor  = EmailServiceD;
+EmailServiceD.prototype.constructor = EmailServiceD;
 
 EmailServiceD.prototype.sendDelayedMessage = function (message, receiver, delay) {
   setTimeout(() => {
     this.sendMessage(message, receiver);
-  }, delay)
-}
+  }, delay);
+};
 
 //inisiasi prototype dari constructor function diatas
 const whatsappD = new WhatsAppServiceD("+621237481312");
@@ -1668,3 +1679,19 @@ emailD.sendDelayedMessage("testing delayed email", "collei@sumeru.sm", 1000);
 meski implementasi class dan function sangat berbeda namun implementasi keduanya sama-sama menggunakan prototype inheritance.
 remember.
 class hanyalah cara lain dalam membuat construcor function*/
+
+console.log("Operator Insaceof");
+/*
+saat menulis code kita sering kali perlu mengecek jenis dari object tersebut, salah satu caranya adalah dengan mengecek rantai prototypenya, untuk
+mengecek objek berdasarkan rantai prototypenya kita bisa menggunakan operator instanceof
+format penulisan
+namaObject instanceof namaClass/ConstructorFunction
+*/
+
+/* kita gunakan object ini
+const whatsappD = new WhatsAppServiceD("+621237481312");
+const emailD = new EmailServiceD("sayaka@mail.id");
+*/
+
+console.log(whatsappD instanceof WhatsAppServiceD); //cek apakah object whatsappD merupakan instance dari constructor function WhatsAppSercviceD | true
+console.log(whatsappD instanceof EmailServiceD); //cek apakah object whatsappD merupakan instance dari constructor function EmailServiceD    | False
