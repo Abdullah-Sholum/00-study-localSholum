@@ -187,6 +187,7 @@ digunakan semisal kita ingin mengembalikan file commit/branch tertentu
 git remote ketika repo lokal kita hubungkan ke repo di server(github, gitlab, etc). disini ketika melakukan perubahan/commit di local / server kita bisa melakukan push/pull
 agar repo di server dan lokal bisa sinkron. jadi kita bisa menjadi remote. disini repo lokal bisa terhubung ke beberapa repo diserver (github, gitlab, etc).
 disini kita menggunakan github sebagai remote server.
+
 ==implementasi dari github ke local==
 - buat repo baru di github, public
 - clone repo github ke local dengan menu code>clone>pilih https>copy link.
@@ -212,7 +213,7 @@ disini kita menggunakan github sebagai remote server.
 - edit file local, kemudian add & commit.
 
 ==implementasi dari local ke github===
-- buat folder & jadikan repo 'git init', tambahkkan file index.html buat testing.
+- buat folder & jadikan repo 'git init', tambahkkan file index.html buat testing, add & commit.
 - buka github, tambah repo, public, tanpa readme, tanpa gitignore, tanpa lisensi.
 - nanti ada pilihan untuk menghubungkan repo local, pilih '…or push an existing repository from the command line'.
 - copy perintah 'git remote add origin linkRepoAkunGithub' disini 'origin' adalah nama default remote, kita bisa mengatur nama remote.
