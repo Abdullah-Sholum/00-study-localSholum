@@ -98,7 +98,7 @@ staging area dan history dari sebuah folder project yang telah diatur sebagai re
 -cek status 'git status' disini file yang telah di add sudah masuk di staging area.
 -file yang telah masuk di staging area tidak selesai meski sudah di save, harus di commit dulu.
 -commit dengan perintah 'git commit --global user.name "username" untuk mengetahui username siapa yang mencommit'. |    disini saya menggunakan username "Local_Sholum".
--kemudian ketik 'git commit --global user.email "email" untuk mengetahui email yang melakukan commit'.             |    disini saya menggunakan email "localSholum@gmail.com" / email utama saya.
+-kemudian ketik ' it --global user.email "email" untuk mengetahui email yang melakukan commit'.             |    disini saya menggunakan email "localSholum@gmail.com" / email utama saya.
 -ketik 'git commit -m "pesan commit untuk menambahkan commit" untuk menambahkan pesan commit.
      *note terkadang kita masuk ke 'vim' atau editor, untuk keluar tanpa save tekan 'escape' kemudian ketik ':q!' untuk keluar tanpa save.
      *vim adalah text editor yang digunakan oleh git, terkadang digunakan untuk commit yang panjang.

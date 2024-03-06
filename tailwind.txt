@@ -1,6 +1,6 @@
 imlementasi tailwind di laravel
 disini mengikuti instalasi di web tailwindcss
--masuk ke direktori project laravel
+-masuk ke direktori project laravel *note direktori folder jangan memakai tanda pagar(#)
 -install tailwindcss "npm install -D tailwindcss postcss autoprefixer"
 -ketik "npx tailwindcss init -p"
 -buka file "tailwind.config.js" di root project tambahkan path ke dalam code
@@ -17,10 +17,9 @@ disini mengikuti instalasi di web tailwindcss
     plugins: [],
     }
 -buka file 
-
-
-untuk melakukan run filn tailwind pada laravel
+-inisiasi tailwind ketik "npx tailwindcss init"
+-rebuild css. dengak ketik "npx tailwindcss build -o public/css/app.css"
+untuk melakukan run file tailwind pada laravel
 -buka 2 terminal
     -ketik perintah "npm run dev" pada terminal pertama untuk menjalankan tailwind
     -ketik perintah "php artisan serve" untuk menjalankan laravel pada lokal
-    
