@@ -1694,4 +1694,93 @@ const emailD = new EmailServiceD("sayaka@mail.id");
 */
 
 console.log(whatsappD instanceof WhatsAppServiceD); //cek apakah object whatsappD merupakan instance dari constructor function WhatsAppSercviceD | true
-console.log(whatsappD instanceof EmailServiceD); //cek apakah object whatsappD merupakan instance dari constructor function EmailServiceD    | False
+console.log(whatsappD instanceof EmailServiceD, "\n"); //cek apakah object whatsappD merupakan instance dari constructor function EmailServiceD    | False
+//operator instanceof akan mengembalikan nilai boolean true / false
+//jika object memiliki rantai prototype yang sama akan bernilai true, jika tidak memiliki rantai prototype yang sama akan bernilai false
+
+/*operator instanceof juga mengecek prototype secara berantai, artinya instanceof juga mengecek hingga protoype yang diisi oleh object tersebut */
+
+const whatsappE = new WhatsAppServiceD("+621237481312");
+const emailE = new EmailServiceD("anjay@uwu.id");
+
+console.log(whatsappE instanceof WhatsAppServiceD); //true
+console.log(whatsappE instanceof EmailServiceD); //false
+console.log(whatsappE instanceof Object, "\n"); //true
+
+console.log(emailE instanceof EmailServiceD); //true
+console.log(emailE instanceof WhatsAppServiceD); //false
+console.log(emailE instanceof Object, "\n"); //true
+
+console.log("===Overriding====");
+/*
+overriding merupakan konsep yang melekat pada konsep OOP, Overriding(mengesampingkan) dimana subclass/childClass dapat mendefinisikan sendiri untuk sebuah method
+yang sebelumnya sudah di definisikan di superClass/parentClass, dengan kata lain childClass "mengganti" impelementasi method / properti yang sudah ada di superClass/parentClass */
+//implementasi overriding
+
+console.log("costructor overriding");
+console.log("contoh kasus, jika error diaktifkan");
+/*
+contructor merupakan method  pada class yang akan dipanggil ketika membuat instance dari class tertentu.
+pada contructor tidak perlu menggunakan 'return' untuk mengembalikan nilai karena sudah dilakukan secara implisit.
+contoh kasus constructor overriding 
+semisal pada sebuah subclass WhatsappService merupakan childclass dari MailService membutuhkan properti 'isBusiness' untuk menguidentifikasi bahwa akun bisnis atau bukan pada subclass, maka kita perlu
+perlu melakukan contructor overriding
+*/
+class MailServiceOverriding {
+  //buat superclass MailServiceOverriding
+  constructor(sender) {
+    //buat constructor  dengan parameter sender
+    this.sender = sender; //data properties sender
+  }
+}
+
+class WhatsAppServiceOverriding extends MailServiceOverriding {
+  //buat subclass WhatsAppServieOverriding yang mengextends MailServiceOverriding
+  constructor(sender, isBusiness) {
+    //buat constructor dengan parameter sender & isBusiness || disini merupakan contructor overriding
+    super(sender); //gunakan method super untuk memanggil constructor superclass                               | coba tukar command sintaks dengan bawahnya
+    // this.sender = sender; //ketika menggunakan data properties untuk 'sender' maka akan menyebabkan 'ReferenceError'  | command sintaks
+    this.isBusiness = isBusiness; //data properties isBusiness |disini merupakan constructor overriding
+  }
+}
+
+const whatsappOverriding = new WhatsAppServiceOverriding("+08236232", true); //inisiasi variabel whatsappOverriding dengan instance dari class WhatsAppServiceOverriding
+
+/*
+note program diatas jika dijankan tidak akan muncul apa apa, jika tidak ada error, jadi hanya menampilkan pesan error jika sender dibuat data properties di childclass */
+
+console.log("method overriding");
+/*
+konsep overriding pada method class digunakan untuk merubah method warisan dari superclass,
+contoh kasus
+pada superclass marilService terdapat method send() yang sudah didefinisikanm namun pada subclass WhatsappService kita perlu implementasi yang berbeda kita bisa mengoverride
+method send().
+*/
+
+class MailServiceOverrideMethod {
+  constructor(sender) {
+    this.sender = sender;
+  }
+
+  sendMessage(message, receiver) {
+    console.log(`${this.sender} sent ${message} to ${receiver}`);
+  }
+}
+
+class WhatsAppServiceOverrideMethod extends MailServiceOverrideMethod {
+  constructor(sender, isBusiness) {
+    super(sender);
+    this.isBusiness = isBusiness;
+  }
+
+  //override method
+  sendMessage(message, receiver) {
+    console.log(`${this.sender} sent ${message} to ${receiver} via whatsapp`);
+  }
+}
+
+const mailServiceOverrideMethod = new MailServiceOverrideMethod("someSender");
+const whatsappServiceOverrideMethod = new WhatsAppServiceOverrideMethod("+02856363342367", true);
+
+mailServiceOverrideMethod.sendMessage("Haloo, kumaha anak ini ngabrit?", "randomPipel");
+whatsappServiceOverrideMethod.sendMessage("hallo, pye kabare  waamu?", "+26732429367");
