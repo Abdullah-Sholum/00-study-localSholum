@@ -175,7 +175,8 @@ staging area dan history dari sebuah folder project yang telah diatur sebagai re
 ==git checkout commit===
 digunakan semisal kita ingin mengembalikan file commit/branch tertentu
 - ketik 'git log' untuk melihat history commit yang ingin dikembalikan, kemudian copy hash commit sebanyak 7digit
-- ketik 'git checkout 7digitHashCommit' untuk kembali ke commit tsb, disini head berpindah ke commmit, dan di code editor akan terlihat bahwa file berada di hash commit, bukan di branch.
+- ketik 'git checkout 7digitHashCommit' untuk kembali ke commit tsb, disini head berpindah ke commmit, dan di code editor akan terlihat 
+     bahwa file berada di hash commit, bukan di branch.
   cek dengan graph kondisi head. dan file sebelumnya telah ada di staging area/ explorer
 - dari commit tersebut kita bisa membuat branch baru, ketik 'git branch namaBranch'. 
      - ketika di cek 'git branch' maka head akan berada di commit,
