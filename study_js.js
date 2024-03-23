@@ -1718,7 +1718,7 @@ yang sebelumnya sudah di definisikan di superClass/parentClass, dengan kata lain
 //implementasi overriding
 
 console.log("costructor overriding");
-console.log("contoh kasus, jika error diaktifkan");
+console.log("contoh kasus, jika error diaktifkan \n");
 /*
 contructor merupakan method  pada class yang akan dipanggil ketika membuat instance dari class tertentu.
 pada contructor tidak perlu menggunakan 'return' untuk mengembalikan nilai karena sudah dilakukan secara implisit.
@@ -1749,7 +1749,7 @@ const whatsappOverriding = new WhatsAppServiceOverriding("+08236232", true); //i
 /*
 note program diatas jika dijankan tidak akan muncul apa apa, jika tidak ada error, jadi hanya menampilkan pesan error jika sender dibuat data properties di childclass */
 
-console.log("method overriding");
+console.log("=method overriding=");
 /*
 konsep overriding pada method class digunakan untuk merubah method warisan dari superclass,
 contoh kasus
@@ -1758,29 +1758,184 @@ method send().
 */
 
 class MailServiceOverrideMethod {
+  //buat superclass
   constructor(sender) {
-    this.sender = sender;
+    //buat constructor
+    this.sender = sender; //data properties
   }
 
   sendMessage(message, receiver) {
-    console.log(`${this.sender} sent ${message} to ${receiver}`);
+    //method superclass
+    console.log(`${this.sender} sent ${message} to ${receiver}`); //output
   }
 }
 
 class WhatsAppServiceOverrideMethod extends MailServiceOverrideMethod {
+  //subclass extends dengan superclass
   constructor(sender, isBusiness) {
-    super(sender);
-    this.isBusiness = isBusiness;
+    //constructor overriding
+    super(sender); //panggil constructor superclass dengan method super
+    this.isBusiness = isBusiness; //data properties isBusiness
   }
 
   //override method
   sendMessage(message, receiver) {
-    console.log(`${this.sender} sent ${message} to ${receiver} via whatsapp`);
+    //method overriding
+    console.log(`${this.sender} sent ${message} to ${receiver} via whatsapp \n`); //output | pengirim ini mengirim pesan ini kepada penerima ini via whatsapp
+
+    //memanggil method send message pada superclass melalui keyword 'super'
+    super.sendMessage(message, receiver);
+    console.log("message sent via whatsapp"); //output
   }
 }
 
-const mailServiceOverrideMethod = new MailServiceOverrideMethod("someSender");
-const whatsappServiceOverrideMethod = new WhatsAppServiceOverrideMethod("+02856363342367", true);
+const mailServiceOverrideMethod = new MailServiceOverrideMethod("someSender"); //inisiasi variabel dari intance class MailServiceOverrideMethod
+const whatsappServiceOverrideMethod = new WhatsAppServiceOverrideMethod("+02856363342367", true); //inisiasi variabel dari instance class WhatsAppServiceOverrideMethod
 
-mailServiceOverrideMethod.sendMessage("Haloo, kumaha anak ini ngabrit?", "randomPipel");
-whatsappServiceOverrideMethod.sendMessage("hallo, pye kabare  waamu?", "+26732429367");
+mailServiceOverrideMethod.sendMessage("Haloo, kumaha anak ini ngabrit?", "randomPipel"); // panggil method sendMessage dari mailServiceOverrideMethod
+whatsappServiceOverrideMethod.sendMessage("hallo, pye kabare  waamu?", "+26732429367"); // panggil method sendMessage dari whatsappServiceOverrideMethod
+console.log("\n");
+
+console.log("===object compsition===");
+/* object compsition merupakan teknik untuk menggabungkan beberapa object menjadi satu fungsionalitasnya.
+dalam suatu kasus terdapat superclass developer, dan subclass front-end, back-end, devOps. sedang terdapat object fullstack yang harus memiliki semua fungsi yang dimiliki semua
+subclass, disini jika kita membuat subclass yang mengextend superclass kemudian harus menulis semua method milik subclas lain maka akan tidak efisien. disinilah object compsition
+tampil, di object compsition kode distrukturkan berdasarkan kemampuan yang dapat dilakukan. seperti buildUI(), buildAPI(), deployApp().*/
+
+//kasus object composition
+class Developer {
+  // buat class Developer
+  constructor(name) {
+    // buat constructor dengan parameter name
+    this.name = name; //buat data properties name
+  }
+  commitChanges() {
+    //buat method commitChanges
+    console.log(`${this.name} is commiting changes`);
+  }
+}
+// fungsi namaObjectComposition(namaClass)
+function canBuildUI(developer) {
+  // buat fungsi canBuildUI
+  return {
+    // kembalikan nilai
+    buildUI: () => {
+      // buat method buildUI
+      console.log(`${developer.name} is building UI`);
+    },
+  };
+}
+function canBuildAPI(developer) {
+  return {
+    buildAPI: () => {
+      console.log(`${developer.name} is building API`);
+    },
+  };
+}
+function canDeployApp(developer) {
+  return {
+    deployApp: () => {
+      console.log(`${developer.name} is deploying app...`);
+    },
+  };
+}
+/* setelah membuat object composition kita bisa menggunakan "object.assign()" untuk membuat fungsi yang digunakan sebagai "object creator" dengan mengkomposisikan kemampuan
+yang diperlukan agar lebih mudah untuk membuat instance object berdasar kemampuan
+fungsi Object.assign() digunakan untuk menggabungkan nilai properti dari satu / ke lebih object
+format penulisan
+Object.assign(ObjectTarget, ObjectSource1, ObjectSource2, ...ObjectSourceN)*/
+console.log("penggunaan Object.assign");
+let target = {};
+let source1 = { a: 1 };
+let source2 = { b: 2 };
+Object.assign(target, source1, source2);
+console.log(target, "\n");
+
+// buat fungsi untuk membuat "object create" dengan menggunakan "object.assign()"
+function createFrontEndDeveloper(name) {
+  //buat fungsi createFrontEndDeveloper dengan parameter name
+  const developer = new Developer(name); //inisiasi developer dengan instance dari class Developer
+  return Object.assign(developer, canBuildUI(developer)); //kembalikan nilai dengan object.assign() yang menggabungkan developer dengan canBuildUI(developer)
+}
+function createBackEndDeveloper(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canBuildAPI(developer));
+}
+function createDevOps(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canDeployApp(developer));
+}
+function createFullStackDeveloper(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canBuildUI(developer), canBuildAPI(developer), canDeployApp(developer));
+}
+
+//inisiasi fungsi diatas
+const frontEndDeveloper = createFrontEndDeveloper("Personal 1"); // inisiasi variabel dengan fungsi createFrontEndDeveloper(paramet1)
+frontEndDeveloper.commitChanges(); //panggil method commitChanges
+frontEndDeveloper.buildUI(); //panggil method buildUI
+console.log(`is ${frontEndDeveloper.name} developer?`, frontEndDeveloper instanceof Developer, "\n"); //cek apakah benar personal 1 adalah developer
+
+const backEndDeveloper = createBackEndDeveloper("Personal 2");
+backEndDeveloper.commitChanges();
+backEndDeveloper.buildAPI();
+console.log(`is ${backEndDeveloper.name} developer?`, backEndDeveloper instanceof Developer, "\n");
+
+const devOps = createDevOps("Personal 3");
+devOps.commitChanges();
+devOps.deployApp();
+console.log(`is ${devOps.name} developer?`, devOps instanceof Developer, "\n");
+
+const fullStackDeveloper = createFullStackDeveloper("Personal 4");
+fullStackDeveloper.commitChanges();
+fullStackDeveloper.buildUI();
+fullStackDeveloper.buildAPI();
+fullStackDeveloper.deployApp();
+console.log(`is ${fullStackDeveloper.name} developer?`, fullStackDeveloper instanceof Developer, "\n");
+
+console.log("Built-in Class di javascript");
+/* di javascript terdapat beberapa buuilt-in class seperti date, object, array, math, string untuk berbagai kebutuhan*/
+//class date untuk utilitas tanggal dan waktu di javascript
+const date = new Date(); //inisiasi variabel date dengan instance dari class Date
+
+const TimeInJakarta = date.toLocaleString("id-ID", {
+  timeZone: "Asia/Jakarta",
+}); //buat variabel TimeInJakarta dengan method toLocaleString() yang berisi timezone Asia/Jakarta
+
+const timeInTokyo = date.toLocaleString("ja-JP", {
+  timeZone: "Asia/Tokyo",
+}); //buat variabel timeInTokyo dengan method toLocaleString() yang berisi timezone Asia/Tokyo
+
+const timeInMakassar = date.toLocaleString("id-ID", {
+  timeZone: "Asia/Makassar",
+}); //buat variabel timeInMakassar dengan method toLocaleString() yang berisi timezone Asia/Makassar
+
+console.log("built-in class Date");
+console.log("Date & Time in Jakarta", TimeInJakarta); //print ke console
+console.log("Date & Time in Tokyo", timeInTokyo); //print ke console
+console.log("Date & Time in Makassar", timeInMakassar, "\n"); //print ke console
+
+console.log("build-in class Array");
+const myArray4 = new Array(1, 2, 3, 4, 5); //inisiasi variabel myArray3 dengan array
+console.log(myArray4); //print array sebelum
+/* dengan menggunakan class Array kita bisa menggunakan konsep pewarisan sehingga kita bisa membuat modifikasi sesuai kebutuhan, semisal kita ingin membuat
+struktur data mirip array namun nilai tiap elemennya unik.*/
+
+class UniqueArray extends Array {
+  constructor(...args) {
+    const uniqueValue = args.filter((item, index) => args.indexOf(item) === index); //buat variabel uniqueValue dengan value args yang telah di filter
+    super(...uniqueValue); //panggil constructor superclass
+  }
+  push(item) {
+    if (!this.includes(item)) {
+      super.push(item);
+    }
+  }
+}
+
+const someArray = new UniqueArray("a", "b", "c", "a", "b", "c");
+console.log(someArray);
+someArray.push("d");
+console.log(someArray);
+someArray.push("a");
+console.log(someArray);
