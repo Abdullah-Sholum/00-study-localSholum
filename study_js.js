@@ -625,7 +625,7 @@ numberSet.add(3);
 numberSet.add(5);
 numberSet.add(10);
 numberSet.add(6); //nilai 6 tidak akan ditambahkan karena nilai 6 sudah ada di set
-console.log("nilai set setelah diotambah", numberSet);
+console.log("nilai set setelah ditambah", numberSet);
 
 console.log("delete() untuk menghapus nilai dari set");
 /*fungsi delete() untuk menghapus data berdasarkan nilainya, bukan urutan / index
@@ -694,7 +694,7 @@ console.log("");
 console.log("===Function===");
 /* fungsi digunakan untuk menghasilkan output dari input tertentu, fungsi dapat digunakan untuk blok prosedural yang berulang.
 struktur fungsi di javascript dideklarasikan dengan keyword "function" diikuti dengan nama fungsi, kemudian diikuti tanda kurung "()" / "parentheses" tanpa spasi,
-terkadang terdapat inuformasi tambahan dalam tanda kurung yang disebut parameter.
+terkadang terdapat informasi tambahan dalam tanda kurung yang disebut parameter.
 kemudian terdapat kurung kurawal "{}" yang berisi logika fungsi tersebut
 function namaFungsi(parameterA, parameterB) {
   blok logika fungsi
@@ -1939,3 +1939,23 @@ someArray.push("d");
 console.log(someArray);
 someArray.push("a");
 console.log(someArray);
+
+console.log("\n =====Functional Programming====");
+/* merupakan merupakan pendekatan pemrograman yang lebih mendalam dari object composition dan dan OOP
+. paradigma Functional programming merupakan paradigma dimana proses komputasi didasarkan pada fungsi matematika murni.
+Functional Programming FP ditulis dengan gaya deklarasi yang berfokus pada "what to solve" dibanding "how to solve" yang dianut gaya imperatif.
+*/
+// disini merupakan contoh penulisan kode imperatif
+const names1 = ["Harry", "Ron", "Jeff", "Thomas"]; // deklarasi variabel
+// console.log(names1);
+const newNamesWithExcMark = []; // deklarasi variabel
+
+for (let i = 0; i < names1.length; i++) {
+  // buat looping. jan lupa program dibaca* untuk (inisiasi i = 0; cek kondisi i kurang dari panjang array names1; increment i/ tambahkan i dengan 1)
+  newNamesWithExcMark.push(`${names1[i]}!`); // tambahkan nilai array newNamesWithExcMark dengan value dari array names1 yang telah ditambahkan tanda seru.
+}
+
+console.log(newNamesWithExcMark); // print ke console
+
+var anjay = "sholum";
+console.log(anjay.slice(2, 4));
