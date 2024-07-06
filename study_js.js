@@ -1942,8 +1942,10 @@ console.log(someArray);
 
 console.log("\n =====Functional Programming====");
 /* merupakan merupakan pendekatan pemrograman yang lebih mendalam dari object composition dan dan OOP
-. paradigma Functional programming merupakan paradigma dimana proses komputasi didasarkan pada fungsi matematika murni.
-Functional Programming FP ditulis dengan gaya deklarasi yang berfokus pada "what to solve" dibanding "how to solve" yang dianut gaya imperatif.
+. paradigma Functional programming merupakan paradigma dimana proses komputasi didasarkan pada fungsi matematika murni dan 
+menghindari perubahan status serta data yang berubah. Dalam javascript paradigma ini diterapkan melalui penggunaan fungsi sebagai
+"first class citizen", artinya fungsi dapat disimpan sebagi variabel, dilewatkan sebagai argumen ke fungsi lain, dan dikembalikan dari fungsi lain
+Functional Programming FP ditulis dengan gaya deklarasi yang berfokus pada "what to solve" dibanding "how to solve" yang dianut gaya imperatif.\
 */
 // disini merupakan contoh penulisan kode imperatif
 const names1 = ["Harry", "Ron", "Jeff", "Thomas"]; // deklarasi variabel
@@ -1954,8 +1956,129 @@ for (let i = 0; i < names1.length; i++) {
   // buat looping. jan lupa program dibaca* untuk (inisiasi i = 0; cek kondisi i kurang dari panjang array names1; increment i/ tambahkan i dengan 1)
   newNamesWithExcMark.push(`${names1[i]}!`); // tambahkan nilai array newNamesWithExcMark dengan value dari array names1 yang telah ditambahkan tanda seru.
 }
-
 console.log(newNamesWithExcMark); // print ke console
 
-var anjay = "sholum";
-console.log(anjay.slice(2, 4));
+console.log("\nbeberapa konsep utama dalam Functional Paradigm");
+console.log("\n -pure function");
+//hal yang harus diperhatikan
+/* -function harus bersifat pure dimana dia akan menerima parameter sebagi input & mengembalikan nilai, tanpa menguban nilai dari variabel manapun
+   -function tidak boleh menggunakan nilai dari variabel yang bukan sebagai parameter
+   -function harus mengembalikan nilai dari setiap input. function yang mengembalikan nilai berbeda dengan setiap pemanggilan dengan nilai input yang sama tidak memenuhi prinsip Functional Paradigma
+   */
+console.log("\ncontoh Pure Functional");
+//fungsi murni selalu memberikan ouput yang sama untuk input yang sama, tanpa menyebabkan side effect. fungsi murni tidak merubah variabel diluar lingkupnya dan tidak bergantung pada variabel/keadaan external.
+const multiplyByTwo = (num) => {
+  //multiplyByTwo menerima argumen num
+  return num * 2; //nilai akan dikembalikan
+};
+//pada arrow function diatas menggunakan num untuk parameter kemudian diakses didalam fungsi
+console.log(multiplyByTwo(5)); //nilai yang dikembalikan akan sama sesuai input argumen.
+
+//impure function 1, akses luar variabel dari dari funtional scope
+console.log("\nimpure function\n");
+const name3 = "Jhonny";
+
+const concatMe = () => {
+  return name3 + " is you.";
+};
+//function diatas mengakses name3 dari luar fungsi tanpa menggunakan parameter function
+console.log(concatMe());
+
+//impure function 2, tidak mengembalikan nilai apapun
+const divideByThree = (num) => {
+  const result = num / 3;
+};
+//functuon diatas tidak menghasilkan output apapun
+console.log(divideByThree()); //parameter kosong / terisi output tetap undefined
+
+//impure function 3, bisa mengembalikan nilai yang berbeda meski memasukkan nilai yang sama
+const addByRandom = (num) => {
+  const randomNumber = Math.floor(Math.random() * 10);
+  return num + randomNumber;
+};
+console.log(addByRandom(2));
+console.log(addByRandom(2));
+console.log(addByRandom(2));
+//output akan berbeda-beda
+
+console.log("\n -mutabilitY & ummutability");
+/*immutability merupakan konsep dimana sebuah variable yang setelah didefinisikan & diassign dengan sebuah nilai, nilai tersebut
+tidak boleh di diganti / dirubah untuk menghindari side-effect(dimana satu proses dapat mempengaruhi nilai variabel secara global & menyebabkan error). 
+dalam javascript terdapat const agar nilai aman, tapi tidak untuk array & object karena terdapat push dimana merupakan proses yang mutable .*/
+
+console.log("mutable variable");
+var mutableNumber = 5;
+mutableNumber = 7;
+console.log(mutableNumber);
+
+console.log("immutable variable");
+const immutableNumber = 3;
+// const immutableNumber = 7; //akan error jika diaktifkan
+console.log(immutableNumber);
+
+console.log("mutable array");
+var mutableHobbies = ["Workout"];
+mutableHobbies.push("Gaming");
+console.log(mutableHobbies);
+x;
+console.log("immutable array dengan concat"); //e5 dengan concat
+var immutableHobbies = ["DIY"];
+var newUpdatedImmutableHobbies = immutableHobbies.concat("Gaming");
+//immutableHobbies jadi imun & tidak bisa ditambah data, maka harus di buatkan array baru dengan berisi update an immutableHobbies
+console.log(immutableHobbies);
+console.log(newUpdatedImmutableHobbies);
+
+console.log("immutable array dengan spread operator"); //es6
+/*"..."/titik 3 merupakan spread operator, di javascript digunakan untuk mengambil / menyalin elemen dari tiap-tiap array / object kedalam object baru.
+penggunaan var namaVar = [...namaVarLama, elemen1, n]; */
+var newUpdatedImmutableHobbiesES6 = [...immutableHobbies, "menembak"];
+console.log(newUpdatedImmutableHobbiesES6);
+
+console.log("mutable object");
+var myMutableObject = { name: "Abdoel", age: 20 };
+//disini kita buat obect
+myMutableObject.age = 18;
+//kemudian kita update age dari object yang menyebabkan age object berubah
+console.log(myMutableObject);
+
+console.log("immutable object dengan object.assign");
+var myImmutableObj = { name: "Sholum", age: 21 };
+// buat obect baru
+const newUpdateObES5 = Object.assign({}, myImmutableObj, { age: 19 });
+// kemudian buat updateObjectBaru dari dengan fungsi Object.assign(target, source)
+console.log(myImmutableObj);
+console.log(newUpdateObES5);
+console.log("immutable object ES6 using spread operator");
+const newUpdateObES6 = { ...myImmutableObj, age: 17 };
+console.log(myImmutableObj);
+console.log(newUpdateObES6);
+
+console.log("\n Higher-order Function");
+/*high order function merupakan function yang menerima argumen atau parameter berupa function. 
+sebelumya ada istilah 'callback'  dimana artinya function yang dikirimkan sebagai parameter ke dalam high-order function*/
+//contoh 1
+const isEven = (num) => {
+  //fungsi isEven
+  return num % 2 === 0; //kembalikan nilai sisa bagi 2 num & bandingkan dengan 0
+  //remember === adalah operator perbandingan
+  // % merupakan operator sisa bagi
+};
+
+const nums = [1, 2, 3, 4, 5, 6];
+
+const evenNums = nums.filter(isEven);
+// fungsi namaArray.filter(callback(elemen[, index[, array]])[, thisArg]) digunakan untuk membuat array baru yang berisi semua elemen dari array yang asli yang memenuhi kondisi yang ditentukan oleh sebuah fungsi callback
+console.log(evenNums);
+
+//contoh 2
+const capitalizedWord = (word) => {
+  return word[0].toUpperCase() + word.slice(1, word.length);
+  //diatas merupakan fungsi untuk membuat kapital awal kata dari awal kalimat
+};
+
+const sentence = "Ahh, you are there. Its me!";
+const uppercaseSentence = sentence.split(" ").map(capitalizedWord);
+// fungsi diatas memecah kalimat menjadi array kata-kata
+console.log(uppercaseSentence);
+
+console.log("\nCurrying");
