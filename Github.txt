@@ -222,7 +222,9 @@ disini kita menggunakan github sebagai remote server.
      -cek 'git remote -v' disini akan muncul remote yang telah di set.
 - ketik 'git branch -M main' sesuai ama github
 - ketik 'git push -u origin main' untuk mengupload file ke github, untuk push pertama terkadang kita harus login github, setelahnya kita tinggal ketik 'git push'
+
 ==study case konflik==
+
 -di local buat file style.css, tambah beberapa baris style,
 -di github buat file style.css, tambah beberapa baris style.
 -kemudian di local add & commit, kemudian push maka akan error
