@@ -2082,3 +2082,43 @@ const uppercaseSentence = sentence.split(" ").map(capitalizedWord);
 console.log(uppercaseSentence);
 
 console.log("\nCurrying");
+/*currying merupakan proses mengubah sebuah fungsi yang menerima beberapa argumen menjadi serangkaian fungsi yang masing-masing menerima satu argumen */
+//contoh
+const myWordOperation = (firstWord) => (secondWord) => (thirdWord) => {
+  return firstWord + " " + secondWord + " " + thirdWord;
+};
+/*funsi diatas memiliki 3 parameter masukkan berupa kata1st,...kata3rd. */
+console.log(myWordOperation("My")("Little")("Precious"));
+//contoh lebih sederhana
+//fungi add tanpa currying
+
+function add2(a, b) {
+  return a + b;
+}
+console.log("fungsi tanpa currying", add2(2, 3), "\n");
+
+//funcsi add dengan currying
+function add3(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+const addTwo = add3(2); //inisiasi
+console.log(addTwo(3)); //panggil addTwo
+console.log(add3(2)(3)); //panggil add3
+
+console.log("\n Reusable Functuion");
+/*merupakan fungsi yang dapat digunakan kembali, fungsi ini dirancang untuk dapat dipanggil dan digunakan diberbagai tempat dalam kode tanpa perlu mengulang / menulis logika yang sama.
+karakteristik dari fungsi yang dapat digunakan kembali
+1. modular : fungsi yang dirancang untuk melakukan satu tugas spesifik sehingga dapat diisolasi dan digunakan di berbagai tempat.
+2. generik : fungsi yang dapat digunakan untuk berbagai jenis data / konteks, tidak terikat dengan satu kasus penggunaan tertentu.
+3. mudah dipahami dan dipelihara : kode jelas dan terdokumentasi dengan baik.
+4. teruji : kode telah teruji dengan serangkaian test untuk memastikan fungsi bekerja dengan baik. */
+//contoh
+function countElement(array) {
+  return array.length;
+}
+//penggunaan
+const number1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log("reusable function countElement untuk menhitung elemen", countElement(number1));
