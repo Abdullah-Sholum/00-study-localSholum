@@ -4,4 +4,7 @@
 {{-- penggunaa @extend untuk memanggil @yield | @section('namaDokumense') --}}
 @section('content')
 <h1>lah test sdasd</h1>
+<button class="bg-sky-500 hover:bg-sky-700 ...">
+  Save changes
+</button>
 @endsection
