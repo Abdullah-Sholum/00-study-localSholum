@@ -1,4 +1,15 @@
 // menulis program
+/*deklarasi & inisiasi.
+perbedaan 
+deklarasi adalah tindakan untuk memperkenalkan variabel ke program dan menentukan tipenya. dengan 'let', 'var', 'const'
+contoh deklarasi*/
+let deklarasiItem1;
+var deklarasiItem2;
+/*sedang inisiasi marupakan tindakan untuk menetapkan nilai awal saat saat variabel telah dideklarasikan.
+contoh inisiasi */
+deklarasiItem1 = 1;
+deklarasiItem2 = 'berisi string';
+
 // console.log merupakan fungsi menampilkan output ke console
 console.log("hello world, hello brudah");
 
