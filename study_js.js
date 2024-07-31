@@ -2133,3 +2133,42 @@ function countElement(array) {
 //penggunaan
 const number1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log("reusable function countElement untuk menhitung elemen", countElement(number1));
+
+
+//maybe nyambung ama dokumen index.html
+//perbedaan 'document.getElemenById()' & 'document.querySelector()'
+/* getElemenById() merupakan cara untuk menembak suatu elemen di dokumen html dengan id, hal ini membuat pemuatan lebih cepat namun tidak fleksibel karena hanya bisa 
+mentargetkan elemen berdasarkan id */
+let btn1 = document.getElementById('btn'); 
+
+/*querrySelector menembak elemen dokumen berdasarkan selector css, hal ini membuatknya sangat fleksibel, karena bisa mentargetkn class ('.namaClass'), id ('#namaId'),
+elemen ('namaElemen'), ditambah bisa melakukan berdasarkan kombinasi ('#parent .child'). kekurangan ya aagak lambat karena harus melakukan parsing */
+let btn2 = document.querySelector('button');
+
+
+// API
+/*API : Application Programming Interface merupakan definisi & protokol yang memungkinkan antar aplikasi / layanan untuk berkomunikasi dengan aplikasi / layanan lainyya
+*hmm berarti kek penerjemah /  translate.
+langka-langkah umum penggunaan API di javascript
+1. membuat permintaan / request. 
+   menggunakan metode fetch(urlAPI) / XMLHttpRequest
+2. menerima tanggapan (response)
+   setelah permintaan dikirim akan menerima tanggapan berupa data dengan format JSON
+3. Memproses data.
+   kemudian data JSON tersebut akan kamu proses
+4. Menampilkan hasil*/
+//JSON
+/*JSON : JavaScript Object Notation *bisa dibilang Jawa Script Object Notation. adalah format pertukaran data yang ringan dan mudah dibaca. JSON digunakan utnuk mempresentasikan data dalam bentuk Object yang terdiri dari pasangan Key Value.
+JSON banyak digunakan untuk pertukaran data antara client & server dalam web karena strukturya yang sederhana & fleksibel. JSON berasalah dari JAWA namun saat ini sudah didukung bahasa pemrograman lain.*/
+//contoh JSON sederhana
+let JSON = {
+  "Nama": "Sholum_Axe",
+  "Usia": 17,
+  "Alamat": "Earth",
+  "Hobb": ['arduio', 'Komponen Listrik', 'komponen mekanis', 'Gaming','dll']
+}
+//penjelasan
+/* 
+1. object diapit kurung kurawal '{}'
+2. Pasangan Key-Value, setiap elemen yang diapit titik dua ':'
+3. Array daftar yang diapit kurung sikut '[]', yang bisa berisi berbagai tipe data */
