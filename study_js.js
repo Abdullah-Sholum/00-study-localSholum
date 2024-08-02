@@ -8,7 +8,7 @@ var deklarasiItem2;
 /*sedang inisiasi marupakan tindakan untuk menetapkan nilai awal saat saat variabel telah dideklarasikan.
 contoh inisiasi */
 deklarasiItem1 = 1;
-deklarasiItem2 = 'berisi string';
+deklarasiItem2 = "berisi string";
 
 // console.log merupakan fungsi menampilkan output ke console
 console.log("hello world, hello brudah");
@@ -2090,7 +2090,24 @@ const capitalizedWord = (word) => {
 const sentence = "Ahh, you are there. Its me!";
 const uppercaseSentence = sentence.split(" ").map(capitalizedWord);
 // fungsi diatas memecah kalimat menjadi array kata-kata
-console.log(uppercaseSentence);
+console.log(uppercaseSentence, '\n');
+
+console.log("fungsi callback lebih lanjut");
+/*fungsi callback merupakan fungsi yang dilewatkan sebagai argumen dari fungsi lain. jadi inisiasi fungsi dengan argumen fungsi. 'fungsi(fungsiCallback)'
+fungsi callback digunakan untuk memastikan bahwa kode tertentu dijalankan setelah fungsi lain selesai, terutama untuk operasi asinkron seperti pengambilan data dari server, pembacaan file / penundaan waktu.
+cara kerja
+-fungsi utama menerima fungsi lain (callback sebagai parameter)
+-fungsi utama menjalankan beberapa operasi
+-pada titk tertentu fungsi utama memanggil fungsi callback untuk menyelesaikan tugas tertentu */
+//contoh
+function salam(nama, callback) {  //fungsi ini menerima 2 parameter 'nama' & 'callback'
+  console.log('halo, ' + nama);     //operasi
+  callback();                     //summon param callback
+}
+function selesai() {                //fungsi callback
+  console.log('Proses Selesai !');    //operasi
+}
+salam('Gwehj', selesai);            //inisasi fungsi degnan param & callback
 
 console.log("\nCurrying");
 /*currying merupakan proses mengubah sebuah fungsi yang menerima beberapa argumen menjadi serangkaian fungsi yang masing-masing menerima satu argumen */
@@ -2134,17 +2151,15 @@ function countElement(array) {
 const number1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log("reusable function countElement untuk menhitung elemen", countElement(number1));
 
-
 //maybe nyambung ama dokumen index.html
 //perbedaan 'document.getElemenById()' & 'document.querySelector()'
 /* getElemenById() merupakan cara untuk menembak suatu elemen di dokumen html dengan id, hal ini membuat pemuatan lebih cepat namun tidak fleksibel karena hanya bisa 
 mentargetkan elemen berdasarkan id */
-let btn1 = document.getElementById('btn'); 
+// let btn1 = document.getElementById('button');
 
 /*querrySelector menembak elemen dokumen berdasarkan selector css, hal ini membuatknya sangat fleksibel, karena bisa mentargetkn class ('.namaClass'), id ('#namaId'),
 elemen ('namaElemen'), ditambah bisa melakukan berdasarkan kombinasi ('#parent .child'). kekurangan ya aagak lambat karena harus melakukan parsing */
-let btn2 = document.querySelector('button');
-
+// let btn2 = document.querySelector('button');
 
 // API
 /*API : Application Programming Interface merupakan definisi & protokol yang memungkinkan antar aplikasi / layanan untuk berkomunikasi dengan aplikasi / layanan lainyya
@@ -2162,13 +2177,15 @@ langka-langkah umum penggunaan API di javascript
 JSON banyak digunakan untuk pertukaran data antara client & server dalam web karena strukturya yang sederhana & fleksibel. JSON berasalah dari JAWA namun saat ini sudah didukung bahasa pemrograman lain.*/
 //contoh JSON sederhana
 let JSON = {
-  "Nama": "Sholum_Axe",
-  "Usia": 17,
-  "Alamat": "Earth",
-  "Hobb": ['arduio', 'Komponen Listrik', 'komponen mekanis', 'Gaming','dll']
-}
+  Nama: "Sholum_Axe",
+  Usia: 17,
+  Alamat: "Earth",
+  Hobb: ["arduio", "Komponen Listrik", "komponen mekanis", "Gaming", "dll"],
+};
 //penjelasan
 /* 
 1. object diapit kurung kurawal '{}'
 2. Pasangan Key-Value, setiap elemen yang diapit titik dua ':'
 3. Array daftar yang diapit kurung sikut '[]', yang bisa berisi berbagai tipe data */
+
+console.log(JSON);
