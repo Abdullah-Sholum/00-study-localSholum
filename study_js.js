@@ -2090,7 +2090,7 @@ const capitalizedWord = (word) => {
 const sentence = "Ahh, you are there. Its me!";
 const uppercaseSentence = sentence.split(" ").map(capitalizedWord);
 // fungsi diatas memecah kalimat menjadi array kata-kata
-console.log(uppercaseSentence, '\n');
+console.log(uppercaseSentence, "\n");
 
 console.log("fungsi callback lebih lanjut");
 /*fungsi callback merupakan fungsi yang dilewatkan sebagai argumen dari fungsi lain. jadi inisiasi fungsi dengan argumen fungsi. 'fungsi(fungsiCallback)'
@@ -2100,14 +2100,16 @@ cara kerja
 -fungsi utama menjalankan beberapa operasi
 -pada titk tertentu fungsi utama memanggil fungsi callback untuk menyelesaikan tugas tertentu */
 //contoh
-function salam(nama, callback) {  //fungsi ini menerima 2 parameter 'nama' & 'callback'
-  console.log('halo, ' + nama);     //operasi
-  callback();                     //summon param callback
+function salam(nama, callback) {
+  //fungsi ini menerima 2 parameter 'nama' & 'callback'
+  console.log("halo, " + nama); //operasi
+  callback(); //summon param callback
 }
-function selesai() {                //fungsi callback
-  console.log('Proses Selesai !');    //operasi
+function selesai() {
+  //fungsi callback
+  console.log("Proses Selesai !"); //operasi
 }
-salam('Gwehj', selesai);            //inisasi fungsi degnan param & callback
+salam("Gwehj", selesai); //inisasi fungsi degnan param & callback
 
 console.log("\nCurrying");
 /*currying merupakan proses mengubah sebuah fungsi yang menerima beberapa argumen menjadi serangkaian fungsi yang masing-masing menerima satu argumen */
@@ -2161,6 +2163,12 @@ mentargetkan elemen berdasarkan id */
 elemen ('namaElemen'), ditambah bisa melakukan berdasarkan kombinasi ('#parent .child'). kekurangan ya aagak lambat karena harus melakukan parsing */
 // let btn2 = document.querySelector('button');
 
+/* fungsi setAttribut digunakan untuk menambahkan / merubah atribut yang ada pada elemen. dengan sintaks
+.element.setAttribut('nameAtributYangSudahAda/Belum', value);.
+div.setAttribut('id', 'form');    //beri id   output | <div id='form'>
+div.setAttribut('class', 'form2');  //ganti class   output  | <div class='form2'>
+divValue.setAttribut('data-id', 123);   //tambah atribut data-id output  | <div data=id='123'></div>*/ 
+
 // API
 /*API : Application Programming Interface merupakan definisi & protokol yang memungkinkan antar aplikasi / layanan untuk berkomunikasi dengan aplikasi / layanan lainyya
 *hmm berarti kek penerjemah /  translate.
@@ -2189,3 +2197,15 @@ let JSON = {
 3. Array daftar yang diapit kurung sikut '[]', yang bisa berisi berbagai tipe data */
 
 console.log(JSON);
+
+//module. export/import pada node js
+console.log("\nModule.export/import");
+/*modul javascript mengijinkan untuk memecah kode kedalam berbagai file yang saling terhubung, sehingga kode akan menjadi terorganisir  serta lebih terstruktur.
+- export digunakan untuk mengexpor fungsi, object, variabel ke suatu file .js agar bisa digunakan di file lain.
+terdapat 2 cara menggunakan export*/
+// - export 'export named'. disini bisa melakukan export beberapa hal dari 1 file dan masing2 memiliki nama tertentu
+//code ada di file math.js
+
+// - export default: disini hanya bisa melakukan 1 export secara default dari 1 file, ketika di import nama bisa ditentukan sesuai keinginan
+//code ada di file greet.js
+
