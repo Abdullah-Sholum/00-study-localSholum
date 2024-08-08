@@ -2167,7 +2167,7 @@ elemen ('namaElemen'), ditambah bisa melakukan berdasarkan kombinasi ('#parent .
 .element.setAttribut('nameAtributYangSudahAda/Belum', value);.
 div.setAttribut('id', 'form');    //beri id   output | <div id='form'>
 div.setAttribut('class', 'form2');  //ganti class   output  | <div class='form2'>
-divValue.setAttribut('data-id', 123);   //tambah atribut data-id output  | <div data=id='123'></div>*/ 
+divValue.setAttribut('data-id', 123);   //tambah atribut data-id output  | <div data=id='123'></div>*/
 
 // API
 /*API : Application Programming Interface merupakan definisi & protokol yang memungkinkan antar aplikasi / layanan untuk berkomunikasi dengan aplikasi / layanan lainyya
@@ -2204,8 +2204,15 @@ console.log("\nModule.export/import");
 - export digunakan untuk mengexpor fungsi, object, variabel ke suatu file .js agar bisa digunakan di file lain.
 terdapat 2 cara menggunakan export*/
 // - export 'export named'. disini bisa melakukan export beberapa hal dari 1 file dan masing2 memiliki nama tertentu
-//code ada di file math.js
+//code ada di file math.mjs
 
 // - export default: disini hanya bisa melakukan 1 export secara default dari 1 file, ketika di import nama bisa ditentukan sesuai keinginan
-//code ada di file greet.js
+//code ada di file greet.mjs
 
+/*import diogunakan untuk mengambil fungsi, object, variabel yang telah di export dari file lain
+cara melakukan import sesuai dengan export yang dilakukan */
+//untuk file export ada di file export.mjs
+
+/* *catatan
+ketika menggunakan export & import harus menggunakan file dengan format .mjs
+file mjs */
