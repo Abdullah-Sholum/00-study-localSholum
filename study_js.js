@@ -678,6 +678,8 @@ setTimeout(function () {
   //setelah 5 detik
   console.log(visitCountMap); //tampilkan nilai dari visitCountMap
 }, 1000);
+const { log } = require("console");
+const { json } = require("stream/consumers");
 /*ketika reference jonas dihapus dengan "null" harusnya map tidak menyimpan data user (garbage collection) namun kenyataannya 
 data jonas masih tersedia di map, sampai benar-benar dihapus user */
 
@@ -2012,6 +2014,33 @@ console.log(addByRandom(2));
 console.log(addByRandom(2));
 //output akan berbeda-beda
 
+console.log('\nFungsi Rekursif');
+/**merupakan teknik dalam pemrograman dimana sebuah fungsi memanggil dirinya sendiri secara langsung / d tidak langsung untuk menyelesaikan suatu masalah, suatu fungsi rekursif
+ * sangat berguna untuk memecahkan masalah menjadi submasalah yang lebih kecil yang serupa dengan masalah asli
+ * dasar rekursif
+ * 1. base case. dimana kondisi yang menhentikan rekursif. kasus sederhana yang dapat diselesaikan tanpa perlu memanggil fungsi rekursif lebih lanjut
+ * 2. recursive case. bagian yang memanggil dirinya sendiri dengan versi lebih sederhana dari masalah awal
+ * contoh rekursif pada faktorial, yang merupakan contoh klasik, dimana faktor dari 'n' ditulis sebagai n!. merupakan hasil perkalian dari semua bilanagan bilangan positf hingga 'n'*/
+function faktorial(n) {
+  if (n === 0 || n === 1) {
+    return 1;   //base case
+  } else {
+    return n * faktorial(n - 1); //recursive case
+  }
+}
+console.log('faktorial', faktorial(5));
+
+function fibonacci(n) {
+  if (n === 0) {
+      return 0; // Base Case 1
+  } else if (n === 1) {
+      return 1; // Base Case 2
+  } else {
+      return fibonacci(n - 1) + fibonacci(n - 2); // Recursive Case
+  }
+}
+console.log('fibonacci', fibonacci(6)); // Output: 8
+
 console.log("\n -mutabilitY & ummutability");
 /*immutability merupakan konsep dimana sebuah variable yang setelah didefinisikan & diassign dengan sebuah nilai, nilai tersebut
 tidak boleh di diganti / dirubah untuk menghindari side-effect(dimana satu proses dapat mempengaruhi nilai variabel secara global & menyebabkan error). 
@@ -2184,7 +2213,7 @@ langka-langkah umum penggunaan API di javascript
 /*JSON : JavaScript Object Notation *bisa dibilang Jawa Script Object Notation. adalah format pertukaran data yang ringan dan mudah dibaca. JSON digunakan utnuk mempresentasikan data dalam bentuk Object yang terdiri dari pasangan Key Value.
 JSON banyak digunakan untuk pertukaran data antara client & server dalam web karena strukturya yang sederhana & fleksibel. JSON berasalah dari JAWA namun saat ini sudah didukung bahasa pemrograman lain.*/
 //contoh JSON sederhana
-let JSON = {
+let JSONContoh = {
   Nama: "Sholum_Axe",
   Usia: 17,
   Alamat: "Earth",
@@ -2196,7 +2225,7 @@ let JSON = {
 2. Pasangan Key-Value, setiap elemen yang diapit titik dua ':'
 3. Array daftar yang diapit kurung sikut '[]', yang bisa berisi berbagai tipe data */
 
-console.log(JSON);
+console.log(JSONContoh);
 
 //module. export/import pada node js
 console.log("\nModule.export/import");
@@ -2215,4 +2244,203 @@ cara melakukan import sesuai dengan export yang dilakukan */
 
 /* *catatan
 ketika menggunakan export & import harus menggunakan file dengan format .mjs
-file mjs */
+file mjs merupakan file javascript yang menggunakan modul ES (ECMAScript Module). extensi ini memastikan node js mengenali file berformat .mjs sebagai ES module dan memprosesnya
+sesuai aturan modul ES seperti mendukung import & export secara langsung.
+thats why I using mjs file*/
+
+console.log('Type Casting');
+/*type casting, type conversion merupakan cara menguban tipe data menjadi tipe data lain. di js secara default melakukan konversi tipe data dalam beberapa kasus, namun pengguna taerkadang harus melakukan secara explisit
+berikut beberapa caranya*/
+//string ke number, 
+  //menggunakan Number(), jika tidak bisa dirubah maka 'NaN' (Not a Number)
+  let str = "1234";
+  let str1 = "omagad"
+  let num = Number(str);
+  let str2 = Number(str1);
+  console.log(str,'\n',num,'\n',str2);
+  //menggunakan parseInt()*merubah string ke integer / parseFloat()*merubah string ke desimal.
+  let strInt = "1214";
+  let strFloat = "3.14"
+  let intNum = parseInt(strInt);
+  let floatNum = parseFloat(strFloat)
+  console.log('\n',intNum);
+  console.log(strFloat,'\n');
+
+//number ke string
+  //menggunakan String()
+  let numStr = 1211213;
+  let numStrCon = String(numStr);
+  console.log(numStrCon,'\n');
+  //menggunakan toString()
+  let numToStr = 1214213432312343;
+  let numToStrCon = numToStr.toString();
+  console.log(numToStrCon,'\n');
+//boolean ke string / number
+    //boolean ke string
+    let bool1 = true;
+    let boolStr = String(bool1);
+    console.log(boolStr);
+    //boolean ke number
+    let bool2 = false;
+    let boolNum = Number(bool2);
+    console.log(boolNum);
+//string ke boolean
+  let strBool1 = 'true';
+  let strBool2 = 'false';
+  let boolTrue = Boolean(strBool1);
+  let boolFalse = Boolean(strBool2);
+  console.log(boolTrue);
+  console.log(boolFalse);
+  /**string non-kosong berisi akan true & string kosong false */
+//array ke string
+  let arrStr = [9, 34, 45, 423];
+  let arrStrCon = arrStr.join('|||||| ');  //merubah array menggunakan join denan memisahkan tiap elemen dengan separator '||||| ' yang ditentukan user
+  console.log(arrStrCon);
+//string ke array
+  let strAr = "a<> b<> c<> d<> e<> e<> e";    //aku menggunakan separator <> karena gabut
+  let strArCon = strAr.split('<>');           //disini merubah menjadi string berdasar separator, semisal separator string ',' kita menggunakan koma ','
+  console.log(strArCon);
+//object ke string
+  //menggunakan 'JSON.stringify()' merubah object menjadi string json
+  let obj = {name : "Jon Ep Kenedi", age: 20};
+  let strObj = JSON.stringify(obj);
+  console.log(strObj);
+//String JSON ke Object
+  let strObj1 = '{"name" : "Nero", "age": 21}';
+  let objStr = JSON.parse(strObj1);
+  console.log(objStr);
+
+console.log('\n');
+console.log('===function expression===');
+/**merupakan cara mendefinisikan fungsi sebagai nilai yang dapat disimpan dalam variabel*/
+//1. definisi function expression. mendefinisikan fungsi dan menyimpan dalam variabel
+const greeting2 = function(name) {
+  return `\n hello, ${name}`;
+};
+console.log('-function expression', greeting2('Alice'));
+
+//anonymous function expression. fungsi tanpa nama yang didefinisikan
+const add4 = function(a, b) {
+  return a + b;
+}
+console.log('-anonymous function express\n', add(123, 2323));
+
+//named function expression. fungsi dengan nama yang didefinisikan
+const multiply5 = function multiplyNumber2(x, y) {
+  return x*y;
+}
+console.log('-named function expression\n', multiply5(42, 1212));
+
+//function expression dengan arrow function
+const divide = (x, y) => x/y;
+console/log('-function expression dengan arrow function\n', divide(1212, 344));
+
+//function expression sebagai callback
+function processData(data, callback) {
+  console.log("-function expression sebagai callback\n. Processing data...");
+  callback(data);
+}
+processData("Sample Data", function(data) {
+  console.log("Data received:", data);
+});
+
+/*Perbedaan Utama:
+ *Function declaration dapat dipanggil sebelum deklarasinya karena hoisting.
+ *Function expression hanya dapat dipanggil setelah deklarasinya karena tidak di-hoist. */
+
+console.log('\nRest Operator');
+/*Rest parameter dalam fungsi digunakan untuk mengumpulkan elemen atau array yang tersisa menjadi satu variabel dalam bentuk array*/
+function restNoParam(a, b, ...c) {
+  console.log(`${a} ${b}`); //print a & b
+  console.log(c);           //print c / jadi array
+  console.log(c[0]);        //print c index 0
+  console.log(c.length);    //print panjang array c
+  console.log(c.indexOf('Lionel')); //print index dari n
+}
+restNoParam('Mukul', 'Latiyan', 'Lionel', 'Messi', 'Barcelona');
+
+function restParam(...input) { //disini rest operator adalah titik tiga (...)
+  let sum = 0;
+  for (let i of input) {
+    sum += i;
+  }
+  return sum;
+}
+// pada inisiasi fungsi diatas dapat menerima argumen tanpa limit jumlah
+console.log('\n',restParam(1, 2, 4, 4)); 
+console.log(restParam(1, 2, 4, 4, 32, 34, 3423));
+//rest operator dalam destructing 
+const [first, ...rest] = [1, 2, 3, 4, 5, 6];
+
+console.log('rest operator dalam destructing \n',first); // Output: 1
+console.log(rest);  // Output: [2, 3, 4, 5]
+
+/*javascript flow control cara mengerahkan alur eksekusi alur program berdasarkam kondisi tertentu atau setruktur tertentu
+, hal ini memungkinkan program untuk menjalankan kode yang berbeda berdasarkan hasil / kodisi keputusan
+==Kondisi dan percabangan
+  -if else
+  -while
+  -do..while
+  -return
+  -throw & try catch
+==looping
+  -for
+  -while
+  -do..while
+==Kontrol alur dalam fungsi
+  -return
+  -throw & catch
+==pengendalian alur dalam array
+  -forEach
+  -map, filter & reduce
+==pengendalian alur dalam async code
+  -async dan await
+  -Pormise
+*/
+
+console.log('\nError handling');
+/*penanganan error pada js memastikan aplikasi berjjalan dengan baik meski terjadi kesalaha. di js terdapat berbagai tool untuk menangani error yang memungkinkan identifikasi error
+berikut metode-metode yang dipakai */
+// try statement digunakan untuk mendefinisikan blok kode untuk beralan (to try)
+// catch statement digunakan mendefinisikan blok kode untuk menangani segala error
+// finally statement digunakan untuk menjalankan kode tanpa peduli hasilnya
+// throw statement mendefinisikan custom error
+/*ketika mengeksekusi kode error berbeda bisa terjadi.
+error bisa teradi dari programmer, kesalahan input, dan hal tak terduga */
+//try & catch
+console.log('\nTry & catch')
+try {           //di try berisi kode yang mungkin menimbulkan error
+  let result3 = riskyFunction();        //fungsi disini tidak ada
+  console.log(result3);   
+} catch (error) {   //disini terdapat penanganan error
+  console.log('Terjadi Error: ', error.message); //'error.message' merupakan properti untuk menampilkan error
+  console.log('Terjadi Error: ', error.name); //'error.message' merupakan properti untuk menampilkan error
+}
+/*error name values
+Error Name	    ||    Description
+EvalError	      ||    An error has occurred in the eval() function
+RangeError	    ||    A number "out of range" has occurred
+ReferenceError	||    An illegal reference has occurred
+SyntaxError	    ||    A syntax error has occurred
+TypeError	      ||    A type error has occurred
+URIError	      ||    An error in encodeURI() has occurred */
+console.log('\nThrow');
+/*throw statemen memungkinkan pengembang melemparkan error secara manual, berguna untuk memberi feedback ketika suatu kondisi tidak terpenuhi*/
+function divide2(a, b) {
+  if (b === 0) {
+    throw new Error("Pembagian dengan nol tidak diperbolehkan");    //buat custom pesan error dengan 'throw new Error()'
+  }
+  return a / b;
+}
+try {   //coba summon fungsi
+  console.log(divide2(10, 0));
+} catch (error) {       //tangkap jika terjadi error
+  console.error(error.message);     //tampilkan di terminal pesan error
+} 
+
+console.log('\nAsynchronous Process');
+/**Asynchronous Process
+ * fungsi yang berjalan paralel dengan fungsi lain disebut asynchronous. contoh simplenya di js adalah setTimeout()
+ * di js terdapat beberapa mekanisme untuk menangani proses asinkron
+ */
+// Callback
