@@ -3,12 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="study_js.js"></script>
-    <script src="bintang.js"></script>
+    <!-- <script src="study_js.js"></script> -->
+    <!-- <script src="bintang.js"></script> -->
     <title>Document</title>
   </head>
   <body>
     <h1>Testing bang</h1>
     <button class="button" type="button" id="button">button</button>
+<!-- ============================================================================================================================================================== -->
+    <!-- Asychronous, set interval -->
+    <h1>setInterval di Javascript</h1>
+    <h2>setInterval() dengan Callback</h2>
+    <p>dengan setInterval() untuk menampilkan waktu tiap (1000 milliseconds).</p>
+    <h1 id="demo"></h1>
+    <!-- end Asychronous, set interval -->
+<!-- ============================================================================================================================================================== -->
+    <!-- Promises -->
+    <h1>JavaScript Promise Object</h1>
+    <h2>The then() Method</h2>
+
+    <p id="demoPromises"></p>
+    <!-- end Promises -->
+
+<!-- ============================================================================================================================================================== -->
+    <script>
+      // <!-- Asychronous, set interval -->
+      setInterval(myFunction, 1000);          //inisiasi / panggil setInterval dengan argumen dari fungsi, waktu interval
+      function myFunction() {                     //inisasi
+        let d = new Date();                       //iniasi dengan mendeklarasikan date
+        document.getElementById("demo").innerHTML=    //ambil elemen id demo, atur elemen didalamnya dengan innerHTML dengan
+        d.getHours() + ":" +        //panggil jam
+        d.getMinutes() + ":" +      //panggil menit
+        d.getSeconds();             //panggil detik
+      }
+      // <!-- end Asychronous, set interval -->
+//<!-- ============================================================================================================================================================== -->
+      // <!-- Promises -->
+      function myDisplayer(some) {
+        document.getElementById("demoPromises").innerHTML = some;
+      }
+
+      let myPromise = new Promise(function(myResolve, myReject) {       //inisiasi promise dengan new Promise, dengan fungsi & 2 argumen untuk fullfiled & reject
+        let x = 0;        //inisiasi
+      // some code (try to change x to 5)
+
+        if (x == 0) {             //jika kondisi terpenuhi (fullfiled)
+          myResolve("OK");        //panggil fullfiled/myResolve dengan argumen
+        } else {                  //jika kondisi tidak terpenuhi (reject)
+          myReject("Error");      //panggil reject/myReject dengan argumen
+        }
+      });
+      
+      myPromise.then(                           //setelah kode producing code selesai panggil kode dengan then
+        function(value) {myDisplayer(value);},  //tangkap nilai fullfiled, kemudian teruskan ke fungsi dengan argumen value
+        function(error) {myDisplayer(error);}   //tangkap nilai reject, kemudian teruskan ke fungsi dengan argumen error
+      );
+      // <!-- end Promises -->
+    </script>
   </body>
 </html>

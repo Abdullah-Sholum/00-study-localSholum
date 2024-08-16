@@ -2444,3 +2444,138 @@ console.log('\nAsynchronous Process');
  * di js terdapat beberapa mekanisme untuk menangani proses asinkron
  */
 // Callback
+/**sebelumnya callback merupakan fungsi yang digunakan sebagai argumen fungsi lain. *line 2124 mengeenai fungsi callback  */
+function myDisplayer(something) {             //fungsi callback
+  console.log('Output fungsi Callback', something);
+}
+
+function myCalculator(num1, num2, myCallback) {   //fungsi yang menggunakan callback sebagai argumen
+  let sum = num1 + num2;
+  myCallback(sum);
+}
+
+myCalculator(5, 5, myDisplayer);
+
+/*setTimeout
+ *di dunia nyata fungsi callback sering digunakan bersama fungsi asinkron
+ * contohtipikal adalah seTimeout
+ * ketika menggunakan setTimeout fungsi callBack dapat dieksekusi setelah waktu habis
+*/
+let testCallback = function(text) {     //inisaisi fungsi
+  return`\nfungsi setTimeout ${text}`;
+}
+
+// setTimeout(testCallback('testing'), 3000);   //pada bagian ini akan error karena setTimeout memanggil fungsi secara langsung saat kode dieksekusi, bukan menunggu 3 detik
+// versi benar
+setTimeout(function(){
+  console.log(testCallback('Dengan timeout 1000ms'));
+}, 1000);
+
+//versi lain
+setTimeout(myFunction, 1300);   //inisiasi fungsi setTimeout dengan argumen summon fungsi & waktu
+
+function myFunction() {         //inisiasi fungsi callback
+  console.log('Timeout Delay 1300ms');
+}
+
+/**Catatan
+Saat Anda meneruskan suatu fungsi sebagai argumen, ingatlah untuk tidak menggunakan tanda kurung.
+benar: setTimeout(myFunction, 3000);
+Salah:setTimeout(myFunction(), 3000); */
+
+console.log('\nsetInterval.\nContoh ada di file index.html\n');
+//contoh ada di file index.html
+/**Alternatif callback
+Dengan pemrograman asinkron, program JavaScript dapat memulai tugas yang berjalan lama, dan terus menjalankan tugas lain secara pararel.
+Namun, program asinkron sulit ditulis dan sulit di-debug.
+Oleh karena itu, sebagian besar metode JavaScript asinkron modern tidak menggunakan callback. Sebaliknya, dalam JavaScript, pemrograman asinkron diselesaikan menggunakan Promises . */
+
+console.log('===Promises===');
+/**Javascript promises object.
+ * Sebuah promises menjanjikan hasil
+ * "producing code" merupakan kode yang membutuhkan waktu
+ * "consuming code" merupakan kode yang harus menunggu hasilnya
+ * promises merupakan object yang menjadi penghubung antara producing code & consuming code
+ * dikutip dari w3schools
+ * Javascript promises object. promises memuat producing code & memanggil ke consuming code
+ */
+// sintaks
+let myPromiseExamp = new Promise(function(myResolve, myReject) {
+//"producing code" *mungkin membutuhkan waktu
+  myResolve();  //ketika sukses
+  myReject();   //ketika error
+});
+//"consuming code" *harus menunggu sampai janji terpenuhi
+myPromiseExamp.then(           //callback untuk succes & failure optional. jadi bisa menambahkan salah satu aja
+  function(value) {/* berisi kode ketika tidak ada error */},
+  function(error) {/* berisi kode ketika terjadi error*/}
+);
+/**ketika producing code memperoleh hasil, ia kemudian harus memanggil salah satu callback
+ * success  myResolve(resultValue)
+ * error    myReject(errorValue)
+ * Properti Promises mewakili penyelesaian (atau kegagalan) operasi asinkron. promises object memiliki 2 properties, yaitu: state & result
+ * myPromise.state    ||    myPromises.result
+ * -"pending"         ||    undenfined  *operasi belum selesai
+ * -"fullfilled"      ||    a result value  *operasi selesai dengan sukses
+ * -"rejected"        ||    an error object *operasi gagal
+ * note. tidak bisa mengakses promises propertie state & result
+ * Promises Handler methods
+ * -.then()
+ * -.catch()
+ * -.finally()
+  */
+
+//producing code
+let myPromiseTest = new Promise(function(myResolve, myReject) {       //inisiasi promise dengan menggunakan new Promise, kemudian didalamnya perlu fungsi callback. (function yang memiliki 2 argumen(argumen resolve, argumen reject)) || argumen resolve memberi tahu ketika operasi berhasil, argumen reject memberi tahu ketika operasi gagal dan mengembalikan alasannya
+  let succes = true;                                                  //inisiasi variabel succes 
+  if (succes) {                                 //jika succes true berarti Promise dianggap berhasil (fullfiled)
+    myResolve("OK, data masuk");                // dan memanggil myResolve dengan argumen ("")
+  } else {                                      //sebaliknya jika bernilai false maka dianggal gagal (reject)
+    myReject("Error!!, data false");            // dan memanggil myReject dengan argumen ("")
+  }
+});
+
+//consuming code
+myPromiseTest.then(function(result) {   //setelah promise berhasil (fullfiled) nilai pada myResolve ditangkap oleh then() kemudian diteruskan ke fungsi dengan argumen result
+  console.log(result);                  //print result
+}).catch(function(error) {              //ketika gagal (reject) maka nilai myReject akan ditangkap oleh catch() kemudian diteruskan ke fungsi dengan argumen error
+  console.error(error);                 //print error
+});
+//contoh promise lain di dokumen index.html / bisa akses "https://www.w3schools.com/js/js_promise.asp"
+
+console.log('\nPenanganan bergaya synchronous dengan asyn-await');
+/**merupakan cara menulis kode asinkron yang terlihat dan berperilaku seperti kode asinkron. hal ini membuat kode lebih mudah dibaca dan dikelola.
+ * apa itu 'async' & 'await'. 'async' digunakan untuk mendefinisikan fungsi asinkron. fungsi yang di def dengan 'async' otomatis mengembalikan sebuah 'Promise'. dan kode didalam fungsi 'async' dapat menggunakan 'await' untuk menunggu hasil dari promise.
+ * 'await' hanya dapat digunakan didalam 'async'. 'async' membuat JawaScript menunggu hingga promise yang diikutiinya selesai, dan kemudidan mengembalikan hasilnya. jika promise gagal maka 'await' menghasilkan error yang bisa ditangani dengan 'try...catch'
+ * contoh penggunaan
+ */
+async function getData() {        //inisiasi fungsi asinkron dengan async, dimana akan mengembalikan promise.
+  try {                           //try...catch digunakan untuk menangani kesalahan yang terjadi ketika proses 'await'
+    let response = await (fetch('https://api.example.com/data')); //inisiasi dengan await. js akan menunggu hingga promise selesai menggunakan await
+    let data = await response.json();                             //ubah data menjadi oject json
+    console.log('data berhasil diambil', data);                   //ketika data berhasil diambil maka tampilkan
+  } catch(error) {                                                //catch jika terjadi error, ketika await tidak menanggapi
+    console.log('terjadi kesalahan', error);                      //tampilkan error
+  }
+}
+// getData();
+/**4. Keuntungan Menggunakan async-await
+ * Lebih Mudah Dibaca: Kode yang menggunakan async-await terlihat seperti kode sinkron, yang membuatnya lebih mudah dipahami, terutama bagi yang baru memulai.
+ * Penanganan Error yang Lebih Baik: Dengan try...catch, penanganan error menjadi lebih terstruktur dan lebih mudah dibandingkan dengan menggunakan .catch() pada Promise.
+ * Menghindari Callback Hell: async-await membantu menghindari kode bertingkat yang sering terjadi dengan callback, membuat kode lebih terorganisir.
+*/
+//contoh lebih kompleks
+async function prosesData() {
+  try {
+      let user = await ambilUser();
+      let post = await ambilPost(user.id);
+      console.log("Post berhasil diambil:", post);
+  } catch (error) {
+      console.error("Terjadi kesalahan saat memproses data:", error);
+  }
+} 
+// prosesData();     //disable karena hasilnya adalah error
+console.log('\n--Concurency dengan Promises--')
+/**concurency dengan promises dalam javascript memungkinkan untuk menjalankan operasi asinkron secara bersamaan (concurrent) dan mengelola hasilnya secara efisien. hal ini berguna ketika mengelola beberapa tugas asinkron secara pararel.
+ * 
+ */
