@@ -662,6 +662,10 @@ hal pembeda antara map dan weakMap
 contoh map & weakMap*/
 
 const visitCountMap = new Map(); //buat map untuk menghitung jumlah pengunjung
+/**
+ * 
+ * @param {string} usera -parameter user
+ */
 
 function countUser(usera) {
   //fungsi untuk menghitung jumlah pengunjung
@@ -2577,5 +2581,115 @@ async function prosesData() {
 // prosesData();     //disable karena hasilnya adalah error
 console.log('\n--Concurency dengan Promises--')
 /**concurency dengan promises dalam javascript memungkinkan untuk menjalankan operasi asinkron secara bersamaan (concurrent) dan mengelola hasilnya secara efisien. hal ini berguna ketika mengelola beberapa tugas asinkron secara pararel.
- * 
+ *beberapa cara yang bisa digunakan
  */
+//menggunakan 'promise.all()'
+console.log('-promise.all()');
+/**merupakan metode yang paling umum untuk digunakan untuk menjalankan beberapa promise secara bersamaan. metode ini menerima array dari promise dan mengembalikan sebuah promises yang selesai (fullfilled) ketika promise dalam array selesai.
+ * ketika salah satu promises gagal (rejected) maka promise yang dikembalikan oleh 'Promises.all()' juga akan gagal
+sintaks*/
+//buat fungsi asinkron untuk mengambil data dari API user
+function ambilDataUser() {
+  return fetch('https://api.example.com/user').then(response => response.json());     
+}
+//buat fungsi asinkron untuk mengambil data dari API post
+function ambilDataPost() {
+  return fetch('https://api.example.com/posts').then(response => response.json());
+}
+
+async function prosesDataUserPost() {         //buat fungsi asinkron dengan async agar bisa memakai await didalam fungsi
+  try {                                       //try digunakan untuk menangani hasil dari proses await
+    let [user, posts] = await Promise.all([ambilDataUser(), ambilDataPost()]);  //inisiasi untuk menjalankan kedua fungsi secara bersamaan dengan cara paralel dengan Promise.all(). tunggu sampai semua proses selesai dengan fungsi await
+    //tampilkan data
+    console.log("Data User:", user);          
+    console.log("Data Posts", posts);
+  } catch (error) {                                                             //catch digunakan ketika hasil akhir error
+    console.log('terjadi kesalahan', error);
+  }
+}
+// prosesDataUserPost();   //di command karena hasilnya error *tidak ada apinya
+/**Keuntungan:
+ * -Concurrency: Kedua operasi (meminta data user dan post) dilakukan secara bersamaan, sehingga lebih efisien daripada menjalankannya secara berurutan.
+ * -Error Handling: Jika salah satu Promise gagal, Promise.all() akan segera mengembalikan Promise yang gagal, dan kita dapat menangani kesalahan tersebut di dalam blok catch. */
+console.log('-promise.race()');
+/**mengembalikan promises yang akan selesai (fullfilled) atau rejected dengan hasil dari promise pertama yang selesai diantara promises dialam array. hal ini berguna ketika hanya perlu hasil dari promises yang paling cepat */
+
+function fetchDataFromServerA() {
+  return fetch('https://api.serverA.com/data').then(response => response.json());
+}
+function fetchDataFromServerB() {
+  return fetch('https://api.serverB.com/data').then(response => response.json());
+}
+async function prosesDataRace() {
+  try {
+      let data = await Promise.race([fetchDataFromServerA(), fetchDataFromServerB()]);      //menggunakan sintaks Promise.race()
+      console.log("Data yang diterima:", data);
+  } catch (error) {
+      console.error("Terjadi kesalahan:", error);
+  }
+}
+// prosesDataRace();        //di command karena hasilnya error *tidak ada apinya
+console.log('-promise.allSettled()');
+/** mengembalikan promise yang selesai setelah semua promise dalam array selesai, baik berhasil ataupun gagal. metode ini tidak akan berhenti pada kesalahan seperti promise.all(). tapi akan memberi status kesetiap promise*/
+function ambilDataAPI1() {
+  return fetch('https://api.example.com/data1').then(response => response.json());
+}
+
+function ambilDataAPI2() {
+  return fetch('https://api.example.com/data2').then(response => response.json());
+}
+async function prosesDataAllSettled() {
+  let hasil = await Promise.allSettled([ambilDataAPI1(), ambilDataAPI2()]);  //sintaks Promise.allSettled([arrFunc1, arrFunc2,...arrFunc-n]). tanpa response
+
+  hasil.forEach((hasilItem) => {                    //buat perulangan sejumlah hasil. kemudian masukkan ke hasilItem
+      if (hasilItem.status === "fulfilled") {       //buat percabangan jika status hasilItem fullfilled
+          console.log("Data berhasil diambil:", hasilItem.value);     //tampilkan data
+      } else {                                      //sebaliknya
+          console.error("Terjadi kesalahan:", hasilItem.reason);
+      }
+  });
+}
+// prosesDataAllSettled();       //di command karena hasilnya error *tidak ada apinya
+/**tambahan js merupakan bahasa yang weakly typed, berarti tipe data dapat otomatis dikonversi js ketika diperlukan 
+contoh*/
+let aNumb = 3;
+let bStri = '10';
+let cStri = aNumb + bStri; //hasil akan "310" (number + string = string)
+console.log(cStri);
+/**Type Coercion
+Type coercion adalah proses di mana JavaScript secara otomatis mengubah tipe data satu variabel menjadi tipe lain saat diperlukan dalam operasi tertentu.
+ */
+
+/**JSDoc merupakan alat dokumentasi yang digunakan untuk menambah komentar pada kode js. menggunakan */
+/**dokumentasi */
+//contoh penggunaan
+/**
+ * 
+ * @param {number} a -angka pertama
+ * @param {number} b -angka kedua
+ * @returns {number} hasil bagi
+ */
+function bagi(a, b) {
+  return a / b;
+}
+console.log('\n', bagi(10, 2));
+
+/**flow, type check library merupakan alat static type checker untuk javascript yang dikembangkan oleh facebook, flow membangu pengembang menangkap kesalahan tipe data dalam kode JS sebelum kode dijalankan,
+ * dengan flow pengembang bisa menambahkan anotasi tipe data pada kode JS yang membuat kode lebih aman & lebih mudah dimengerti pengembang lain.
+ * instalasi
+ * -install 'npm install --global flow-bin //secara global
+ * -npm install --save-dev flow-bin   //dependensi prioject
+ * selanjutnya bisa tanya gpt
+ * 
+*/
+
+console.log('\n===Typescript, Superset dari JavaScript');
+let whatSuperset = 'pertama apa itu superset?.\nsuperset merupakan versi upgrade dari suatu bahasa dasar / alat yang memperluas fungsionalitas dari suatu bahasa lain, sambil mempertahankan kompabilitas dengan bahasa yang asli. \nsuperset mencangkup semua fitur dari bahasa dasarnya, tetapi menambahkan fitur tambahan yang tidak ada dimiliki oleh yang asli. \ncontoh superset \n-javascript memiliki superset TypeScript \n-CSS memiliki superset SASS';
+console.log(whatSuperset);
+console.log('Style Guide Javascript');
+/**Style Guide dalam JavaScript adalah seperangkat aturan dan pedoman yang membantu pengembang menulis kode yang konsisten, bersih, dan mudah dipahami. Tujuan utama dari style guide adalah untuk memastikan bahwa kode yang ditulis oleh berbagai pengembang di proyek yang sama memiliki gaya penulisan yang seragam, 
+ * sehingga lebih mudah untuk dipelihara dan dikembangkan. 
+ * Contoh Populer Style Guide dalam JavaScript
+ * -Airbnb JavaScript Style Guide:
+ * -Google JavaScript Style Guide:
+ * -StandardJS:*/
