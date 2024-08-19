@@ -1,0 +1,18 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "for study",
+  "main": "study_js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
