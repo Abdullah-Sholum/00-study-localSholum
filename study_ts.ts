@@ -10,3 +10,20 @@ console.log('hello world!!');
  *      b. install paket 'ts-node' 'npm install ts-node --save-dev'. install tingkat project btw
  *      c. jalankan dengan 'ts-node namaFile.ts'
  */
+/**penulisan object
+ * namaObject:{namaProperti: tipeData;} = {namaProperti: value};
+ */
+let meSholum: {
+    name: string;
+    age: number;
+    gender: string;
+    college: boolean;
+    hobby: string[];
+} = {
+    name: 'Abdullah Sholum',
+    age: 20,
+    gender: 'male',
+    college: true,
+    hobby: ['DIY', 'electoric', 'gaming', 'watch anime', 'reading manga']
+};
+console.log(meSholum);

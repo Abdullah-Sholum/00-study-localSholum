@@ -2693,3 +2693,53 @@ console.log('Style Guide Javascript');
  * -Airbnb JavaScript Style Guide:
  * -Google JavaScript Style Guide:
  * -StandardJS:*/
+
+console.log('===DOM===');
+/**DOM (Document Object Model) merupakan representasi struktur dari dokumen HTML / XML yang dimuat dalam memori komputer. dalam JS DOM memungkinkan developer mengakses & memanipulasi elemen-elemen pada halaman web,
+ * saat laman web dimuat browser membuat DOM dari laman, HTML DOM model dibangun seperti struktur pohon Object. keyword 'HTML DOM Tree of Object'.
+ * dengan model object JS memiliki kemampuan untuk membuat HTML dinamis
+ * - Javascript bisa merubah semua elemen HTML di laman
+ * - Javascript bisa merubah semua atribut HTML di laman
+ * - Javascript bisa merubah semua style CSS di laman
+ * - Javascript bisa menghapus elemen & atribut HTML yang ada di dokumen
+ * - Javascript bisa menambah elemen & atribut HTML  
+ * - Javascript bisa memberi reaksi ke semua event HTML di laman
+ * - Javascript bisa membuat Event HTML di laman
+ * W3Schools
+ * What is the DOM?
+The DOM is a W3C (World Wide Web Consortium) standard.
+The DOM defines a standard for accessing documents:
+"The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+The W3C DOM standard is separated into 3 different parts:
+  -Core DOM - standard model for all document types
+  -XML DOM - standard model for XML documents
+  -HTML DOM - standard model for HTML documents
+ */
+console.log('--DOM method');
+//*note file praktik ada di index.html & js ada di jsDOM.js
+/**merupakan tindakan yang bekerja pada HTML event, properti merupakan value dari HTML elemen yang bisa dirubah / diset
+ * HTML DOM bisa diakses dengan JS / bahasa Pemrograman lain.
+ * -di DOM elemen HTML di definisikan sebagai object
+ * -'Properti' untuk semua elemen HTML. merupakan value yang dapat diambil / di set (merubah, menghapus content HTML)
+ * -'Method' untuk mengakses semua elemen HTML. merupakan aksi yang dapat dilakukan (menambah / menghapus elemen HTML)
+ * -'event' untuk semua elemen HTML
+ * 
+ * ##Methode untuk menemukan Elemen HTML##
+ *        method                                
+ * -document.getElementById(id)                 --cari elemen dengan id 
+ * -document.getElementsByTagName(name)         --cari elemen dengan tag name
+ * -document.getElementsByClassName(name)       --cari elemen dengan class name
+ * 
+ * ##Cara merubah elemen HTML##
+ *      properti
+ * -element.innerHTML = new HTML content        --ganti inner html elemen
+ * -element.attribute = new value               --ganti vilai atribut
+ * -element.style.properti = new style          --ganti style (css) elemen
+ *      method
+ * -element.setAttribute(attribute, value)       --ubah nilai atribut elemen
+ * 
+ * ##Tambah dan Hapus elemen##
+ *      method
+ * -document.createElement(element)              --buat element
+ * -
+ */
