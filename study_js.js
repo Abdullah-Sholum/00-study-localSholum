@@ -2741,5 +2741,15 @@ console.log('--DOM method');
  * ##Tambah dan Hapus elemen##
  *      method
  * -document.createElement(element)              --buat element
- * -
+ * -document.removeChild(element)                --hapus child elemen
+ * -document.appendChild(element)                --tambah child elemen
+ * -document.replaceChild(element)               --ganti child elemen
+ * -document.write(text)                         --menulis text secara langsung ke dokumen 
+ * 
+ * ##tambah event handler
+ *     method
+ * -document.getElementById(element).onclick=    --tambah event handler kemudian beri fungsi ketika event terpicu
+ * function(){code}
+ * 
+ * document indexJS.html & jsDOM.js
  */

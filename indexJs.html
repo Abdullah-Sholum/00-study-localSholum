@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- src untuk script menggunakan sintaks defer untuk memastikan file js diunduh secara paralel bersamaan dengan pemuatan file HTML. namun eksekusi ditunda sampai
+    <!-- src untuk script menggunakan sintaks 'defer' untuk memastikan file js diunduh secara paralel bersamaan dengan pemuatan file HTML. namun eksekusi ditunda sampai
      file HTML selesai dimuat -->
     <script src="jsDOM.js" defer></script>  
     <title>Javasript_study_js</title>
@@ -13,9 +13,26 @@
             display: flex;
             justify-content: center;
         }
+        h1.formDOM {
+            font-size: 34px;
+            display: flex;
+            justify-content: center;
+        }
+        form#frm1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 300px;
+            margin: 0 auto;
+        }
         #methodDOM {
             font-size: 25px;
             font-weight: 800;
+            display: flex;
+            justify-content: center;
+        }
+        p{
+            font-size: 14px;
             display: flex;
             justify-content: center;
         }
@@ -26,5 +43,38 @@
         <h1>Study JavaScript</h1>
     </header>
     <p id="methodDOM"></p>
+    <p id="introFindId">==Cari elemen dengan id==</p>
+    <p id="demoFindId"></p>
+    <br>
+    <p>==cari elemen dengan tag name==</p>
+    <p>cara ini mendemonstrasikan pencarian dengan tag name</p>
+    <p id="demoFindByTagName"></p>
+    <br>
+    <div id="idDiv">
+        <p>==cari elemen dari tag id==</p>
+        <p>demonstrasi ini menggunakan method <b>getElementsByTagName</b>.</p>
+    </div>
+    <p id="demoGetElementByIdDiv"></p>
+    <br>
+    <p>==Cari elemen dari class name==</p>
+    <p class="intro">Hellow World Omagad</p>
+    <p class="intro">Demontrasi getElementByClassName method</p>
+    <p id="demoGetElementByClassName"></p>
+    <br>
+    <p>==cari elemen berdasarkan querry selector CSS==</p>
+    <p class="introQuerry">Hellow Querry Selector</p>
+    <p class="introQuerry">Contoh Querry</p>
+    <p class="introQuerry">Demo menggunakan querrySelector</p>
+    <p id="demoQuerrySelector"></p>
+    
+    <h1 class="formDOM">Form DOM</h1>
+    <form id="frm1" action="">
+        First name: <input type="text" name="firstName" value="">
+        <br>
+        Last name: <input type="text" name="lastName" value=""><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p>These are the values of each element in the form:</p>    
+    <p id="demoObjectCollection"></p>
 </body>
 </html>
