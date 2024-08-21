@@ -8,22 +8,35 @@
     <script src="jsDOM.js" defer></script>  
     <title>Javasript_study_js</title>
     <style>
+        /* penulisan '.heading h1' berarti di elemen heading terdapat child h1 */
         .heading h1 {
             font-size: 44px;
             display: flex;
             justify-content: center;
         }
-        h1.formDOM {
+        /* penulisan 'h1.formDOM' berarti h1 memiliki class 'formDOM'  */
+        h1.formDOM, h1.changeCSS {
             font-size: 34px;
             display: flex;
             justify-content: center;
+            text-decoration: underline;
         }
-        form#frm1{
+        h1.changeElement {
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+        }
+        /* penulisan 'form#frm1' berarti form memiliki id 'frm1'  */
+        /* penulisan 'form.frm2' berarti form memiliki class 'frm2'  */
+        /* frm1 & frm2 memiliki properti sama */
+        form#frm1, form.frm2{
             display: flex;
             flex-direction: column;
             justify-content: center;
             width: 300px;
             margin: 0 auto;
+            padding: 24px 15px;
+            border: 1px solid;
         }
         #methodDOM {
             font-size: 25px;
@@ -32,9 +45,40 @@
             justify-content: center;
         }
         p{
-            font-size: 14px;
+            font-size: 24px;
             display: flex;
             justify-content: center;
+        }
+        img#img1 {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            width: 900px;
+        }
+        button#changeColor {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;        /*mensejajarkan text secara horizontal (tengah kanan kiri)*/
+            align-items: center;            /*mensejajarkan text secara vertikal (tengah atas bawah)*/
+            width: 280px;
+            height: 40px;
+            border: 2px solid;
+            border-radius: 5px;
+        }
+        #containerAnima {
+            display: flex;
+            margin: 0 auto;
+            width: 400px;
+            height: 400px;
+            position: relative;                 /*untuk container style position: relative*/
+            background: blanchedalmond;
+        }
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;                 /*untuk animate style position: absolute*/
+            background: blueviolet;
+            border-radius: 50px;
         }
     </style>
 </head>
@@ -76,5 +120,44 @@
     </form>
     <p>These are the values of each element in the form:</p>    
     <p id="demoObjectCollection"></p>
+    <br>
+    <h1 class="changeElement">DOM change Element</h1>
+    <p id="changeEle">==Sebelum teks dirubah js==</p>
+    <p>==change atribut==</p>
+    <p>Aether Lumine</p>
+    <!-- di img id, src, alt merupakan atribut -->
+    <img id="img1" src="img/GI1.png" alt="aetherLumine">
+    <p id="date"></p>
+    <!-- <script>
+        document.write(Date()); //Never use document.write() after the document is loaded. It will overwrite the document.
+    </script> -->
+    <p>==JavaScript Validation Form==</p>
+    <!-- dalam form terdapat beberapa atribut
+     name untuk identitas yang digunakan di js
+     onsubmit untuk memanggil fungsi validateFrm2 dan membuat halaman tidak di refresh-->
+    <form name="frm2" class="frm2" action="" onsubmit="return validateFrm2()" method="post">
+        <!-- required merupakan automatic html form validation yang mencegah form dikirim-->
+        Name: <input type="text" name="fname" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <h1 class="changeCSS">Merubah CSS</h1>
+    <p id="changeCSS1">Hellow World</p>
+    <p id="changeCSS2">Hellow World</p>
+    <br>
+    <p>==Menggunakan event==</p>
+    <p style="font-weight: 800;" id="changeColor">Ubah Warna ketika tombol ditekan</p>
+    <!-- tambah event ketika tombol diklik dengan langung mengetik sintaks javascript didalam onclick -->
+    <button id="changeColor" type="button" onclick="document.getElementById('changeColor').style.color = 'red'">Tekan aq</button>
+    <br>
+    <p>==animasi sederhana==</p>
+    <!-- panggil fungsi ketika onclick -->
+    <p><button onclick="animaMove()">Pencet me</button></p>
+    <!-- style diatas -->
+    <div id="containerAnima">
+        <div id="animate"></div>
+    </div>
+
 </body>
 </html>

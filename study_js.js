@@ -2753,3 +2753,44 @@ console.log('--DOM method');
  * 
  * document indexJS.html & jsDOM.js
  */
+
+//validasi data
+/**Data Validation
+ * Data validation memastikan masukan user bersih, benar & berguna 3B njir
+ * tugas umum validasi 
+ * -cek apakah semua kolom dah diisi
+ * -cek apakah tanggal valid
+ * -cek apa pengguna memasukkan text di kolom numerik
+ * Most often, the purpose of data validation is to ensure correct user input.
+ * Validation can be defined by many different methods, and deployed in many different ways.
+ * Server side validation is performed by a web server, after input has been sent to the server.
+ * Client side validation is performed by a web browser, before input is sent to a web server.
+ */
+
+//HTML Constraint Validation
+/**HTML memperkenalkan HTML validatio concep bernama HTML Constraint Validation,
+ * didasarkan pada
+ * -validai HTML input atribut
+ * -validasi CSS pseudo selector
+ * -DOM Properties & method
+ * 
+ * validai HTML input atribut 
+ * -disable           --membuat elemen input spesifik disable
+ * -max               --membuat nilai maximal input elemen
+ * -min               --membuat nilai minimal input elemen
+ * -pattern           --membuat nilai spesifik unutk masukan {1-9} *angka 1 / 9
+ * -required          --harus diisi
+ * -type              --input spesifik (url, email,dsb)
+ * 
+ * validasi CSS pseudo selector
+ * -:disable      :pilih elemen dengan atribut disable
+ * -:invalid      :pilih elemen dengan atribut invalid
+ * -:optional     :pilih elemen dengan atribut optional
+ * -:required     :pilih elemen dengan atribut required
+ * -:valid        :pilih elemen dengan atribut disable
+*/
+
+function ee() {
+  console.log('nya  nya nya nya nya nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya' );
+}
+setInterval(ee, 100);
