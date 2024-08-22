@@ -5,84 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- src untuk script menggunakan sintaks 'defer' untuk memastikan file js diunduh secara paralel bersamaan dengan pemuatan file HTML. namun eksekusi ditunda sampai
      file HTML selesai dimuat -->
-    <script src="jsDOM.js" defer></script>  
+    <script src="jsDOM.js" defer></script>
+    <link rel="stylesheet" href="styleJS.css">
     <title>Javasript_study_js</title>
-    <style>
-        /* penulisan '.heading h1' berarti di elemen heading terdapat child h1 */
-        .heading h1 {
-            font-size: 44px;
-            display: flex;
-            justify-content: center;
-        }
-        /* penulisan 'h1.formDOM' berarti h1 memiliki class 'formDOM'  */
-        h1.formDOM, h1.changeCSS {
-            font-size: 34px;
-            display: flex;
-            justify-content: center;
-            text-decoration: underline;
-        }
-        h1.changeElement {
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-        }
-        /* penulisan 'form#frm1' berarti form memiliki id 'frm1'  */
-        /* penulisan 'form.frm2' berarti form memiliki class 'frm2'  */
-        /* frm1 & frm2 memiliki properti sama */
-        form#frm1, form.frm2{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 300px;
-            margin: 0 auto;
-            padding: 24px 15px;
-            border: 1px solid;
-        }
-        #methodDOM {
-            font-size: 25px;
-            font-weight: 800;
-            display: flex;
-            justify-content: center;
-        }
-        p{
-            font-size: 24px;
-            display: flex;
-            justify-content: center;
-        }
-        img#img1 {
-            display: flex;
-            justify-content: center;
-            margin: 0 auto;
-            width: 900px;
-        }
-        button#changeColor {
-            display: flex;
-            margin: 0 auto;
-            justify-content: center;        /*mensejajarkan text secara horizontal (tengah kanan kiri)*/
-            align-items: center;            /*mensejajarkan text secara vertikal (tengah atas bawah)*/
-            width: 280px;
-            height: 40px;
-            border: 2px solid;
-            border-radius: 5px;
-        }
-        #containerAnima {
-            display: flex;
-            margin: 0 auto;
-            width: 400px;
-            height: 400px;
-            position: relative;                 /*untuk container style position: relative*/
-            background: blanchedalmond;
-        }
-        #animate {
-            width: 50px;
-            height: 50px;
-            position: absolute;                 /*untuk animate style position: absolute*/
-            background: blueviolet;
-            border-radius: 50px;
-        }
-    </style>
 </head>
-<body>
+<!-- tambah event onload dengan fungsi -->
+<body onload="checkCookies()">      
     <header class="heading">
         <h1>Study JavaScript</h1>
     </header>
@@ -113,12 +41,12 @@
     
     <h1 class="formDOM">Form DOM</h1>
     <form id="frm1" action="">
-        First name: <input type="text" name="firstName" value="">
+        First name: <input type="text" name="firstName" value="as">
         <br>
-        Last name: <input type="text" name="lastName" value=""><br><br>
+        Last name: <input type="text" name="lastName" value="edf"><br><br>
         <input type="submit" value="Submit">
     </form>
-    <p>These are the values of each element in the form:</p>    
+    <p>Nilai dari tiap value dari form</p>    
     <p id="demoObjectCollection"></p>
     <br>
     <h1 class="changeElement">DOM change Element</h1>
@@ -158,6 +86,45 @@
     <div id="containerAnima">
         <div id="animate"></div>
     </div>
-
+    <br>
+    <h1 class="DOMEvents">DOM Events</h1>
+    <!-- note di css penulisan properti menggunakan 'kebab-case' menggunakan tanda hubung '-', sedang di javascript penulian menggunakan 'camelCase' tanpa tanda hubung.
+     jadi semisal properti 'font-size' CSS akan menjadi 'fontSize' di JS. -->
+    <p  onclick="this.innerHTML = 'waduhh';this.style.color = 'blue'; this.style.fontSize = '70px'; this.style.fontWeight = '700'">==Tekan teks Ini==</p>
+    <p onclick="ubahTeks1(this)">Klik Teks ini</p>
+    <p>==HTML event attribut==</p>
+    <p>Jam berapa ini</p>
+    <button id="tampilkanDate" onclick="tampilkanDate()">Sekarang jam</button>
+    <p id="date2"></p>
+    <!-- <p>Cara lain mendisplay waktu</p> -->
+    <!-- logika js dokumen ini benar, hanya tidak bisa di dokumen ini saja -->
+    <!-- <button id="tampilkanDate3">Coba ini</button>
+    <p id="date3"></p> -->
+    <br>
+    <p>==Onload & Unload Events==</p>
+    <!-- cet tag body diatas -->
+    <p id="cekCookie"></p>
+    <p>==Oninput events</p>
+    <!-- tambahkan atribut 'oninput' agar ketika mengisi kolom input akan memanggil fungsi -->
+    <input type="text" id="onInput" oninput="teksKapital()">
+    <p>==Onchange Event==</p>
+    <!-- tambah atribut 'onchange' agar setalah keluar dari kolom pengisian input akan memanggil fungsi -->
+    <input type="text" id="onChange" onchange="afterKapital()">
+    <p>==onmouseover & onmouseout Events==</p>
+    <!-- tambah atribut event handler 'onmouseover' & 'onmouseout' -->
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)" id="divMouse1">Kursor Here</div>
+    <p>==onmousedown, onmouseup & onclick events==</p>
+    <div id="onMouseClick" onmousedown="mDown(this)" onmouseup="mUp(this)">Coba Klik Gwa bang</div>
+    <h1 id="eventHandler">Event handler</h1>
+    <p>==event handler elemen</p>
+    <!-- scirpt untuk event handler ini ditaru di document karena jika ditaruh di js tidak berfungsi -->
+    <button id="buttonElement">coba tekan</button>
+    <script>
+        document.getElementById("buttonElement").addEventListener("click", function() {
+            alert("Anjay diklik");
+        });
+    </script>
+    
+    
 </body>
 </html>

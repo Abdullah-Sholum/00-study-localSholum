@@ -1,0 +1,127 @@
+/* penulisan '.heading h1' berarti di elemen heading terdapat child h1 */
+.heading h1 {
+    font-size: 44px;
+    display: flex;
+    justify-content: center;
+}
+/* penulisan 'h1.formDOM' berarti h1 memiliki class 'formDOM'  */
+h1.formDOM, h1.changeCSS, h1.DOMEvents, h1#eventHandler {
+    font-size: 34px;
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+}
+h1.changeElement {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+/* penulisan 'form#frm1' berarti form memiliki id 'frm1'  */
+/* penulisan 'form.frm2' berarti form memiliki class 'frm2'  */
+/* frm1 & frm2 memiliki properti sama */
+form#frm1, form.frm2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    margin: 0 auto;
+    padding: 24px 15px;
+    border: 1px solid;
+}
+#methodDOM {
+    font-size: 25px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+}
+p{
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+img#img1 {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 900px;
+}
+/* style button ======================================================================================>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+button {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;        /*mensejajarkan text secara horizontal (tengah kanan kiri)*/
+    align-items: center;            /*mensejajarkan text secara vertikal (tengah atas bawah)*/
+    width: 280px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+button:hover{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;        /*mensejajarkan text secara horizontal (tengah kanan kiri)*/
+    align-items: center;            /*mensejajarkan text secara vertikal (tengah atas bawah)*/
+    width: 280px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(116, 107, 189);
+    color: aliceblue;
+}
+button:active{
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;        /*mensejajarkan text secara horizontal (tengah kanan kiri)*/
+    align-items: center;            /*mensejajarkan text secara vertikal (tengah atas bawah)*/
+    width: 280px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(18, 132, 77);
+    color: aliceblue;
+}
+#containerAnima {
+    display: flex;
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    position: relative;                 /*untuk container style position: relative*/
+    background: blanchedalmond;
+}
+#animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;                 /*untuk animate style position: absolute*/
+    background: blueviolet;
+    border-radius: 50px;
+}
+input#onInput, input#onChange {
+    display: flex;
+    margin: 0 auto;
+}
+div#divMouse1 {
+    display: flex;
+    margin: 0 auto;
+    height: 400px;
+    width: 400px;
+    background: aquamarine;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: 700;
+    border-radius: 200px;
+}
+div#onMouseClick {
+    display: flex;
+    margin: 0 auto;
+    height: 400px;
+    width: 800px;
+    background: rgb(170, 107, 225);
+    color: black;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-weight: 700;
+}
+

@@ -41,11 +41,11 @@ document.getElementById("demoQuerrySelector").innerHTML = '#paragraf pertama que
 document.getElementById("frm1").addEventListener("submit", function(event) {    //get elemen dengan id 'frm'1, tambah event listener submit, buat fungsi dengan parameter event
     event.preventDefault();                             // Mencegah form dari submit dan refresh halaman
     const xStr4 = document.forms["frm1"];               // inisiasi dengan mengakses form kemudian simpan value ke object
-    let text = "";                                      // inisasi string kosong
-    for (let i = 0; i < 2; i++) {                       // perulangan for dengan kondisi jika i kurang dari 2(karena form berisi 2 kolom masukan) maka tambah 1. *jika mengisi panjangng xStr4 maka atribut submit akan terpanggil
+    let textFrm1 = "";                                      // inisasi string kosong
+    for (let i = 0; i < xStr4.length ; i++) {                       // perulangan for dengan kondisi jika i kurang dari 2(karena form berisi 2 kolom masukan) maka tambah 1. *jika mengisi panjangng xStr4 maka atribut submit akan terpanggil
         text += xStr4.elements[i].name + " : " + xStr4.elements[i].value + "<br>";   //tambahkan text dengan name element xStr4 index [i] +str+ value elemen xStr index [i]
     }
-    document.getElementById("demoObjectCollection").innerHTML = text;               //kemudian tambahkan text ke id demoObjectCollection
+    document.getElementById("demoObjectCollection").innerHTML = textFrm1;               //kemudian tambahkan text ke id demoObjectCollection
 });
 
 //rubah text dengan innerHTML
@@ -93,3 +93,110 @@ function animaMove() {
         }
     }
 }
+
+
+//Javascript DOM events
+/**JS dapat dieksekusi saat peristiwa terjadi, seperti pengguna mengeklik elemen HTML.  untuk melakukannya tambahkan js ke atribut event HTML
+ * sintaks
+ * /'onclick=javascript'
+ * contoh peristiwa HTML
+ * -ketika pengguna mengeklik mouse
+ * -ketika laman dimuat
+ * -ketika gambat dimuat
+ * -ketika mouse mengarah ke dalam elemen
+ * -ketika bidang masukan berubah
+ * -ketika form HTML di kirimkan
+ * -ketika pengguna mengeklik tombol
+  */
+/**
+ * @param {string} id
+ *  fungsi ubah teks
+ * kemudian di dalam fungsi set teks baru, dan beri style baru ke @param id 
+ */
+ function ubahTeks1(id) {             
+    id.innerHTML = "Berubah Teksnya";
+    id.style.fontSize = '30px';
+    id.style.fontFamily = 'Verdana';
+    id.style.fontWeight = '600';
+ }
+/**
+ * get elemen date2, kemudian set string didalamnya dengen menampilkan date
+ */
+function tampilkanDate() {
+    document.getElementById('date2').innerHTML = Date();
+}
+
+/*logika dokumen ini benar, hanya tidak bisa di dokumen ini saja */
+// document.getElementById("tampilkanDate3").onclick = tampilDate3;
+// function tampilDate3() {
+//     document.getElementById("date3").innerHTML = Date();
+// }
+
+//Onload & Unonload
+/**event terjadi saat pengguna memasuki atau keluar dari laman
+ * onload event bisa digunakan untuk mengecek tipe dan versi browser pengunjung dan memuat versi laman web yang tepat berdasarkan  informasi tersebut
+ * onload & unload event dapat digunakan untuk menangani cookies
+ */
+function checkCookies() {                           //buat fungsi
+    let text = "";                                  //inisiasi dengan string kosong
+    if (navigator.cookieEnabled == true) {          //cek kondisi apakah cookie diaktifkan di browser, jika iya maka true
+        text = "Cookies are enabled.";
+    } else {                                        //sebaliknya
+        text = "Cookies are not Enabled.";
+    }
+    document.getElementById("cekCookie").innerHTML = text;      // set elemen dengan teks
+}
+
+//Oninput event
+/** merupakan event yang terjadi saat pengguna memasukkan data*/
+function teksKapital() {
+    const xStr5 = document.getElementById("onInput");       //get elemen id onInput
+    xStr5.value = xStr5.value.toUpperCase();                //ubah semua value masukan menjadi kapital dengan fungsi bawaan js toUpperCase()
+}
+
+//Onchange Event
+/**event ini sering digunakan bersamaan dengan kombinasi untuk validasi input */
+function afterKapital() {
+    const xStr6 = document.getElementById("onChange");
+    xStr6.value = xStr6.value.toUpperCase();
+}
+
+
+//OnMouseOver & OnMouseOut Events
+/**merupakan event ketika pengguna mengarahkan kursor masuk / keluar elemen*/
+/**
+ * @param {string} obj
+ * buat fungsi untuk event mouse, kemudian set teks dengan innerHTML 
+ */
+function mOver(obj) {              
+    obj.innerHTML = "Nyuwun Sewu";
+    obj.style.backgroundColor = "rgb(19, 56, 190)";
+    obj.style.color = "white";
+}
+function mOut(obj) {
+    obj.innerHTML = "Kursor Here";
+    obj.style.backgroundColor = "aquamarine";
+    obj.style.color = "black";
+}
+
+//onmousedown, onmouseup & onclick events
+/** event yang terjadi ketika  mouse mengeklik elemen, menahan klik, kemudian melepaskan kliknya di elemen yang dituju*/
+function mDown(obj) {
+    obj.style.backgroundColor = "rgb(19, 56, 190)";
+    obj.style.color = 'white';
+    obj.innerHTML = "coba jan ditekan";
+    obj.style.borderRadius = "200px"
+    obj.style.height = "400px";
+    obj.style.width = "500px";
+}
+function mUp(obj) {
+    obj.style.backgroundColor = "";         //gak dikasih properti karena biar kembali ke warna awal
+    obj.style.color = 'black';
+    obj.innerHTML = "Coba Klik Gwa bang";
+    obj.style.borderRadius = "10px"
+    obj.style.height = "400px";
+    obj.style.width = "800px";
+}
+
+/**event2 lainnya bisa diliat di W3School */
+//event handler

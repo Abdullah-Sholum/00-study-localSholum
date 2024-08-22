@@ -1,39 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing</title>
-</head>
+<html>
 <body>
-    <form id="frm1" action="">
-        First name: <input type="text" name="firstName" value="">
-        <br>
-        Last name: <input type="text" name="lastName" value=""><br><br>
-        <input type="submit" value="Submit">
-    </form>
-    <script>
-        function validateFrm1() {
-            document.getElementById("frm1").addEventListener("submit", function(event) {
-                event.preventDefault(); // Mencegah form dari submit dan refresh halaman
-                
-                const form = document.forms["frm1"]; // Mengakses form
-                const firstName = form["firstName"].value; // Mengakses nilai elemen dengan name 'fname'
-                const lastName = form["lastName"].value; // Mengakses nilai elemen dengan name 'lname'
+<h1>JavaScript HTML Events</h1>
+<h2>The onclick Events</h2>
 
-                let text = "";
+<p>Click "Try it" to execute the displayDate() function.</p>
+<button id="myBtn">Try it</button>
 
-                if (firstName === '' || lastName === '') { // Periksa apakah salah satu nilai kosong
-                    alert('Tambah nama dahulu');
-                } else {
-                    for (let i = 0; i < form.length; i++) {
-                        text += form.elements[i].name + ": " + form.elements[i].value + "<br>";
-                    }
-                }
+<p id="demo"></p>
 
-                document.getElementById("demoObjectCollection").innerHTML = text; // Menampilkan nilai elemen form
-            });
-        }
-    </script>
+<script>
+document.getElementById("myBtn").onclick = displayDate;
+
+function displayDate() {
+  document.getElementById("demo").innerHTML = Date();
+}
+</script>
+
 </body>
-</html>
+</html> 

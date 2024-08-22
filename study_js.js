@@ -2794,3 +2794,19 @@ function ee() {
   console.log('nya  nya nya nya nya nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya' );
 }
 setInterval(ee, 100);
+
+//Event Handler
+/** 'addEventListener()' method melampirkan event handler ke elemen spesifik
+ * 'addEventListener()' method melampirkan event handler ke elemen lain tanpa menimpa event handler yang telah ada
+ * dev bisa menambahkan banyak event handler ke satu elemen, dev bisa menambahkan beberapa evend handler ke satu tipe elemen contoh (click),
+ * dev bisa bisa menambahkan event handel ke semua DOM object, tidak hanya elemen HTML, I.e window object
+ * event handler membuat method lebih mudah memberi reaksi ke bubbling, hubungan parent child
+ * ketika menggunakan method 'addEventListener' memisahkan js dengan html markup, untuk keleluasaan membaca dan memberi ijin utnk menambah event listener event kerika tidak melakukan control HTML markup
+ * kemudahan menghilangkan event listenr dengan menggunakan 'removeEventListener()'
+ * sintaks
+ * element.addEventListener(event, function, useCapture);
+ * penjelasan
+ * -parameter pertama merupakan 'event' seperti (click, mousedown &/ HTML DOM event lainnya *https://www.w3schools.com/jsref/dom_obj_event.asp)
+ * -parameter kedua merupakan fungsi yang akan di panggil ketika event terjadi / terpicu
+ * -parameter ketiga merupakan nilai boolean yang menentukan apakah event akan menggunakan event bubbling / even captured. *parameter ini bersifat optional
+ */
