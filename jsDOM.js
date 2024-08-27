@@ -1,4 +1,4 @@
-const { EmitFlags } = require("typescript");
+// const { EmitFlags } = require("typescript");   //kode ghoib njir
 
 /**akses dokumen, kemudian ambil elemen dengan id "methodDOM" ||  getElementById() merupakan method
  * setelahnya set string dengan innerHTML ||  innerHTML merupakan properti
@@ -37,13 +37,13 @@ document.getElementById("demoGetElementByClassName").innerHTML = '#Paragraf 1 da
 const xStr3= document.querySelectorAll("p.introQuerry")           //ambil elemen dengan selector p class='introQerry'
 document.getElementById("demoQuerrySelector").innerHTML = '#paragraf pertama querrySelector '+xStr3[0].innerHTML;
 
-
+//frm1
 document.getElementById("frm1").addEventListener("submit", function(event) {    //get elemen dengan id 'frm'1, tambah event listener submit, buat fungsi dengan parameter event
     event.preventDefault();                             // Mencegah form dari submit dan refresh halaman
     const xStr4 = document.forms["frm1"];               // inisiasi dengan mengakses form kemudian simpan value ke object
     let textFrm1 = "";                                      // inisasi string kosong
     for (let i = 0; i < xStr4.length ; i++) {                       // perulangan for dengan kondisi jika i kurang dari 2(karena form berisi 2 kolom masukan) maka tambah 1. *jika mengisi panjangng xStr4 maka atribut submit akan terpanggil
-        text += xStr4.elements[i].name + " : " + xStr4.elements[i].value + "<br>";   //tambahkan text dengan name element xStr4 index [i] +str+ value elemen xStr index [i]
+        textFrm1 += xStr4.elements[i].name + " : " + xStr4.elements[i].value + "<br>";   //tambahkan text dengan name element xStr4 index [i] +str+ value elemen xStr index [i]
     }
     document.getElementById("demoObjectCollection").innerHTML = textFrm1;               //kemudian tambahkan text ke id demoObjectCollection
 });
@@ -200,3 +200,167 @@ function mUp(obj) {
 
 /**event2 lainnya bisa diliat di W3School */
 //event handler
+//pengunaan dengan "named" function
+document.getElementById("buttonElement2").addEventListener("click", clickFunction);
+function clickFunction() {
+    alert('hello world pada "named" function');
+};
+
+//penggunaan beberapa event handler untuk satu elemen
+var xMouse1 = document.getElementById("buttonWithManyEvent");
+xMouse1.addEventListener("click", functionButtonWithManyEvent1);
+xMouse1.addEventListener("click", functionButtonWithManyEvent2);
+
+function functionButtonWithManyEvent1() {
+    alert ("tombol dengan beberapa alert");
+}
+
+function functionButtonWithManyEvent2() {
+    alert ("alert ke 2 bersama dengan event lain");
+}
+
+//penggunaan banyak event handler untuk satu elemen
+var xMouse2 = document.getElementById("myBtnMouse");
+xMouse2.addEventListener("mouseover", myFunction1);
+xMouse2.addEventListener("click", mySecondFunction2);
+xMouse2.addEventListener("mouseout", myThirdFunction3);
+// penggunaan += untuk inner html bertujuan agar string selalu di tampilkan berkali mengikuti event yang terjadi, jadi tidak tampilkan kemudian hapus
+function myFunction1() {
+    document.getElementById("demoMouse").innerHTML = "Moused over!<br>";            //note. operator penugasan gabungan "+=" aku ganti ke "=" agar tidak memenuhi laman web 
+}
+function mySecondFunction2() {
+    document.getElementById("demoMouse").innerHTML = "Clicked!<br>";
+}
+function myThirdFunction3() {
+    document.getElementById("demoMouse").innerHTML = "Moused out!<br>";
+}
+
+// event handler ketika object window berubah
+window.addEventListener("resize", function(){                               //"window" mewakili merupakan object Javascript yang mewakili jendela website tempat halaman ditampilkan. "resize" merupakan jenis event yang dipicu ketika pengguna merubah ukuran jendela browser
+    document.getElementById("eventWindow").innerHTML = Math.random();
+});
+
+//propagation
+document.getElementById("myP1").addEventListener("click", function() {
+    alert("kau mengeklik <p> / elemen putih");
+}, false);                                                                             //false
+document.getElementById("propagation").addEventListener("click", function(){
+    alert("kau mengeklik <div> / elemen orang");
+}, false);                                                                             //false
+
+document.getElementById("myP2").addEventListener("click", function(){
+    alert("kau mengeklik <p> / elemen putih");
+}, true);                                                                              //true
+document.getElementById("capturing").addEventListener("click", function(){
+    alert("kau mengeklik <div> / elemen orange");
+}, true);                                                                              //true
+
+//removeEventHandler()
+document.getElementById("divRemoveEvent").addEventListener("mousemove", rmvEvent);
+function rmvEvent() {
+  document.getElementById("mathrandMouse").innerHTML = Math.random();
+}
+
+function removeHandler() {
+    document.getElementById("divRemoveEvent").removeEventListener("mousemove", rmvEvent);
+};
+
+//nodeName properti
+document.getElementById("id02").innerHTML = document.getElementById("id01").nodeName;
+
+//nodeType properti
+document.getElementById("id12").innerHTML = document.getElementById("id11").nodeType;
+
+//remove element
+function myFunctionHapusEle() {
+    document.getElementById("p2").remove();
+}
+
+//HTML Collection
+const myCollection = document.getElementsByTagName("p");
+document.getElementById("demoCollect").innerHTML = "inner HTML dengan tag p ke 59: " + myCollection[59].innerHTML;
+
+document.getElementById("demoCollectLenght").innerHTML = "This document punya panjang lebih dari " + myCollection.length + " paragraphs.";
+
+//====JQuerry====
+/*finding elemen dengan ID */
+//jqeuryy 1                 *aktif kan salah satu agar tau perbedaanya
+// $(document).ready(function() {
+//     var myElement = $("#JQ01");
+//     $("#demoJQ01").text("text dari JQ01 adalah : " + myElement[0].innerHTML);
+// });
+//jqeuryy 2
+$(function() {                          //penggunaan $ untuk memperpendek sintakas "document."
+    var myElement = $("#JQ01");         //penggunaan $ untuk memperpendek sintaks "document.getElemetnById("id")
+    $("#demoJQ01").text("text dari JQ01 adalah : " + myElement[0].innerHTML);   /*penggunaan $ untuk memperpendek sintaks "document.getElementById", sintaks .text() berfungsi untuk mengatur / mengembalikan text dari elemen yang dipilih,
+    jika argumen text() kosong akan mengembalikan nilai, jika diisi string akan mengganti text, kemudian penggunaajn .text() lebih aman dari innerHTML karen otomatis menghindari injeksi HTML / skrip berbahaya.
+    kemudian di penggabungan JQuery dengan innerHTML, innerHTML digunakan untuk mengakses konten didalam elemen myElement, kemudian memasukkannya ke .text().*/
+});
+//javascript
+// const jq01 = document.getElementById("JQ01");
+// document.getElementById("demoJQ01").innerHTML = "text dari JQ01 adalah : " + jq01.innerHTML;
+
+/*pencarian berdasarkan tag name */
+$(function()  {                                     //buat fungsi anonim dengan shorthand JQuery
+    let jQueryTagName = $("p");                     //inisiasi dengan shorthand JQuerry untuk mengakses semua elemen dengan tag <p>
+    $("#demoJQ02").text("teks tag p ke ntah berapa adalahh : " + jQueryTagName[67].innerHTML);   /*akses elemen dengan id "demoJQ02" & akses teks jQuery[index] dengan innerHTML kemudian set text dengan fungsi .text() dari shorthand JQuery*/
+});
+
+/*pencarian berdasarkan class name */
+$(function()  {
+    let jQueryClassName = $(".JQ04")                //akses class JQ04
+    $("#demoJQ03").text("jadi pencarian dengan class name : " + jQueryClassName[0].innerHTML);
+});
+
+/*pencarian berdasarkan CSS selector / querrt selector */
+$(function() {
+    let jQueryByQuery = $("p.JQ05");                //akses query selector dengan tag <p> dan class #JQ05
+    $("#demoJQ04").text("Dalam query selector anda harus mencari p.JQ05 maka hasilnya adalah : " + jQueryByQuery[2].innerHTML);
+});
+
+//===JQuery HTML element
+//set text content
+$(function()  {
+    let JQ06= $("#JQ06");
+    $("#JQ06").text("Ini merupakan text baru menggunakan fungsi .text() JQuery");
+})
+
+//get text content
+$(function() { 
+    let getTextContent = $("p.JQ05").text();                //inisiasi dengan mengakses selector p.id JQ05. simpan nilai dengan .text();
+    $("#demoJQ05").text(getTextContent);                    //akses id demoJQ05. set text dengan .text(text)
+});
+
+//set HTML content
+$(function()  {
+    $("#demoJQ07").html("<h1>Hello World, set text dengan JQuery</h1>"); /*fungi .html() digunakan unutk mendapatkan / mengetur konten html dari elemen.
+    untuk kasus disini .html digunakan untuk merubah elemen div dengan id demoJQ07 menjadi <h1>*/
+});
+
+//get HTML content
+$(function()  {
+    var content = $("#demoJQ08").html();        //inisiasi dengan menyimpan html kontek demo
+    $("#demoJQ09").html(content);               //set dengan html(content)
+});
+
+//===JQuery CSS style
+// hiding HTML element 
+$(function()  {
+    $("#JQStyle03").hide();     //set dengan fungsi hide()
+});
+//show hiding HTML element
+$(function()  {
+    $("#JQStyle04").show();     //set dengan fungsi hide()
+});
+//change style element
+$(function()  {
+    // $("#JQStyle05").css("font-size", "40px");
+    // $("#JQStyle05").css("font-weight", "800");
+    // $("#JQStyle05").css("color", "red");
+    // versi pendek
+    $("#JQStyle05").css({
+        "font-size": "40px",
+        "font-weight": "800",
+        "color": "red"
+    });
+});

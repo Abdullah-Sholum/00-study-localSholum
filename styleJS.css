@@ -5,7 +5,7 @@
     justify-content: center;
 }
 /* penulisan 'h1.formDOM' berarti h1 memiliki class 'formDOM'  */
-h1.formDOM, h1.changeCSS, h1.DOMEvents, h1#eventHandler {
+h1.formDOM, h1.changeCSS, h1.DOMEvents, h1#eventHandler, h1#id01, h1#id11, h1 {
     font-size: 34px;
     display: flex;
     justify-content: center;
@@ -125,3 +125,22 @@ div#onMouseClick {
     font-weight: 700;
 }
 
+/* Propagation */
+#propagation, #capturing {
+    background-color: coral;
+    padding: 50px;
+}
+
+#myP1, #myP2 {
+    background-color: antiquewhite;
+    font-size: 20px;
+    border: 1px solid;
+    padding: 20px;
+}
+#divRemoveEvent {
+    background-color: coral;
+    border: 1px solid;
+    padding: 50px;
+    color: white;
+    font-size: 20px;
+  }

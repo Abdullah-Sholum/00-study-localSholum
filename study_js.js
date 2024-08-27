@@ -22,6 +22,109 @@ console.log("===expression====");
 console.log(5); //statement
 console.log(2 + 4); //statement
 
+console.log("===javascript Best Practice===");
+/*
+#hindari variabel global, mencangkup semua tipe data, object, fungsi. karena bisa tertimpa fungsi / variable lain
+selalu deklarasikan local variabel,
+deklarasikan paling atas.
+inisiasi variabel.
+  -deklarasi object dengan const
+  -deklarasi array dengan const
+  -jangan gunakan new Object()
+      Use "" instead of new String()
+      Use 0 instead of new Number()
+      Use false instead of new Boolean()
+      Use {} instead of new Object()
+      Use [] instead of new Array()
+      Use /()/ instead of new RegExp()
+      Use function (){} instead of new Function()
+    --lebih baik
+      let x1 = "";             // new primitive string
+      let x2 = 0;              // new primitive number
+      let x3 = false;          // new primitive boolean
+      const x4 = {};           // new object
+      const x5 = [];           // new array object
+      const x6 = /()/;         // new regexp object
+      const x7 = function(){}; // new function object
+
+
+#javascript diketik secara longgar, suatu variabel dapat berisi semua data, suatu variabel dapat mengubah tipe datanya.
+number bisa berubah menjadi string / NaN (Not a Number)
+//contoh
+let x = 5 + 7;       // x.valueOf() is 12,    =typeof x is a number
+let x = 5 + "7";     // x.valueOf() is 57,    =typeof x is a string
+let x = "5" + 7;     // x.valueOf() is 57,    =typeof x is a string
+let x = 5 - 7;       // x.valueOf() is -2,    =typeof x is a number
+let x = 5 - "7";     // x.valueOf() is -2,    =typeof x is a number
+let x = "5" - 7;     // x.valueOf() is -2,    =typeof x is a number
+let x = 5 - "x";     // x.valueOf() is NaN,   =typeof x is a number
+
+#gunakan === sebagai pembanding
+operator "==" melakukan convert tipe data yang mirip sebelum dibandingkan
+operator "===" memaksa membandingkan tipe data dan nilai
+//contoh
+0 == "";        // true
+1 == "1";       // true
+1 == true;      // true
+
+0 === "";       // false
+1 === "1";      // false
+1 === true;     // false
+
+#gunakan parameter default
+jika fungsi kehilangan argumen maka argumen kosong tsb akan "undenfined" yang akan membuat kode rusak, menetapkan nilai default merupakan kebiasaan bagus
+//contoh
+function myFunction(x, y) {
+  if (y === undefined) {
+    y = 0;
+  }
+}
+di ECMAScript 2015 mengizinkan parameter default saat pendefinisian fungsi
+//contoh
+function (a=1, b=1) { statement }
+
+end switch statement dengan default
+//contoh
+switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case 6:
+    day = "Saturday";
+    break;
+  default:
+    day = "Unknown";
+}
+
+#hindari number, string dan boolean sebagai objects. perlakukan merekan sebagai nilai primitif. mendeklarasikan tipe tadi sebagai object memperlambat kecepatan eksekusi,
+*/
+//contoh
+// let xContoh = "John";             
+// let y = new String("John");
+// (xContoh === y) // is false because x is a string and y is an object.
+//more worse
+// let xContoh = new String("John");             
+// let y = new String("John");
+// (xContoh == y) // is false because you cannot compare objects.
+/**#hindari menggunakan eval()
+fungsi eval() berfungsi menjalankan text sebagai code, jangan gunakan
+ */
+
 console.log("");
 console.log("===statement===");
 
@@ -812,6 +915,52 @@ perbedaan lainnya.
 perbedaan sintaks, pada regular  function berupa function declaration dan function expression,
 pada arrow function hanya berupa exprssion function. karena itu nama lengkap arrow function yaitu arrow function expression
 */
+// contoh 1 *tanpa parameter
+hello = () => {
+  return "Hello World!";
+}
+// contoh 2 *tanpa parameter, mengembalikan 1 statement
+hello = () => "Hello World!";
+
+//contoh 3  *dengan parameter, mengembalikan statement & parameter
+hello = (val) => "Hello " + val;
+
+//contoh 4  *tanpa kurung () dengan 1 parameter
+hello = val => "Hello " + val;
+
+//dengan .this
+/**keyword this di fungsi merepresentasikan object yang dipanggil fungsi, bia window, document, button */
+//perbedaan penggunaan fungsi regular dengan .this & fungsi arrow .this
+
+console.log("regular function dengan this")
+//regular function tanpa this
+console.log("anggal aja file html")
+/**<button id="btn">Click Me!</button> */
+console.log("anggap aja File script.js")
+/*let hello = "";
+hello = function() {
+  document.getElementById("#").innerHTML += this;
+}
+//The window object calls the function:
+window.addEventListener("#", hello);
+//A button object calls the function:
+document.getElementById("#").addEventListener("click", hello);
+*/
+
+console.log("arrow Function dengan this");
+//anggap script.js
+/**hello = () => {
+  document.getElementById("demo").innerHTML += this;
+}
+
+// The window object calls the function:
+window.addEventListener("load", hello);
+
+// A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello);
+ */
+
+
 console.log("");
 console.log("---regular function---");
 /*regular function
@@ -896,13 +1045,21 @@ const multiply2 = (a, b) => a * b;
 console.log(multiply2(2, 3));
 
 console.log("");
-console.log("Variabel Scope");
+console.log("===Variabel Scope===");
 /*variabel scope (lingkup variabel) mengacu pada area / bagian dari kode dimana variabel tersebut dapat diakses / digunakan
 variabel yang dapat diakses dari seluruh script disebut dengan "globally scoped". sedang variabel yang hanya dapat diakses pada fungsi-fungsi
 tertentu disebut "locally scoped". variabel di javascript menggunakan fungsi untuk mengelola cakupannya.
 jika variabel didefinisikan di luar fungsi maka variable bersifat global & jika variabel di definisikan di dalam fungsi maka
 variabel hanya dapat diakses didalam fungsi & beserta turunannya */
 //global variabel, dapat diakses pada parent() & child()
+
+console.log("Scope*tambahan, JavaScript Scope");
+/**scope (cangkupan) menentukan aksebilitas variabel
+ * Variabel di js punya 3 scope
+ * -block scope
+ * -function scope
+ * -global scope
+ */
 const a = "a"; //pendefinisian dengan const global variabel a
 
 function parent() {
@@ -1090,6 +1247,16 @@ console.log("");
 console.log("Constructor form");
 /*constructor form merupakan cara untuk membuat blueprint dengan menggunakan fungsi constructor*/
 /* dibawah akan merupakan contoh untuk membuat  object blueprint dari sebuah mobil.*/
+
+//sytax untuk membuat class dengan constructor
+/**
+class ClassName {
+  constructor() { ... }
+  method_1() { ... }
+  method_2() { ... }
+  method_3() { ... }
+}
+ */
 
 //constructor function Car
 //format penulisan
@@ -2793,7 +2960,7 @@ console.log('--DOM method');
 function ee() {
   console.log('nya  nya nya nya nya nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya nya  nya nya nya' );
 }
-setInterval(ee, 100);
+// setInterval(ee, 100);
 
 //Event Handler
 /** 'addEventListener()' method melampirkan event handler ke elemen spesifik
@@ -2809,4 +2976,221 @@ setInterval(ee, 100);
  * -parameter pertama merupakan 'event' seperti (click, mousedown &/ HTML DOM event lainnya *https://www.w3schools.com/jsref/dom_obj_event.asp)
  * -parameter kedua merupakan fungsi yang akan di panggil ketika event terjadi / terpicu
  * -parameter ketiga merupakan nilai boolean yang menentukan apakah event akan menggunakan event bubbling / even captured. *parameter ini bersifat optional
+ * addEventListener() memperbolehkan memberi banyak event ke elemen yang sama tanpa overwriting elemen yang telah ada.
+ * ketika meneruskan nilai, gunakan "anonymous function" yang dipanggil spesifik fungsi dengan parameter, biasa digunakan untuk fungsi callback
+ * sintaks
+ * element.addEventListenr("click", function(){myFunction(p1, p2); });
+ * ===event bubling atau event capturing===
+ * ada dua cara penyebaran event (event propagation) dalam HTML DOM yaitu bubbling dan captured.
+ * event propagation merupakan cara untuk mendefiniskan urutan elemen ketika suatu event terjadi, 
+ * dalam suatu kasus, jika terdapat <p> didalam elemen <div>, kemudian jika pengguna  mengeklik di <p> mana elemen yang "click" terlebih dahulu.
+ * di bubbling elemen didalam akan di handle pertama, kemudian elemen luar, <p> duluan kemudian <div>.
+ * di capturing elemen luar akan di handle pertama, kemudian elemen daklam, <div> duluan lalu <p>,
+ * dengan addEventListener() dev bisa spesifik memilih propagation menggunakan parameter "useCapture"
+ * sintaks
+ * addEventListener(event, function, useCapture)
+ * nilai default false, yang akan menggunakan bubling propagation, kemudian jika event di set true maka event akan menggunakan capturing propagation
+ * ===removeEventListener()
+ * berfungsi untuk meremove event handler yang telah di lampirkan dengan addEventListener
+ * untuk referensi DOM event object ada "https://www.w3schools.com/jsref/dom_obj_event.asp"
  */
+console.log("==DOM Nodes==");
+/** berdasarkan pada W3S DOM Standar semua didalam HTML documen adalah node
+ * -semua elemen adalah elemen node
+ * -text di html merupakan text node
+ * -all conmment comment node
+ * jadi dengan HTML DOM semua node tree bisa diakses dengan javascript
+ * ==Hubungan Node
+ * node didalam node tree memiliki hubungan hierarki satu sama lain
+ * -di node tree bagian atas disebut root / root node
+ * -setiap node memiliki 1 parent, kecuali root *no parent
+ * -sebuah node bisa memiliki beberapa child
+ * -saudara (brother / sister*) nodes memiliki parent yang sama
+ * dalam HTML 
+* <html>  = root node
+* <html>  = has no parent
+* <html>  = parent of <head> & <body>
+* <head>  = is first child <html>
+* <body>  = is last child <html>
+and:
+
+* <head> has one child: <title>
+* <title> has one child (a text node): "DOM Tutorial"
+* <body> has two children: <h1> and <p>
+* <h1> has one child: "DOM Lesson one"
+* <p> has one child: "Hello world!"
+* <h1> and <p> are siblings
+
+navigasi antara nodes
+gunakan properti terkait untuk navigasi antara nodes dengan js
+-parentNode
+-childNodes[nodeNumber]
+-firstChild
+-lastChild
+-nextSibling
+-previousSibling
+W3S *kesalahan umum error di DOM processing adalah berharap ada elemen node yang berisi text
+contoh
+<title id="demo">DOM Tutorial</title>
+elemen title diatas tidak berisit text.
+namun berisi text node yang memiliki value "DOM Tutorial"
+value dari text node bisa diakses dengan node "innerHTML" properti
+
+@myTitle = document.getElementById("demo").innerHTML;
+akses properti innerHTML = mengakses properti nodeValue firstChild
+@myTitle = document.getElementById("demo").firstChild.nodeValue;
+mengakses firstChild juga dapat dilakukan seperti ini
+@myTitle = document.getElementById("demo").childNodes[0].nodeValue;
+innerHTML = digunakan untuk meng-set konten dalam HTML element
+==DOM root nodes
+terdapat dua nodes spesial yang mengizinkan akses penuh ke document
+-document.body    = body document
+@document.getElementById("demo").innerHTML = document.body.innerHTML;
+-document.documenElement = full document
+@document.getElementById("demo").innerHTML = document.documentElement.innerHTML;
+
+=NodeName properti
+nodeName properti menentukan nama spesifik suatu node
+-nodeName is read-only
+-nodeName dari elemen node yang memiliki nama yang sama dengan tag name
+-nodeName dari atribut node 
+-nodeName dari text node yang selalu #teks
+-nodeName dari document node yang selalu #document
+@indexJs
+*Note: nodeName always contains the uppercase tag name of an HTML element.
+
+//nodeValue properti
+nodeValue spesifik terhadap value dari node
+-nodeValue untuk elemen dengan null
+-nodeValue untuk text nodes yang berisi teks itu sendiri
+-nodeValue untuk atribut nodes dari atribut value
+//nodeType properti hanya read only, dia mengembalikan tipe dari node
+@indexJs
+lainnya di "https://www.w3schools.com/js/js_htmldom_navigation.asp"
+  */
+
+console.log("Javascript HTML DOM elements (Nodes)");
+/**menambah dan menghapus nodes
+ * const para = document.createElement("p")
+ * const node = document.createTextNode("ini text");
+ * para.appendChild(node) 
+ * methode appendChild, menjadikan suatu elemen child sebagai child dari elemen parent
+ *remove elemen dengan .remove()
+ @indexJs
+ untuk beberapa browser lama yang tidak support 
+ bisa menggunakan removeChild
+ parent.removeChild(child);
+
+//replace Element
+menggunakan replaceChild(newChild, oldChild)
+ */
+
+console.log("===Javascript HTML DOM collections===");
+/**methode getElementByTagName() mengembalikan sebuah HTMLCollection object.
+ * HTMLCollectio object berbentuk array seperti list (collectio) dari HTML element
+ *  @indexJs
+ * An HTMLCollection is NOT an array!
+An HTMLCollection may look like an array, but it is not.
+You can loop through the list and refer to the elements with a number (just like an array).
+However, you cannot use array methods like valueOf(), pop(), push(), or join() on an HTMLCollection.
+ */
+
+//perbedaan antara HTML collection & nodeList
+/**HTMLCollection & nodeList  pada dasarnya sama
+ * keduanya seperti array / colections (list) dari nodes(elements) yang di ekstrak dari document, nodes bisa diakses dengan nomor index dan dimulai dari 0
+ * keduanya memiliki properti lenght yang mengembalikan jumlah element di collections
+ * HTMLCollection adalah koleksi element dokumen
+ * nodeList adalah koleksi dari document nodes (element nodes, attribute nodes, text nodes)
+ * HTMLColections bisa diakses berdasarkan nama, id / nomor index
+ * nodelist bisa diakses berdasar nomor index
+ * HTMLCollection merupakan koleksi langsung / live collection
+ * NodeList merupakan koleksi statis, tidak akan berubah semisal ditambah elemen bari di list DOM
+ * getElementsByClassName() dan getElementsByTagName() method merupakan live return HTMLCollection
+ * QuerrySelectorAll() method mengembalikan secara statis nodeList
+ * childNodes properti mengembalikan live nodeLIst
+ * 
+ * Not an Array!
+A NodeList may look like an array, but it is not.
+You can loop through a NodeList and refer to its nodes by index.
+But, you cannot use Array methods like push(), pop(), or join() on a NodeList.
+*/ 
+
+console.log("===JavaScript BOM (Browser Object Model)===");
+/**JS BOM memungkinkan JavaScript "berkomunikasi" dengan browser */
+
+console.log("WEB APIs");
+/**API merupakan Application Programming Interface.
+ * WEB API merupakan programming interface untuk web
+ * dapat digunakan untuk memperluas fungsional web browser
+ * server API dapat memperluas fungsional web server
+ */
+
+console.log("===AJAX===");
+/**AJAX = Asynchronous JavaScript And XML.
+ * AJAX bukan bahasa pemrograman
+ * AJAX hanya digunakan dengan kombinasi
+ * *sebuah browser dengan built in XMLHttpRequest object (untuk request data dari web server)
+ * *JavaScript & HTML DOM (untuk menampilkan / menggunakan data)
+ * AJAX merupakan teknik dalam pengembangan web yang memungkinkan halaman web untuk melakukan permintaan ke server secara asinkron (data bisa dimuat di latar belakang tanpa harus melakukan refresh seluruh halaman.)
+ * dengan ajax dev bisa memperbaharui bagian dari halaman web seperti tabel data, formulir / konten lainnya tanpa harus melakukan refresh secara keseluruhan.
+ * 
+ */
+
+console.log("===JSON *lanjutan===")
+/**JSON = JavaScript Object Noation
+ * JSON merupakan format text untuk menyimpan dan transportasi data yang ringan
+ * JSON "self-describing" mudah dimengerti
+ * JSON berfsifak independen
+ * 
+ * JavaScript memili fungsi untuk merubah string JSON menjadi JavaScript Objects
+ * JSON.parse()
+ * dan juga memiliki fungsi untuk mengconvert object menjadi JSON string
+ * JSON.stringify()
+ * 
+ * ==JSON Syntax==
+ * JSON Syntax Rules
+ * -data dinamai dengan pasangan name/keys : value
+ * -data dipisahkan dengan koma ","
+ * -kurung kurawa "{}" digunakan untuk menyimpan object
+ * -kurung siku "[]" digunakan untuk menyimpan array
+ * -*JSON name memperlukan kutip ganda ("")
+ * -keys harus string
+ * #perbedaan JSON dengan JS Objects
+ * JSON
+ *  {"name":"Kebin"}        //di JSON harus menggunakan kutip ganda
+ * JavaScript 
+ *  {name:'kebin'}          //di JS object bisa menggunakan kutip
+ * JSON Values
+ * -a string
+ * -a number
+ * -an object
+ * -an array
+ * -a boolean
+ * -null
+ * JS Objects
+ * -seperti diatas dengan tambahan js expression
+ * -a function
+ * -a date
+ * -undefined
+ */
+//==pengakses an JS Object
+person = {name:"John", age:31, city:"New York"};
+//contoh 1
+person.name;
+// contoh 2
+person["name"];
+
+//==modifikasi object
+// contoh 1
+person.name = "Kebin";
+// contoh 2
+person["age"] = 26;
+
+/**Tipe file untuk berkas JSON adalan ".json";
+ * Tipe MIME untuk teks json adalah "application/json"
+ */
+
+console.log("JavaScript / JQuerry");
+/**JQuerry di ciptakan tahun 2006 oleh John Resig. di design digunakan untuk menangani ketidak cocokan browser dan mensederhanakan HTML DOM
+ * Handling, Animation dan AJAX. lebih dari 10 tahun JQuerry menjadi library JavaScript paling populer di dunia.
+ *@indexs .html  */
