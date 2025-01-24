@@ -1,0 +1,1 @@
+print("uwu UwU \n"*1000)r

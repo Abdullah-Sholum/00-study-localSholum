@@ -364,3 +364,14 @@ $(function()  {
         "color": "red"
     });
 });
+
+//==JQuery HTML DOM
+//removing HTML element
+$(function()  {
+    $("#JQDOM01").remove();
+});
+//get parent element
+$(function()  {
+    $("#demoJQ10").text($("#JQDOM02").parent().prop("nodeName"));   //fungsi parent digunakan untuk mengambil elemen induk dari JQDOM02, prop digunakan untuk mendapatkan atau menetapkan properti yang dipilih, nodeName merupakan properti yang mengembalikan nama tag dari elemen tersebut.
+    /*fungsi diatas mencari elemen parent dari JDDOM02, kemudian mencari nama node parent tersebut yaitu body */
+});

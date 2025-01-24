@@ -12,5 +12,8 @@ console.log(pi);
 console.log(exportAdd(4, 5));
 
 //imprt default
-import greet from './greet.mjs';
-greet();
+// import greet from './greet.mjs';
+// greet();
+
+import helloExport from './greet.mjs';
+console.log(helloExport("export default function\n","SholumAxe"));

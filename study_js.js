@@ -518,7 +518,7 @@ myArray2.splice(1, 3); //hapus data dari index 1, sebanyak 3 index elemen dan ni
 console.log("metode splice ", myArray2);
 console.log("");
 console.log("Metode slice untuk menambahkan data");
-/* metode splice juga dapat digunakan untuk menambahkan data dengan memberi argumen ke-3 (atau selanjutnya)
+/* metode slice juga dapat digunakan untuk menambahkan data dengan memberi argumen ke-3 (atau selanjutnya)
 sebagai nilai yang akan dimasukkan ke argumen
 dengan format
 namaArray.splice(index ke-n, jumlah data dari index-n, 'argumen/nilai')*/
@@ -534,9 +534,9 @@ console.log(myArray3);
 console.log("");
 console.log("Spread Operator");
 /*digunakann untuk menyebarkan nilai array, spread operator dituliskan dengan tiga titik '...'.
-spread operator bekerja seperti meleburkan beberapa nilai array menjadi beberapa elemen seusai nilai indexnya*/
+spread operator bekerja seperti meleburkan beberapa nilai array menjadi beberapa elemen sesuai nilai indexnya*/
 const makananFavorit1 = ["pecel", "soto", "rawon", "lontong", "mie ayam"];
-const minumanFavorit1 = ["soda gembira", "teh susu", "es susu", "kopi hitam pahit"];
+const minumanFavorit1 = ["soda gembira", "rh susu", "es susu", "kopi hitam pahit"];
 // console.log(makananFavorit1);
 console.log(...makananFavorit1); //output diatas akan memiliki otput yang sama dengan dibawah
 console.log(makananFavorit1[0], makananFavorit1[1], makananFavorit1[2]);
@@ -605,6 +605,22 @@ let armada1 = "Unknown"; //variabel let dengan nama yang sama dengan keyValue ob
 ({ alliases1, armada1 } = myProfile2); //destruction variabel, disini kita bisa coba aktifkan non aktifkan
 console.log(alliases1); //tampilkan variabel / value dari keyValue jika destruction variabel dah ada
 console.log(armada1); //tampilkan variabel / value dari keyValue jika destruction variabel dah ada
+let {alliases1 : nameMyProfile2 } = myProfile2;     //destructing alliases {properti : aliasProperti} = object
+console.log("object properti alias \n",nameMyProfile2);                        //panggil allias
+let captainHI3 = "Captain";
+let [a1, a2, a3, a4, a5] = captainHI3;      //destructing captain menjadi a1 dst
+console.log("string destructing\n", a1);
+// Create an Array Destructuring
+const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+let [fruit1, fruit2] = fruits;
+/* Destructuring skipper*/
+// let [fruit1,,,fruit2] = fruits;      //melakukan skipping ke 2 elemen setelah f1
+/* Destructuring Array Position Values*/
+// const {[0]:fruit1 ,[1]:fruit2} = fruits;
+/**swapping Variabel */
+let firstName43 = "John";
+let lastName43 = "Doe";
+[firstName43, lastName43] = [lastName43, firstName43];
 
 console.log("");
 console.log("Default Values");
@@ -677,7 +693,7 @@ const namaMap = new Map ([
   [key2, value2],
   [key3, value3],
 ]);
-note penulisan "new Map" merupakan standard penulisan konstruktor dalam javascript, dimana "new" wajib ditulis dan "Map" merupakan standar penulisan
+note, sintaks "new Map" merupakan standard penulisan konstruktor dalam javascript, dimana "new" wajib ditulis dan "Map" merupakan standar penulisan
 agar javascript tahu kita membuat map & mempermudah pengembang lain untuk membaca kode
 */
 
@@ -809,6 +825,22 @@ setTimeout(function () {
   console.log("");
   console.log(inspect("fungsi weakMap memang agak lama \n", visitCountMap1, { showHidden: true })); //tampilkan nilai dari visitCountMap
 }, 0);
+/*Map Method and properties
+Method	      Description
+new Map()	    Creates a new Map object
+clear()	      Removes all the elements from a Map
+delete()	    Removes a Map element specified by a key
+entries()	    Returns an iterator object with the [key, value] pairs in a Map
+forEach()	    Invokes a callback for each key/value pair in a Map
+get()	        Gets the value for a key in a Map
+groupBy()	    Groups object elements according to returned callback values
+has()	        Returns true if a key exists in a Map
+keys()	      Returns an iterator object with the keys in a Map
+set()	        Sets the value for a key in a Map
+size	        Returns the number of Map elements
+values()	    Returns an iterator object of the values in a Map
+more info "https://www.w3schools.com/jsref/jsref_obj_map.asp"
+*/
 
 console.log("");
 console.log("===Function===");
@@ -1266,7 +1298,7 @@ function Car(brand, color, maxSpeed, chassisNumber) {
 
   //properti this agar paramter dapat digunakan didalam constructor function
   //format penulisan
-  // "this.parameter = paramter;"
+  // "this.parameter = parameter;"
   this.brand = brand; //this.brand merupakan properti dari parameter dari brand agar nilai dari parameter dapat digunakan didalam constructor function
   this.color = color; //this.color merupakan properti dari parameter dari color agar nilai dari parameter dapat digunakan didalam constructor function
   this.maxSpeed = maxSpeed; //this.maxSpeed merupakan properti dari parameter dari maxSpeed agar nilai dari parameter dapat digunakan didalam constructor function
@@ -2418,6 +2450,12 @@ ketika menggunakan export & import harus menggunakan file dengan format .mjs
 file mjs merupakan file javascript yang menggunakan modul ES (ECMAScript Module). extensi ini memastikan node js mengenali file berformat .mjs sebagai ES module dan memprosesnya
 sesuai aturan modul ES seperti mendukung import & export secara langsung.
 thats why I using mjs file*/
+console.log("Import & export di react");
+/*terdapat 2 cara untk melakukan export dan import komponen (fungsi) di react
+1. pertama dengan menggunakan Default syntax dengan export statement "export default function functionName() {}" & import statement "import functionName from './nameFileComponent' "
+2. kedua dengan menggunakan named sytanx dengan export statement "export function functionName() {}" & dengan import statement "import {functionName} from './nameFileComponent' " 
+developer sering menggunkan  default export ketika file yang diexport  hanya memiliki 1 nama komponent, dan menggunakan named export ketika file yang diexport memiliki berbagai komponen dan values*/
+
 
 console.log('Type Casting');
 /*type casting, type conversion merupakan cara menguban tipe data menjadi tipe data lain. di js secara default melakukan konversi tipe data dalam beberapa kasus, namun pengguna taerkadang harus melakukan secara explisit
@@ -3189,8 +3227,82 @@ person["age"] = 26;
 /**Tipe file untuk berkas JSON adalan ".json";
  * Tipe MIME untuk teks json adalah "application/json"
  */
+console.log("JSON vs XML");
+/*JSON dan XML sama-sama digunakan untuk menerima data dari web server */
+/*contoh JSON */
+// {"Employess":[
+//   {"firstName":"John", "lastName":"Dony"},
+//   {"firstName":"Anna", "lastName":"Belly"},
+//   {"firstName":"Sutejo", "lastName":"Sutrisno"},
+// ]}
+/*contoh XML */
+/*<employes>
+  <employe>
+    <firstName>John</firstName> <lastName>Doe</lastName>
+  </employe>
+  <employe>
+    <firstName>Anna</firstName> <lastName>Bell</lastName>
+  </employe>
+  <employe>
+    <firstName>Jhon</firstName> <lastName>Sutrisno</lastName>
+  </employe>
+</employes>*/
+/**JSON seperti XML karena
+ * -Keduanya bersifat "self describing" (human readable)
+ * -bersifat hierarki (values didalam value)
+ * -bisa diurai dan gunakan banyak pemrograman bahasa lain
+ * -bisa di fetch dengan "XMLHttpsRequest"
+ **JSON tidak seperti XML karena
+ * -JSON tidak menggunakan end tag
+ * -JSON lebih pendek
+ * -Lebih cepat dibaca ditulis
+ * -bisa menggunakan array
+ * Perbedaan terbesarnya adalah:
+ XML harus diurai dengan parser XML. JSON dapat diurai oleh fungsi JavaScript standar.
+ **Untuk aplikasi AJAX, JSON lebih cepat dan lebih mudah daripada XML:
+ * Menggunakan XML
+ * -Ambil dokumen XML
+ * -Gunakan XML DOM untuk mengulang dokumen
+ * -Ekstrak nilai dan simpan dalam variabel
+ * Menggunakan JSON
+ * -Ambil string JSON
+ * -Pelajari string JSON
+ */
 
 console.log("JavaScript / JQuerry");
 /**JQuerry di ciptakan tahun 2006 oleh John Resig. di design digunakan untuk menangani ketidak cocokan browser dan mensederhanakan HTML DOM
  * Handling, Animation dan AJAX. lebih dari 10 tahun JQuerry menjadi library JavaScript paling populer di dunia.
  *@indexs .html  */
+
+console.log("\n===Fungsi map()===");
+/*berbeda denga fungsi "new Map()". "map()" merupakan methode dalam array dalam javascript, digunakan untuk pada array untuk membuat array baru dengan menetapkan fungsi tertentu pada
+elemen dalam array tersebut. fungsi map() memetakan setiap elemen dalam array asli ke elemen baru berdasarkan fungsi yang diberikan, dan hasilnya adalah array baru dengan jumlah elemen yang sama dengan array asli
+cara kerja
+ *map() memanggil fungsi callback yang diberikan dev pada setiap elemen di array
+ *fungsi callback menerima 3 argumen: nilai saat ini, index elemen & array asli
+contoh*/
+const mapExamp = [1, 2, 3, 4, 5];
+const dobelMapExamp = mapExamp.map(function(mapExamp) {   /*inisiasi dengan menggunakan fungsi map pada array
+  dengan parameter callback function yang memiliki parameter array */
+  return mapExamp*2;       //kembalikan array x 2
+});
+console.log("penggunaan map\n", dobelMapExamp);
+/*arrow function */
+let myArray1s = ["Yae", "Sakura", "Ganyu", "Ayaka", "Raiden"];
+const waifuMap = myArray1s.map(myArray1 => myArray1.length);           //digunakan untuk mengetahui panjang tiap elemen
+console.log("array function pada map()\n", waifuMap);
+
+
+console.log("===REACT Use function===\nPenggunaan useState dalam react");
+/**glosarium
+ * state: merupakan object / variabel yang nilainya berubah-ubah seiring waktu, state ibarat nilai yang berubah-ubah dan harus dirender setiap perubahan pada react.
+ * senarai merupakan daftar / kumpulan data yang berurut,
+ */
+/*useStae merupakan hook / kait pada react yang digunakan untuk mengelola state pada komponen didalam react, 
+sintaks
+const [state, setState] = useState(initialValue);
+state: merupakan nilai saat ini,
+setState: fungsi yang digunakan untuk memperbaharui nilai dari state
+initialValue: merupakan  nilai awal dari state, bisa berupa tipe data apa saja: string, number, array, object / function.
+*/
+
